@@ -133,6 +133,8 @@ $bu = base_url();
 	<script src="<?= $bu; ?>assets/admin//build/js/custom.min.js"></script>
 	<script src="<?= $bu; ?>assets/admin/vendors/datatables.net/js/jquery.dataTables.js"></script>
 	<script src="<?= $bu; ?>assets/admin/vendors/datatables.net-responsive/js/dataTables.responsive.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 </body>
 
 </html>
