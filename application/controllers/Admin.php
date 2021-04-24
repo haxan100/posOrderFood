@@ -276,6 +276,59 @@ public function index()
 			'errorInputs' => $errorInputs
 		));
 	}
+	public function tambah_kasir_proses()
+	{
+		$nama = $this->input->post('nama', TRUE);
+		$username = $this->input->post('username', TRUE);
+		$password = $this->input->post('password', TRUE);
+
+		$status = true;
+
+		if ($nama == null) {
+			$status = false;
+			$message = "Harap Masukan Nama!";
+			// die("sss");
+		}
+		if ($username == null) {
+			$status = false;
+			$message = "Harap Isi username!";
+			// die("sss");
+		}
+		if ($password == null) {
+			$status = false;
+			$message = "Harap Masukan Password!";
+			// die("sss");
+		}
+		if($status){
+			$status = true;
+
+			$in = array(
+				'nama_kasir' => $nama,
+				'username' => $username,
+				'password' => $password,
+				'created_at' => date("Y-m-d H:i:s"),
+			);
+			$this->SemuaModel->Tambah('kasir', $in);
+
+			$message = "Berhasil Menambah  #1";
+		}else{
+			$status = false;
+			$message = "Gagal Menambah Data";
+
+
+		}
+
+
+
+		echo json_encode(array(
+			'status' => $status,
+			'message' => $message,
+		));
+
+
+
+		# code...
+	}
 }
         
     /* End of file  Admin.php */

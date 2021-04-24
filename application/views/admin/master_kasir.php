@@ -120,7 +120,7 @@
 		// $('#modal-detail').modal('show');
 		var bu = '<?= base_url(); ?>';
 		var url_form_ubah = bu + 'Admin/ubah_kasir_proses';
-		var url_form_tambah = bu + 'Admin/tambah_menu_proses';
+		var url_form_tambah = bu + 'Admin/tambah_kasir_proses';
 
 		$('body').on('click', '.btn_edit', function() {
 			url_form = url_form_ubah;
@@ -283,23 +283,25 @@
 			url_form = url_form_tambah;
 			console.log(url_form);
 			$('#Edit').hide();
-			$("#kode_wali").removeAttr('readonly');
-
-
-
 		});
 
 		$('#tambah_act').on('click', function() {
 
-			var id_guru = $('#id_guru').val();
 			var nama = $('#nama').val();
-			var id_kategori = $('#id_kategori').val();
-			var harga = $('#harga').val();
+			var username = $('#username').val();
+			var password = $('#password').val();
 
 			if (
-				nama && harga
+				nama && username && password
 			) {
 				$("#form").submit();
+			} else {
+				Swal.fire({
+					icon: 'error',
+					title: 'Oopssss...',
+					text: 'Mohon Isi Field yang di perlukan!',
+
+				})
 			}
 			// return false;
 		});
