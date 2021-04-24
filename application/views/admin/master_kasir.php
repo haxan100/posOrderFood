@@ -163,11 +163,11 @@
 		});
 		$('body').on('click', '.hapus', function() {
 
-			var id_menu = $(this).data('id_menu');
-			var nama = $(this).data('nama');
+			var id_kasir = $(this).data('id_kasir');
+			var nama = $(this).data('nama_kasir');
 			Swal.fire({
 				title: 'Apakah Anda Yakin ?',
-				text: "Anda akan Menghapus Guru: " + nama,
+				text: "Anda akan Menghapus Data: " + nama,
 				icon: 'warning',
 				showCancelButton: true,
 				confirmButtonColor: '#3085d6',
@@ -177,11 +177,11 @@
 
 				if (result.value) {
 					$.ajax({
-						url: bu + 'Admin/hapusMenu',
+						url: bu + 'Admin/hapusKasir',
 						dataType: 'json',
 						method: 'POST',
 						data: {
-							id_menu: id_menu
+							id_kasir: id_kasir
 						}
 					}).done(function(e) {
 						console.log(e);

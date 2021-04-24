@@ -189,7 +189,7 @@
 			var nama = $(this).data('nama');
 			Swal.fire({
 				title: 'Apakah Anda Yakin ?',
-				text: "Anda akan Menghapus Guru: " + nama,
+				text: "Anda akan Menghapus Data: " + nama,
 				icon: 'warning',
 				showCancelButton: true,
 				confirmButtonColor: '#3085d6',

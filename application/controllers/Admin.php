@@ -329,6 +329,27 @@ public function index()
 
 		# code...
 	}
+	public function hapusKasir()
+	{
+		$id_kasir = $this->input->post('id_kasir', TRUE);
+		$data = $this->SemuaModel->getDataById('kasir', 'id_kasir', $id_kasir);
+
+		$status = false;
+
+		$message = 'Gagal menghapus Data!';
+		if (count($data) == 0) {
+			$message .= '<br>Tidak terdapat Data yang dimaksud.';
+		} else {
+			$this->SemuaModel->HapusData('kasir', 'id_kasir', $id_kasir);
+
+			$status = true;
+			$message = 'Berhasil menghapus Data: <b>' . $data[0]->nama_kasir . '</b>';
+		}
+		echo json_encode(array(
+			'status' => $status,
+			'message' => $message,
+		));
+	}
 }
         
     /* End of file  Admin.php */

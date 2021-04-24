@@ -81,7 +81,7 @@ class Data extends CI_Controller {
 			data-password="' . $row->password . '" 
 			></i> Ubah</button>
 
-        <button class="btn btn-round btn-danger hapus" data-id_kasir="' . $row->id_kasir . '" nama_kasir="' . $row->nama_kasir . '"
+        <button class="btn btn-round btn-danger hapus" data-id_kasir="' . $row->id_kasir . '" data-nama_kasir="' . $row->nama_kasir . '"
         >Hapus</button>               
 
         ';
