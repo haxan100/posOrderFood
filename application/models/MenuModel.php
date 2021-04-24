@@ -10,11 +10,13 @@ class MenuModel extends CI_Model {
 			'nama_menu',
 			'id_kategori',		
 			'harga',
+			'foto'
 		);		
 		$columnsSearch = array(
 			'nama_menu',
 			'id_kategori',			
 			'harga',
+			'foto'
 		);
 		// gunakan join disini
 		$from = 'menu w';

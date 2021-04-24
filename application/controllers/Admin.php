@@ -118,6 +118,26 @@ public function index()
 
 		# code...
 	}
+	public function hapusMenu()
+	{
+		$id_menu = $this->input->post('id_menu', TRUE);
+		$data = $this->SemuaModel->getDataById('menu','id_menu',$id_menu);
+		$status = false;
+
+		$message = 'Gagal menghapus Data!';
+		if (count($data) == 0) {
+			$message .= '<br>Tidak terdapat Data yang dimaksud.';
+		} else {
+			$this->SemuaModel->HapusData('menu','id_menu',$id_menu);
+
+			$status = true;
+			$message = 'Berhasil menghapus Data: <b>' . $data[0]->nama_menu . '</b>';
+		}
+		echo json_encode(array(
+			'status' => $status,
+			'message' => $message,
+		));
+	}
 }
         
     /* End of file  Admin.php */

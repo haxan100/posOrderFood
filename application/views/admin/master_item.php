@@ -200,13 +200,8 @@
 		});
 		$('body').on('click', '.hapus', function() {
 
-			var id_guru = $(this).data('id_guru');
+			var id_menu = $(this).data('id_menu');
 			var nama = $(this).data('nama');
-			// var foto = $(this).data('foto');
-			// console.log(kode_wali)
-			// return false;
-			// var c = confirm('Apakah anda yakin akan menghapus Siswa: "' + nama + '" ?');
-			// $('#Edit').hide();
 			Swal.fire({
 				title: 'Apakah Anda Yakin ?',
 				text: "Anda akan Menghapus Guru: " + nama,
@@ -219,11 +214,11 @@
 
 				if (result.value) {
 					$.ajax({
-						url: bu + 'wali/hapusGuru',
+						url: bu + 'Admin/hapusMenu',
 						dataType: 'json',
 						method: 'POST',
 						data: {
-							id_guru: id_guru
+							id_menu: id_menu
 						}
 					}).done(function(e) {
 						console.log(e);
@@ -396,8 +391,8 @@
 
 			buttons: [
 
-				// 'excelHtml5',
-				// 'pdfHtml5'
+				'excelHtml5',
+				'pdfHtml5',
 				{
 					text: "Excel",
 					extend: "excelHtml5",
