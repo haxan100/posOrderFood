@@ -458,6 +458,27 @@ public function index()
 			'errorInputs' => $errorInputs
 		));
 	}
+	public function hapusAdmin()
+	{
+		$id_admin = $this->input->post('id_admin', TRUE);
+		$data = $this->SemuaModel->getDataById('admin', 'id_admin', $id_admin);
+
+		$status = false;
+
+		$message = 'Gagal menghapus Data!';
+		if (count($data) == 0) {
+			$message .= '<br>Tidak terdapat Data yang dimaksud.';
+		} else {
+			$this->SemuaModel->HapusData('admin', 'id_admin', $id_admin);
+
+			$status = true;
+			$message = 'Berhasil menghapus Data: <b>' . $data[0]->nama_admin . '</b>';
+		}
+		echo json_encode(array(
+			'status' => $status,
+			'message' => $message,
+		));
+	}
 }
         
     /* End of file  Admin.php */

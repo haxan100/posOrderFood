@@ -186,8 +186,8 @@
 		});
 		$('body').on('click', '.hapus', function() {
 
-			var id_kasir = $(this).data('id_kasir');
-			var nama = $(this).data('nama_kasir');
+			var id_admin = $(this).data('id_admin');
+			var nama = $(this).data('nama_admin');
 			Swal.fire({
 				title: 'Apakah Anda Yakin ?',
 				text: "Anda akan Menghapus Data: " + nama,
@@ -200,11 +200,11 @@
 
 				if (result.value) {
 					$.ajax({
-						url: bu + 'Admin/hapusKasir',
+						url: bu + 'Admin/hapusAdmin',
 						dataType: 'json',
 						method: 'POST',
 						data: {
-							id_kasir: id_kasir
+							id_admin: id_admin
 						}
 					}).done(function(e) {
 						console.log(e);
