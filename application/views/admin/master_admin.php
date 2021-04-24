@@ -49,7 +49,7 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<h4>Detail Iten</h4>
+					<h4>Detail </h4>
 
 					<div class="row">
 						<div class="col-md-12 col-sm-12 ">
@@ -60,16 +60,16 @@
 									<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 										<div class="item form-group">
 											<div class="col-md-6 col-sm-6 ">
-												<input type="hidden" id="id_kasir" name="id_kasir" class="form-control " placeholder="Isikan Nama" readonly type="text" class="form-control">
+												<input type="hidden" id="id_admin" name="id_admin" class="form-control " placeholder="Isikan Nama" readonly type="text" class="form-control">
 
 											</div>
 										</div>
 
 										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name"> Nama Kasir <span class="required">*</span>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name"> Nama Admin <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input id="nama" name="nama" class="form-control " placeholder="Isikan Nama Menu" type="text" class="form-control">
+												<input id="nama" name="nama" class="form-control " placeholder="Isikan Nama Admin" type="text" class="form-control">
 
 											</div>
 										</div>
@@ -83,6 +83,24 @@
 
 											</div>
 										</div>
+
+										<div class="item form-group">
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Role <span class="required">*</span>
+											</label>
+											<div class="col-sm-9">
+												<select class="form-control select col-md-8 col-sm-8" name="role" id="role">
+													<option value="">Pilih</option>
+													<?php
+													foreach ($listKategori as $r) {
+														echo '
+														<option value="' . $r->id_role . '">' . $r->nama_role . '</option>
+														';
+													}
+													?>
+												</select>
+											</div>
+										</div>
+
 
 
 
@@ -120,7 +138,7 @@
 		// $('#modal-detail').modal('show');
 		var bu = '<?= base_url(); ?>';
 		var url_form_ubah = bu + 'Admin/ubah_kasir_proses';
-		var url_form_tambah = bu + 'Admin/tambah_kasir_proses';
+		var url_form_tambah = bu + 'Admin/tambah_admin_proses';
 
 		$('body').on('click', '.btn_edit', function() {
 			url_form = url_form_ubah;
@@ -283,6 +301,7 @@
 			url_form = url_form_tambah;
 			console.log(url_form);
 			$('#Edit').hide();
+			$('#tambah_act').show();
 		});
 
 		$('#tambah_act').on('click', function() {
@@ -290,9 +309,10 @@
 			var nama = $('#nama').val();
 			var username = $('#username').val();
 			var password = $('#password').val();
+			var role = $('#role').val();
 
 			if (
-				nama && username && password
+				nama && username && password && role
 			) {
 				$("#form").submit();
 			} else {

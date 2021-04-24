@@ -24,6 +24,8 @@ public function index()
 	public function master_admin()
 	{
 		$obj['ci'] = $this;
+		$obj['listKategori'] = $this->SemuaModel->getAllRole();
+
 		$obj['content'] = 'admin/master_admin';
 		$this->load->view('admin/templates/index', $obj);
 	}
@@ -349,6 +351,63 @@ public function index()
 			'status' => $status,
 			'message' => $message,
 		));
+	}
+	public function tambah_admin_proses()
+	{
+		$nama = $this->input->post('nama', TRUE);
+		$username = $this->input->post('username', TRUE);
+		$password = $this->input->post('password', TRUE);
+		$role = $this->input->post('role', TRUE);
+		$status = true;
+
+		if ($nama == null) {
+			$status = false;
+			$message = "Harap Masukan Nama!";
+			// die("sss");
+		}
+		if ($username == null) {
+			$status = false;
+			$message = "Harap Isi username!";
+			// die("sss");
+		}
+		if ($password == null) {
+			$status = false;
+			$message = "Harap Masukan Password!";
+			// die("sss");
+		}
+		if ($role == null) {
+			$status = false;
+			$message = "Harap Masukan Role!";
+			// die("sss");
+		}
+		if ($status) {
+			$status = true;
+
+			$in = array(
+				'nama_admin' => $nama,
+				'username' => $username,
+				'password' => $password,
+				'id_role' => $role,
+				'created_at' => date("Y-m-d H:i:s"),
+			);
+			$this->SemuaModel->Tambah('admin', $in);
+
+			$message = "Berhasil Menambah  #1";
+		} else {
+			$status = false;
+			$message = "Gagal Menambah Data";
+		}
+
+
+
+		echo json_encode(array(
+			'status' => $status,
+			'message' => $message,
+		));
+
+
+
+		# code...
 	}
 }
         

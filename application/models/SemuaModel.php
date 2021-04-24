@@ -31,6 +31,15 @@ public function getDataById($namaTable,$nama_id,$id_Dicari)
 		$this->db->where($nama_id, $nisn);
 		return $this->db->update($NamaTabel, $in);
 	}
+	public function getAllRole()
+	{
+		$this->db->from('role');
+		$sql = $this->db->get();
+		return $sql->result();
+
+		# code...
+	}                      
+              
                             
                         
 }

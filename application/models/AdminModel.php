@@ -84,7 +84,8 @@ class AdminModel extends CI_Model {
 			'totalData' => $totaldata,
 			'data' => $data,
 		);
-	}                      
+	}     
+	                 
                             
                         
 }
