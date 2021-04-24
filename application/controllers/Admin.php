@@ -138,6 +138,94 @@ public function index()
 			'message' => $message,
 		));
 	}
+	public function ubah_menu_proses()
+	{
+		$id_menu = $this->input->post('id_menu', TRUE);
+		$nama = $this->input->post('nama', TRUE);
+		$id_kategori = $this->input->post('id_kategori', TRUE);
+		$harga = $this->input->post('harga', TRUE);
+
+
+		$message = 'Gagal mengedit data !<br>Silahkan lengkapi data yang diperlukan.';
+		$errorInputs = array();
+		$status = true;
+
+		$in = array(
+			'nama_menu' => $nama,
+			'id_kategori' => $id_kategori,
+			'harga' => $harga,
+		);
+		// var_dump($in);die();
+
+		$maxFoto = 5;
+		$getNamaFotoOld = $this->SemuaModel->getDataById('menu','id_menu',$id_menu)[0]->foto;
+		// var_dump($getNamaFotoOld);die;
+		if (empty($nama)) {
+			$status = false;
+			$errorInputs[] = array('#nama', 'Silahkan Isi Nama');
+		}
+		if (empty($harga)) {
+			$status = false;
+			$errorInputs[] = array('#harga', 'Silahkan pilih Kelas');
+		}
+		// var_dump($_FILES['foto']['name']);die();tunggu
+
+		if ($status) {
+
+			if ($this->SemuaModel->EditData('menu','id_menu',$in, $id_menu)) {
+
+				$message = "Berhasil Mengubah Data #1";
+				$cekFoto = empty($_FILES['foto']['name'][0]) || $_FILES['foto']['name'][0] == '';
+				// var_dump(!$cekFoto);die;
+				if (!$cekFoto) {
+
+					$_FILES['f']['name']     = $_FILES['foto']['name'];
+					$_FILES['f']['type']     = $_FILES['foto']['type'];
+					$_FILES['f']['tmp_name'] = $_FILES['foto']['tmp_name'];
+					$_FILES['f']['error']     = $_FILES['foto']['error'];
+					$_FILES['f']['size']     = $_FILES['foto']['size'];
+
+					$config['upload_path']          = './assets/images/foods/';
+					$config['allowed_types']        = 'jpg|jpeg|png|gif';
+					$config['max_size']             = 3 * 1024; // kByte
+					$config['max_width']            = 10 * 1024;
+					$config['max_height']           = 10 * 1024;
+					$config['file_name'] = $id_menu . "-" . date("Y-m-d-H-i-s") . ".jpg";
+					$this->load->library('image_lib');
+					$this->load->library('upload', $config);
+					$this->upload->initialize($config);
+					$this->image_lib->resize();
+					// var_dump(!$this->upload->do_upload('f'));die;
+					// Upload file to server
+
+					if (!$this->upload->do_upload('f')) {
+						$errorUpload = $this->upload->display_errors() . '<br>';
+					} else {
+						// Uploaded file data
+						$fileName = $this->upload->data()["file_name"];
+						$foto = array(
+							'foto' => $fileName,
+						);
+						$this->SemuaModel->EditData('menu','id_menu',$foto, $id_menu);
+
+						unlink("./assets/images/foods/$getNamaFotoOld");
+
+						$message = "Berhasil Mengubah Data #1";
+					}
+				}
+			}
+		} else {
+			$message = "Gagal Mengubah Siswa #1";
+		}
+
+
+
+		echo json_encode(array(
+			'status' => $status,
+			'message' => $message,
+			'errorInputs' => $errorInputs
+		));
+	}
 }
         
     /* End of file  Admin.php */

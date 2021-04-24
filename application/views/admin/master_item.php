@@ -109,6 +109,7 @@
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Foto<span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
+												<img style="width: 100px; display: block;" src="<?php echo base_url() . "assets/upload/foods/"; ?>images/" id="image" alt="image">
 												<input type="file" accept="image/x-png,image/gif,image/jpeg,image/jpg;" name="foto" id="foto">
 											</div>
 										</div>
@@ -137,7 +138,7 @@
 	document.addEventListener("DOMContentLoaded", function(event) {
 		// $('#modal-detail').modal('show');
 		var bu = '<?= base_url(); ?>';
-		var url_form_ubah = bu + 'wali/ubah_guru_proses';
+		var url_form_ubah = bu + 'Admin/ubah_menu_proses';
 		var url_form_tambah = bu + 'Admin/tambah_menu_proses';
 
 		$('body').on('click', '.btn_edit', function() {
@@ -145,56 +146,40 @@
 			// console.log(url_form);
 			$('#tambah_act').hide();
 			// $("#kode_wali").removeAttr('readonly');
-			$("#kode_wali").prop("readonly", true);
-			var nik = $(this).data('kode_wali');
-			var id_guru = $(this).data('id_guru');
-			var nama = $(this).data('nama');
-			var kelas = $(this).data('id_kelas');
-			var mapel = $(this).data('id_mapel');
-			var username = $(this).data('username');
-			var password = $(this).data('password');
-			var tempat_lahir = $(this).data('tempat_lahir');
-			var tanggal_lahir = $(this).data('tanggal_lahir');
-			var alamat = $(this).data('alamat');
-			console.log(password, username);
+			$("#id_menu").prop("readonly", true);
 
-			$('#nik').val(nik);
-			$('#id_guru').val(id_guru);
-			$('#nama').val(nama);
-			$('#kelas').val(kelas);
-			$('#mapel').val(mapel);
-			mapels(kelas, mapel);
-			$('#usernames').val(username);
-			$('#passwords').val(password);
+			var id_menu = $(this).data('id_menu');
+			var nama_menu = $(this).data('nama_menu');
+			var id_kategori = $(this).data('id_kategori');
+			var harga = $(this).data('harga');
+			var foto = $(this).data('foto');
 
-			$('#tempat_lahir').val(tempat_lahir);
-			$('#tanggal_lahir').val(tanggal_lahir);
-			$('#alamat').val(alamat);
+			$('#id_menu').val(id_menu);
+			$('#nama').val(nama_menu);
+			$('#id_kategori').val(id_kategori);
+			$('#harga').val(harga);
 
+			$('#image').prop('src', '../assets/images/foods/' + foto);
+			
 			$('#Edit').show();
-			$("#kelas").val(parseInt(kelas));
 
 
 		});
 		$('#Edit').on('click', function() {
 
-			var id_guru = $('#id_guru').val();
-			var nik = $('#nik').val();
+			var id_menu = $('#id_menu').val();
 			var nama = $('#nama').val();
-			var kelas = $('#kelas').val();
-			var mapel = $('#mapel').val();
-			var username = $('#usernames').val();
-			var password = $('#passwords').val();
-			var tempat_lahir = $('#tempat_lahir').val();
-			var tanggal_lahir = $('#tanggal_lahir').val();
-			var alamat = $('#alamat').val();
+			var id_kategori = $('#id_kategori').val();
+			var harga = $('#harga').val();
 			if (
-				nama && kelas
+				nama && harga && id_kategori
 			) {
 				$("#form").submit();
 				// console.log(_foto);
 				// return;
 				// console.log("draft");
+			}else{
+				alert("mohon isi semua!");
 			}
 			// return false;
 		});

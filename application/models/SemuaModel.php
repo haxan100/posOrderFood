@@ -25,7 +25,12 @@ public function getDataById($namaTable,$nama_id,$id_Dicari)
 		$this->db->delete($NamaTabel);
 		$query = $this->db->get($NamaTabel);
 		return $query->result();
-	}      
+	}
+	public function EditData($NamaTabel,$nama_id,$in, $nisn)
+	{
+		$this->db->where($nama_id, $nisn);
+		return $this->db->update($NamaTabel, $in);
+	}
                             
                         
 }
