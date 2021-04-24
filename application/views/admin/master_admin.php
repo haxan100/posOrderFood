@@ -137,7 +137,7 @@
 	document.addEventListener("DOMContentLoaded", function(event) {
 		// $('#modal-detail').modal('show');
 		var bu = '<?= base_url(); ?>';
-		var url_form_ubah = bu + 'Admin/ubah_kasir_proses';
+		var url_form_ubah = bu + 'Admin/ubah_admin_proses';
 		var url_form_tambah = bu + 'Admin/tambah_admin_proses';
 
 		$('body').on('click', '.btn_edit', function() {
@@ -147,15 +147,17 @@
 			// $("#kode_wali").removeAttr('readonly');
 			$("#id_menu").prop("readonly", true);
 
-			var id_kasir = $(this).data('id_kasir');
-			var nama_kasir = $(this).data('nama_kasir');
+			var id_admin = $(this).data('id_admin');
+			var nama_admin = $(this).data('nama_admin');
 			var username = $(this).data('username');
 			var password = $(this).data('password');
+			var role = $(this).data('id_role');
 
-			$('#id_kasir').val(id_kasir);
-			$('#nama').val(nama_kasir);
+			$('#id_admin').val(id_admin);
+			$('#nama').val(nama_admin);
 			$('#username').val(username);
 			$('#password').val(password);
+			$('#role').val(role);
 
 			$('#Edit').show();
 
@@ -163,19 +165,22 @@
 		});
 		$('#Edit').on('click', function() {
 
-			var id_kasir = $('#id_kasir').val();
+			var id_admin = $('#id_admin').val();
 			var nama = $('#nama').val();
 			var username = $('#username').val();
 			var password = $('#password').val();
+			var role = $('#role').val();
 			if (
-				nama && username && password
+				nama && username && password && role
 			) {
 				$("#form").submit();
-				// console.log(_foto);
-				// return;
-				// console.log("draft");
 			} else {
-				alert("mohon isi semua!");
+				Swal.fire({
+					icon: 'error',
+					title: 'Oopssss...',
+					text: 'Mohon Isi Semua Filed!'
+
+				})
 			}
 			// return false;
 		});

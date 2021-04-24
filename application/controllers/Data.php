@@ -110,7 +110,7 @@ class Data extends CI_Controller {
 			// $fields[] = $row->id_menu . '<br>';
 			$fields[] = $row->nama_admin . '<br>';
 			$fields[] = $row->username . '<br>';
-			$fields[] = $row->id_role . '<br>';
+			$fields[] = $row->nama_role . '<br>';
 			$fields[] = '
 
 			<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target=".bs-example-modal-lg"

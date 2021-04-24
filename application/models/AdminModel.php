@@ -23,7 +23,7 @@ class AdminModel extends CI_Model {
 		// gunakan join disini
 		$from = 'admin a';
 		// custom SQL
-		$sql = "SELECT* FROM {$from}   
+		$sql = "SELECT* FROM {$from}   join role r on r.id_role = a.id_role
 		";
 		$where = "";
 

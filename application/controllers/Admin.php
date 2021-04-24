@@ -409,6 +409,55 @@ public function index()
 
 		# code...
 	}
+	public function ubah_admin_proses()
+	{
+		// var_dump($_POST);die;
+		$id_admin = $this->input->post('id_admin', TRUE);
+		$nama = $this->input->post('nama', TRUE);
+		$username = $this->input->post('username', TRUE);
+		$password = $this->input->post('password', TRUE);
+		$role = $this->input->post('role', TRUE);
+
+		$message = 'Gagal mengedit data !<br>Silahkan lengkapi data yang diperlukan.';
+		$errorInputs = array();
+		$status = true;
+
+		$in = array(
+			'nama_admin' => $nama,
+			'username' => $username,
+			'password' => $password,
+			'id_role' => $role,
+		);
+		if (empty($nama)) {
+			$status = false;
+			$errorInputs[] = array('#nama', 'Silahkan Isi Nama');
+		}
+		if (empty($username)) {
+			$status = false;
+			$errorInputs[] = array('#username', 'Silahkan pilih Kelas');
+		}
+		// var_dump($status);die;
+
+		if ($status) {
+
+			if ($this->SemuaModel->EditData('admin', 'id_admin', $in, $id_admin)) {
+				$status = true;
+
+				$message = "Berhasil Mengubah Data #1";
+			}
+		} else {
+			$status = false;
+			$message = "Gagal Mengubah Data #1";
+		}
+
+
+
+		echo json_encode(array(
+			'status' => $status,
+			'message' => $message,
+			'errorInputs' => $errorInputs
+		));
+	}
 }
         
     /* End of file  Admin.php */
