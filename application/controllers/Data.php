@@ -8,6 +8,7 @@ class Data extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('MenuModel');
+		$this->load->model('KasirModel');
 		// $this->load->model('WaliModel');
 		// $this->load->model('GuruModel');
 		// $this->load->model('SekolahModel');
@@ -43,6 +44,44 @@ class Data extends CI_Controller {
 			></i> Ubah</button>
 
         <button class="btn btn-round btn-danger hapus" data-id_menu="' . $row->id_menu . '" nama_menu="' . $row->nama_menu . '"
+        >Hapus</button>               
+
+        ';
+			$datatable['data'][] = $fields;
+		}
+
+
+
+		echo json_encode($datatable);
+
+		exit();
+	}
+	public function getAllKasir()
+	{
+		$bu = base_url();
+		$dt = $this->KasirModel->data_All($_POST);
+		$datatable['draw']      = isset($_POST['draw']) ? $_POST['draw'] : 1;
+		$datatable['recordsTotal']    = $dt['totalData'];
+		$datatable['recordsFiltered'] = $dt['totalData'];
+		$datatable['data']            = array();
+		$start  = isset($_POST['start']) ? $_POST['start'] : 0;
+		// var_dump($dt['data']->result());die();
+		$no = $start + 1;
+		foreach ($dt['data']->result() as $row) {
+			$fields = array($no++);
+			// $fields[] = $row->id_menu . '<br>';
+			$fields[] = $row->nama_kasir . '<br>';
+			$fields[] = $row->username . '<br>';
+			$fields[] = 'Kapan Login<br>';
+			$fields[] = '
+
+			<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target=".bs-example-modal-lg"
+			 data-id_kasir="' . $row->id_kasir . '" data-nama_kasir="' . $row->nama_kasir . '" 
+			data-username="' . $row->username . '" 
+			data-password="' . $row->password . '" 
+			></i> Ubah</button>
+
+        <button class="btn btn-round btn-danger hapus" data-id_kasir="' . $row->id_kasir . '" nama_kasir="' . $row->nama_kasir . '"
         >Hapus</button>               
 
         ';

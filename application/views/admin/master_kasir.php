@@ -1,7 +1,7 @@
 <div class="col-md-12 col-sm-12 ">
 	<div class="x_panel">
 		<div class="x_title">
-			<h2>Data Item</h2>
+			<h2>Data Kasir</h2>
 			<style>
 				#image {
 					max-width: 100px;
@@ -23,10 +23,9 @@
 							<thead>
 								<tr>
 									<th>No</th>
-									<th>Nama Menu</th>
-									<th>Id kategori(belum diupdate)</th>
-									<th>Harga</th>
-									<th>Foto</th>
+									<th>Nama Kasir</th>
+									<th>Username</th>
+									<th>Last Login</th>
 									<th>Aksi</th>
 								</tr>
 							</thead>
@@ -160,7 +159,7 @@
 			$('#harga').val(harga);
 
 			$('#image').prop('src', '../assets/images/foods/' + foto);
-			
+
 			$('#Edit').show();
 
 
@@ -178,7 +177,7 @@
 				// console.log(_foto);
 				// return;
 				// console.log("draft");
-			}else{
+			} else {
 				alert("mohon isi semua!");
 			}
 			// return false;
@@ -355,18 +354,13 @@
 				}, {
 					"targets": 4,
 					"className": "dt-head-center"
-				}, {
-					"targets": 5,
-					"className": "dt-head-center",
-					"orderable": false
-
 				},
 			],
 			"order": [
 				[1, "desc"]
 			],
 			'ajax': {
-				url: bu + 'Data/getAllMenuItem',
+				url: bu + 'Data/getAllKasir',
 				type: 'POST',
 				"data": function(d) {
 

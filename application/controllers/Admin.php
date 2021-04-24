@@ -226,6 +226,12 @@ public function index()
 			'errorInputs' => $errorInputs
 		));
 	}
+	public function master_kasir()
+	{
+		$obj['ci'] = $this;
+		$obj['content'] = 'admin/master_kasir';
+		$this->load->view('admin/templates/index', $obj);
+	}
 }
         
     /* End of file  Admin.php */
