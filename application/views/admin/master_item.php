@@ -50,7 +50,7 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<h4>Detail Iten</h4>
+					<h4>Detail Item</h4>
 
 					<div class="row">
 						<div class="col-md-12 col-sm-12 ">
@@ -60,10 +60,10 @@
 									<br />
 									<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name"> Id Menu <span class="required">*</span>
-											</label>
+											<!-- <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name"> Id Menu <span class="required">*</span>
+											</label> -->
 											<div class="col-md-6 col-sm-6 ">
-												<input id="id_menu" name="id_menu" class="form-control " placeholder="Isikan Nama" readonly type="text" class="form-control">
+												<input type="hidden" id="id_menu" name="id_menu" class="form-control " placeholder="Isikan Nama" readonly type="text" class="form-control">
 
 											</div>
 										</div>

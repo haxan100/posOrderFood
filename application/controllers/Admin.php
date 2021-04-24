@@ -208,14 +208,12 @@ public function index()
 						);
 						$this->SemuaModel->EditData('menu','id_menu',$foto, $id_menu);
 
-						unlink("./assets/images/foods/$getNamaFotoOld");
-
 						$message = "Berhasil Mengubah Data #1";
 					}
 				}
 			}
 		} else {
-			$message = "Gagal Mengubah Siswa #1";
+			$message = "Gagal Mengubah  #1";
 		}
 
 
@@ -231,6 +229,52 @@ public function index()
 		$obj['ci'] = $this;
 		$obj['content'] = 'admin/master_kasir';
 		$this->load->view('admin/templates/index', $obj);
+	}
+	public function ubah_kasir_proses()
+	{
+		$id_kasir = $this->input->post('id_kasir', TRUE);
+		$nama = $this->input->post('nama', TRUE);
+		$username = $this->input->post('username', TRUE);
+		$password = $this->input->post('password', TRUE);
+
+		$message = 'Gagal mengedit data !<br>Silahkan lengkapi data yang diperlukan.';
+		$errorInputs = array();
+		$status = true;
+
+		$in = array(
+			'nama_kasir' => $nama,
+			'username' => $username,
+			'password' => $password,
+		);
+		if (empty($nama)) {
+			$status = false;
+			$errorInputs[] = array('#nama', 'Silahkan Isi Nama');
+		}
+		if (empty($username)) {
+			$status = false;
+			$errorInputs[] = array('#username', 'Silahkan pilih Kelas');
+		}
+		// var_dump($status);die;
+
+		if ($status) {
+
+			if ($this->SemuaModel->EditData('kasir', 'id_kasir', $in, $id_kasir)) {
+				$status = true;
+
+				$message = "Berhasil Mengubah Data #1";
+			}
+		} else {
+			$status = false;
+			$message = "Gagal Mengubah Data #1";
+		}
+
+
+
+		echo json_encode(array(
+			'status' => $status,
+			'message' => $message,
+			'errorInputs' => $errorInputs
+		));
 	}
 }
         

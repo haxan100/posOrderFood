@@ -59,16 +59,14 @@
 									<br />
 									<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name"> Id Menu <span class="required">*</span>
-											</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input id="id_menu" name="id_menu" class="form-control " placeholder="Isikan Nama" readonly type="text" class="form-control">
+												<input type="hidden" id="id_kasir" name="id_kasir" class="form-control " placeholder="Isikan Nama" readonly type="text" class="form-control">
 
 											</div>
 										</div>
 
 										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name"> Nama Menu <span class="required">*</span>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name"> Nama Kasir <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
 												<input id="nama" name="nama" class="form-control " placeholder="Isikan Nama Menu" type="text" class="form-control">
@@ -77,39 +75,23 @@
 										</div>
 
 										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">ID Kategori <span class="required">*</span>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Username<span class="required">*</span>
 											</label>
 											<div class="col-sm-9">
-												<select class="form-control select col-md-8 col-sm-8" name="id_kategori" id="id_kategori">
-													<option value="">Pilih</option>
-													<?php
-													foreach ($listKategori as $r) {
-														echo '
-														<option value="' . $r->id_kategori . '">' . $r->nama_kategori . '</option>
-														';
-													}
-													?>
-												</select>
+
+												<input id="username" name="username" class="form-control " placeholder="Username" type="text" class="form-control">
+
 											</div>
 										</div>
 
 
 
 										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Harga <span class="required">*</span>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Password <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input id="harga" name="harga" class="form-control " placeholder="Harga" type="text" class="form-control">
+												<input id="password" name="password" class="form-control " placeholder="password" type="text" class="form-control">
 
-											</div>
-										</div>
-
-										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Foto<span class="required">*</span>
-											</label>
-											<div class="col-md-6 col-sm-6 ">
-												<img style="width: 100px; display: block;" src="<?php echo base_url() . "assets/upload/foods/"; ?>images/" id="image" alt="image">
-												<input type="file" accept="image/x-png,image/gif,image/jpeg,image/jpg;" name="foto" id="foto">
 											</div>
 										</div>
 										<div class="ln_solid"></div>
@@ -137,7 +119,7 @@
 	document.addEventListener("DOMContentLoaded", function(event) {
 		// $('#modal-detail').modal('show');
 		var bu = '<?= base_url(); ?>';
-		var url_form_ubah = bu + 'Admin/ubah_menu_proses';
+		var url_form_ubah = bu + 'Admin/ubah_kasir_proses';
 		var url_form_tambah = bu + 'Admin/tambah_menu_proses';
 
 		$('body').on('click', '.btn_edit', function() {
@@ -147,18 +129,15 @@
 			// $("#kode_wali").removeAttr('readonly');
 			$("#id_menu").prop("readonly", true);
 
-			var id_menu = $(this).data('id_menu');
-			var nama_menu = $(this).data('nama_menu');
-			var id_kategori = $(this).data('id_kategori');
-			var harga = $(this).data('harga');
-			var foto = $(this).data('foto');
+			var id_kasir = $(this).data('id_kasir');
+			var nama_kasir = $(this).data('nama_kasir');
+			var username = $(this).data('username');
+			var password = $(this).data('password');
 
-			$('#id_menu').val(id_menu);
-			$('#nama').val(nama_menu);
-			$('#id_kategori').val(id_kategori);
-			$('#harga').val(harga);
-
-			$('#image').prop('src', '../assets/images/foods/' + foto);
+			$('#id_kasir').val(id_kasir);
+			$('#nama').val(nama_kasir);
+			$('#username').val(username);
+			$('#password').val(password);
 
 			$('#Edit').show();
 
@@ -166,12 +145,12 @@
 		});
 		$('#Edit').on('click', function() {
 
-			var id_menu = $('#id_menu').val();
+			var id_kasir = $('#id_kasir').val();
 			var nama = $('#nama').val();
-			var id_kategori = $('#id_kategori').val();
-			var harga = $('#harga').val();
+			var username = $('#username').val();
+			var password = $('#password').val();
 			if (
-				nama && harga && id_kategori
+				nama && username && password
 			) {
 				$("#form").submit();
 				// console.log(_foto);
