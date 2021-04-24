@@ -19,9 +19,9 @@ class MenuModel extends CI_Model {
 			'foto'
 		);
 		// gunakan join disini
-		$from = 'menu w';
+		$from = 'menu m';
 		// custom SQL
-		$sql = "SELECT* FROM {$from}  
+		$sql = "SELECT* FROM {$from}   join kategori k on k.id_kategori=m.id_kategori
 		";
 		$where = "";
 

@@ -30,7 +30,7 @@ class Data extends CI_Controller {
 			$fields = array($no++);
 			// $fields[] = $row->id_menu . '<br>';
 			$fields[] = $row->nama_menu . '<br>';
-			$fields[] = $row->id_kategori . '<br>';
+			$fields[] = $row->nama_kategori . '<br>';
 			$fields[] = $row->harga . '<br>';
 			$fields[] = '<img src="../assets/images/foods/'.$row->foto . '" id="image" alt="image"><br>';
 			$fields[] = '
