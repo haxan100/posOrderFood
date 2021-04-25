@@ -9,7 +9,7 @@ class Kasir extends CI_Controller {
 		$this->load->model('MenuModel');
 		$this->load->model('SemuaModel');
 		$this->load->model('ProdukModel');
-		// $this->load->model('GuruModel');
+		$this->load->model('CartModel');
 		// $this->load->model('SekolahModel');
 		$this->load->helper('url');
 	}
@@ -17,7 +17,21 @@ class Kasir extends CI_Controller {
 public function index()
 {	
 	$data['konten'] = $this->SemuaModel->getSeting();
-	// echo json_encode($data['konten']);die;
+	$cart= $this->CartModel->getCart();
+	$data['totalcart'] = count($cart);
+	$d = 0 ;
+	// var_dump($cart);die;
+	foreach ($cart as $da ) {
+			$d += $da->total;
+	}
+	$totalHarga = $d;
+	$data['totalHarga'] = $d;
+
+
+	// for ($i=0; $i < $totalcart; $i++) { 
+	// 	$d += $cart['id_produk'] ;
+	// }
+	// var_dump($d);die;
 
                 $this->load->view('Kasir/headers',$data);
                 $this->load->view('Kasir/index', $data);

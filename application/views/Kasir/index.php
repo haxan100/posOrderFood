@@ -1,8 +1,9 @@
 <?php
 $bu = base_url();
 // var_dump($konten[2]); 
-// echo  $konten[2]->isi; die;
+// echo  $totalHarga; die;
 ?>
+
 
 
 <body class="page-template-template-homepage-v1 home-v1">
@@ -40,6 +41,10 @@ $bu = base_url();
 								<a href="<?= $bu; ?>assets/kasir/cart.html" title="Tampilkan Cart Order Anda">
 									<i class="fa fa-cart-plus"></i>
 									<span>Cart Order Anda</span>
+									<a href="" title="Tampilkan Cart Ordsser Anda">
+										<span class="count cart_counts"><?= $totalcart ?> Item</span>
+										<span class="amount cart_total_formats">Rp .<?= $totalHarga ?></span>
+									</a>
 								</a>
 								<ul class="sub-menu cart_dropdown_container">
 								</ul>
@@ -94,7 +99,7 @@ $bu = base_url();
 
 										<br>
 									</div>
-	
+
 
 								</div>
 							</div>
@@ -109,4 +114,3 @@ $bu = base_url();
 
 			</ul>
 		</nav>
-		

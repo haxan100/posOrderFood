@@ -47,7 +47,7 @@
 						</div>
 					</li>
 					<li class="cart">
-						<a class="footer-cart-contents" href="<?= $bu; ?>assets/kasir/cart.html" title="Tampilkan Cart Order Anda">
+						<a class="footer-cart-contents" href="<?= $bu; ?>assets/kasir/casrt.html" title="Tampilkan Csssart Order Anda">
 						</a>
 					</li>
 				</ul>
@@ -63,7 +63,7 @@
 	<script type="text/javascript" src="<?= $bu; ?>assets/kasir/frontend\js\jquery.mCustomScrollbar.concat.min.js"></script>
 	<script type="text/javascript" src="<?= $bu; ?>assets/kasir/frontend\js\scripts.min.js"></script>
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-	
+
 	<script type="text/javascript">
 		$('#pagination-wrapper').show();
 
@@ -74,37 +74,7 @@
 			loadProduk(0)
 		});
 
-		$('.addToCart').each(function(index, el) {
-			var data = {};
-			$(this).on('click', function(event) {
-				event.preventDefault();
-				data['id'] = $(this).data('id');
-				data['qty'] = $(this).attr('data-qty');
-				$.ajax({
-						url: 'http://dansdigitalmedia.com/resto/cart/additem',
-						type: 'POST',
-						data: {
-							data: data
-						},
-					})
-					.done(function(res) {
-						swal({
-							title: "Sukses",
-							text: "Order Menu Berhasil",
-							timer: 2000,
-							showConfirmButton: false,
-							type: "success"
-						});
-						$('.cart_count').html(res.cart_count);
-						$('.cart_total_format').html(res.cart_total_format);
-						$('.cart_dropdown_container').html(res.cart_dropdown_container);
-						$('.cart_count_footer').html(res.cart_count_footer);
-					})
-					.fail(function(error) {
-						console.log(error.responseText);
-					});
-			});
-		});
+
 
 		$('#hiddenKan').click(function(e) {
 			$('.owl-stage').hide()
@@ -147,6 +117,9 @@
 			}).done(function(e) {
 				$('#prodTampil').html('');
 				if (e.status) {
+
+					// $('.cart_counts').html(e.total + " Item");
+					// $('.cart_total_formats').html("Rp " + e.total);
 
 					var berapa = e.data.data.length;
 					// console.log(e.data)
@@ -237,6 +210,10 @@
 			// }
 			$('#pagination-wrapper').html(pag);
 		}
+		// var total = 5;
+
+		// $('.cart_dropdown_container').html(total)
+		// $('.cart_count_footer').html(total);
 
 
 		function generateProduk(produk) {
@@ -291,15 +268,17 @@
 				},
 			}).done(function(e) {
 				if (e.status) {
-					// console.log(e);
+					console.log(e);
 					Swal.fire(
 						':)',
 						e.msg,
 						'success'
 					);
-					setTimeout(function() {
-						location.reload();
-					}, 2000);
+					$('.cart_counts').html(e.total + " Item");
+					$('.cart_total_formats').html("Rp " + e.total);
+					// setTimeout(function() {
+					// 	location.reload();
+					// }, 2000);
 
 				} else {
 					// alert(e.msg);

@@ -28,6 +28,9 @@ public function index()
 		// $id_user = $this->session->userdata('id_user');
 		$tgl = $now;
 		$keranjangOld = $this->CartModel->getCartByIdUserAndProduk($id_user, $id_produk);
+		$getData = $this->CartModel->getAllCartByUser($id_user);
+		$TotalgetData = count($this->CartModel->getAllCartByUser($id_user));
+		// var_dump($getData, $TotalgetData);die;
 		// var_dump(count($keranjangOld)>=1);die;
 
 
@@ -60,9 +63,12 @@ public function index()
 		$data = array(
 			'status' => $status,
 			'msg' => $msg,
+			'data' => $getData,
+			'total' => $TotalgetData,
 		);
 		echo json_encode($data);
 	}
+
         
 }
                             

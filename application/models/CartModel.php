@@ -35,7 +35,7 @@ class CartModel extends CI_Model {
 	{
 		$this->db->select('*,keranjang.qty as qty');
 		$this->db->from('keranjang');
-		$this->db->join('produk', 'produk.id_produk = keranjang.id_produk');
+		// $this->db->join('produk', 'produk.id_produk = keranjang.id_produk');
 		
 		$sql =	$this->db->where('id_user', $id_user);
 		return  $sql->get()->result();	
@@ -371,6 +371,15 @@ class CartModel extends CI_Model {
 		}
 		$query = $this->db->get()->result();
 		return count($query);
+	}
+	public function getCart()
+	{
+		// $this->db->where('id_user', 9);
+		$sql = "SELECT `k`.*, `m`.*, k.qty * m.harga as total FROM `keranjang` `k` LEFT JOIN `menu` `m` ON `m`.`id_menu` = `k`.`id_produk`";
+		
+		$data  = $this->db->query($sql);
+		return $data->result();
+		# code...
 	}
 
 
