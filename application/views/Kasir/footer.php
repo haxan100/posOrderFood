@@ -62,6 +62,8 @@
 	<script type="text/javascript" src="<?= $bu; ?>assets/kasir/frontend\js\social.share.min.js"></script>
 	<script type="text/javascript" src="<?= $bu; ?>assets/kasir/frontend\js\jquery.mCustomScrollbar.concat.min.js"></script>
 	<script type="text/javascript" src="<?= $bu; ?>assets/kasir/frontend\js\scripts.min.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	
 	<script type="text/javascript">
 		$('#pagination-wrapper').show();
 
@@ -236,6 +238,7 @@
 			$('#pagination-wrapper').html(pag);
 		}
 
+
 		function generateProduk(produk) {
 			// console.log(produk)
 			return `<div class="col-md-4 produkAwal"> <br>
@@ -261,14 +264,67 @@
 														</div>
 													</a>
 													<div class="hover-area">
-														<a data-id="${produk.id_menu}" data-qty="1"   data-harga="${produk.harga}" data-qty="1"  title="Tambah ke Keranjang" type="button" class="addToCart button product_type_simple add_to_cart_button">Order</a>
-													</div>
-												</div>
+														<a data-id="${produk.id_menu}"  data-harga="${produk.harga}" data-qty="1"  title="Tambah ke Keranjang" type="button" class="btn-tawar button product_type_simple add_to_cart_button">Order</a>
+													</div></div>
 											</div>
 										</div>
 													</div>
 													`;
 		}
+		$('body').on('click', '.add_to_cart_button', function() {
+
+			var id_produk = $(this).data('id');
+			var harga = $(this).data('harga');
+			// console.log(id_produk,harga)
+			// return false
+			var qty = 1;
+			$('.btn-tawar').html('<i class="fas fa-spinner fa-spin"></i>');
+			$('.btn-tawar').prop('disabled', true);
+			$.ajax({
+				type: "POST",
+				dataType: 'json',
+				url: "<?= $bu; ?>Pesan/setBid",
+				data: {
+					id_produk,
+					harga,
+					qty
+				},
+			}).done(function(e) {
+				if (e.status) {
+					// console.log(e);
+					Swal.fire(
+						':)',
+						e.msg,
+						'success'
+					);
+					setTimeout(function() {
+						location.reload();
+					}, 2000);
+
+				} else {
+					// alert(e.msg);
+
+					// console.log("gagal");
+					Swal.fire(
+						'error',
+						e.msg,
+						'error'
+					);
+				}
+			}).fail(function(e) {
+				Swal.fire(
+					'error',
+					e.msg,
+					'error'
+				);
+
+			}).always(function(e) {
+				setTimeout(() => {
+					$('.btn-tawar').html('Tambah Ke Keranjang');
+					$('.btn-tawar').prop('disabled', false);
+				}, 100);
+			});
+		})
 	</script>
 	</body>
 
