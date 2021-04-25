@@ -10,7 +10,7 @@ class Data extends CI_Controller {
 		$this->load->model('MenuModel');
 		$this->load->model('KasirModel');
 		$this->load->model('AdminModel');
-		// $this->load->model('GuruModel');
+		$this->load->model('SemuaModel');
 		// $this->load->model('SekolahModel');
 		$this->load->helper('url');
 	}
@@ -131,6 +131,34 @@ class Data extends CI_Controller {
 
 		echo json_encode($datatable);
 
+		exit();
+	}
+	public function getAllSetting()
+	{
+		$bu = base_url();
+		$dt = $this->SemuaModel->data_AllSetting($_POST);
+		$datatable['draw']      = isset($_POST['draw']) ? $_POST['draw'] : 1;
+		$datatable['recordsTotal']    = $dt['totalData'];
+		$datatable['recordsFiltered'] = $dt['totalData'];
+		$datatable['data']            = array();
+		$start  = isset($_POST['start']) ? $_POST['start'] : 0;
+		// var_dump($dt['data']->result());die();
+		$no = $start + 1;
+		foreach ($dt['data']->result() as $row) {
+			$fields = array($no++);
+			$fields[] = $row->konten . '<br>';
+			$fields[] = $row->isi . '<br>';
+			$fields[] = '
+			<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target=".bs-example-modal-lg"
+			 data-id_setting="' . $row->id_setting . '" data-konten="' . $row->konten . '" 
+			data-isi="' . $row->isi . '" 
+			></i> Ubah</button>
+
+
+        ';
+			$datatable['data'][] = $fields;
+		}
+		echo json_encode($datatable);
 		exit();
 	}
 

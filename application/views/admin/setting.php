@@ -1,7 +1,7 @@
 <div class="col-md-12 col-sm-12 ">
 	<div class="x_panel">
 		<div class="x_title">
-			<h2>Data Kasir</h2>
+			<h2>Data Setting</h2>
 			<style>
 				#image {
 					max-width: 100px;
@@ -17,15 +17,14 @@
 
 					<div class="card-box table-responsive">
 
-						<button type="button" class="btn btn-primary btn_tambah" data-toggle="modal" data-target=".bs-example-modal-lg">Tambah</button>
+						<!-- <button type="button" class="btn btn-primary btn_tambah" data-toggle="modal" data-target=".bs-example-modal-lg">Tambah</button> -->
 
 						<table id="datatable_data" class="table table-striped table-bordered" style="width:100%">
 							<thead>
 								<tr>
 									<th>No</th>
-									<th>Nama Kasir</th>
-									<th>Username</th>
-									<th>Last Login</th>
+									<th>Konten</th>
+									<th>Isi</th>
 									<th>Aksi</th>
 								</tr>
 							</thead>
@@ -49,7 +48,7 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<h4>Detail Iten</h4>
+					<h4>Detail Setting</h4>
 
 					<div class="row">
 						<div class="col-md-12 col-sm-12 ">
@@ -60,37 +59,26 @@
 									<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 										<div class="item form-group">
 											<div class="col-md-6 col-sm-6 ">
-												<input type="hidden" id="id_kasir" name="id_kasir" class="form-control " placeholder="Isikan Nama" readonly type="text" class="form-control">
+												<input type="hidden" id="id_setting" name="id_setting" class="form-control " placeholder="Isikan Nama" readonly type="text" class="form-control">
 
 											</div>
 										</div>
 
 										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name"> Nama Kasir <span class="required">*</span>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name"> Konten <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input id="nama" name="nama" class="form-control " placeholder="Isikan Nama Menu" type="text" class="form-control">
+												<input id="konten" name="konten" class="form-control " readonly placeholder="Isikan Nama Menu" type="text" class="form-control">
 
 											</div>
 										</div>
 
 										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Username<span class="required">*</span>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Isi<span class="required">*</span>
 											</label>
 											<div class="col-sm-9">
 
-												<input id="username" name="username" class="form-control " placeholder="Username" type="text" class="form-control">
-
-											</div>
-										</div>
-
-
-
-										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Password <span class="required">*</span>
-											</label>
-											<div class="col-md-6 col-sm-6 ">
-												<input id="password" name="password" class="form-control " placeholder="password" type="text" class="form-control">
+												<input id="isi" name="isi" class="form-control " placeholder="Username" type="text" class="form-control">
 
 											</div>
 										</div>
@@ -107,7 +95,7 @@
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					<button type="button" class="btn btn-primary" id="Edit">Save changes</button>
 
-					<button type="button" class="btn btn-success" id="tambah_act">Tambah</button>
+					<!-- <button type="button" class="btn btn-success" id="tambah_act">Tambah</button> -->
 				</div>
 			</div>
 		</form>
@@ -119,38 +107,30 @@
 	document.addEventListener("DOMContentLoaded", function(event) {
 		// $('#modal-detail').modal('show');
 		var bu = '<?= base_url(); ?>';
-		var url_form_ubah = bu + 'Admin/ubah_kasir_proses';
+		var url_form_ubah = bu + 'Admin/ubah_setting_proses';
 		var url_form_tambah = bu + 'Admin/tambah_kasir_proses';
 
 		$('body').on('click', '.btn_edit', function() {
 			url_form = url_form_ubah;
-			// console.log(url_form);
 			$('#tambah_act').hide();
-			// $("#kode_wali").removeAttr('readonly');
 			$("#id_menu").prop("readonly", true);
-
-			var id_kasir = $(this).data('id_kasir');
-			var nama_kasir = $(this).data('nama_kasir');
-			var username = $(this).data('username');
-			var password = $(this).data('password');
-
-			$('#id_kasir').val(id_kasir);
-			$('#nama').val(nama_kasir);
-			$('#username').val(username);
-			$('#password').val(password);
-
+			var id_setting = $(this).data('id_setting');
+			var konten = $(this).data('konten');
+			var isi = $(this).data('isi');
+			$('#id_setting').val(id_setting);
+			$('#konten').val(konten);
+			$('#isi').val(isi);
 			$('#Edit').show();
 
 
 		});
 		$('#Edit').on('click', function() {
 
-			var id_kasir = $('#id_kasir').val();
-			var nama = $('#nama').val();
-			var username = $('#username').val();
-			var password = $('#password').val();
+			var id_setting = $('#id_setting').val();
+			var konten = $('#konten').val();
+			var isi = $('#isi').val();
 			if (
-				nama && username && password
+				konten && isi
 			) {
 				$("#form").submit();
 				// console.log(_foto);
@@ -163,7 +143,7 @@
 		});
 		$('body').on('click', '.hapus', function() {
 
-			var id_kasir = $(this).data('id_kasir');
+			var id_setting = $(this).data('id_setting');
 			var nama = $(this).data('nama_kasir');
 			Swal.fire({
 				title: 'Apakah Anda Yakin ?',
@@ -181,7 +161,7 @@
 						dataType: 'json',
 						method: 'POST',
 						data: {
-							id_kasir: id_kasir
+							id_setting: id_setting
 						}
 					}).done(function(e) {
 						console.log(e);
@@ -314,8 +294,6 @@
 			"bProcessing": true,
 			"autoWidth": false,
 			"serverSide": true,
-
-
 			"columnDefs": [{
 					"targets": 0,
 					"className": "dt-body-center dt-head-center",
@@ -332,16 +310,13 @@
 				}, {
 					"targets": 3,
 					"className": "dt-head-center"
-				}, {
-					"targets": 4,
-					"className": "dt-head-center"
 				},
 			],
 			"order": [
 				[1, "desc"]
 			],
 			'ajax': {
-				url: bu + 'Data/getAllKasir',
+				url: bu + 'Data/getAllSetting',
 				type: 'POST',
 				"data": function(d) {
 

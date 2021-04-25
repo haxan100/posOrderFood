@@ -482,8 +482,46 @@ public function index()
 		public function setting()
 	{
 		$obj['ci'] = $this;
-		$obj['content'] = 'admin/master_kasir';
+		$obj['content'] = 'admin/setting';
 		$this->load->view('admin/templates/index', $obj);
+	}
+	public function ubah_setting_proses()
+	{
+		$id_setting = $this->input->post('id_setting', TRUE);
+		$isi = $this->input->post('isi', TRUE);
+		$konten = $this->input->post('konten', TRUE);
+
+		$message = 'Gagal mengedit data !<br>Silahkan lengkapi data yang diperlukan.';
+		$errorInputs = array();
+		$status = true;
+
+		$in = array(
+			'isi' => $isi,
+		);
+		if (empty($isi)) {
+			$status = false;
+			$errorInputs[] = array('#isi', 'Silahkan Isi ');
+		}
+
+		if ($status) {
+
+			if ($this->SemuaModel->EditData('setting', 'id_setting', $in, $id_setting)) {
+				$status = true;
+
+				$message = "Berhasil Mengubah Data #1";
+			}
+		} else {
+			$status = false;
+			$message = "Gagal Mengubah Data #1";
+		}
+
+
+
+		echo json_encode(array(
+			'status' => $status,
+			'message' => $message,
+			'errorInputs' => $errorInputs
+		));
 	}
 
 }
