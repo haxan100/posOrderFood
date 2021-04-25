@@ -1,0 +1,6 @@
+menu 
+0 : Semua
+2: Desert
+3: Drink
+4: Mincourse
+5: Snack

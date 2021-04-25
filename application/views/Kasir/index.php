@@ -83,10 +83,15 @@ $bu = base_url();
 				<div class="pizzaro-secondary-navigation">
 					<nav class="secondary-navigation" aria-label="Secondary Navigation">
 						<ul class="menu">
-							<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori\dessert.html"><i class="po po-salads"></i>Dessert</a></li>
-							<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori\drink.html"><i class="po po-drinks"></i>Drink</a></li>
-							<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori\main-course.html"><i class="po po-burger"></i>Main Course</a></li>
-							<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori\snack.html"><i class="po po-fries"></i>Snack</a></li>
+							<li class="menu-item "> <a href="#" id="all"><i class="po po-salads"></i>All</a></li>
+							<li class="menu-item "> <a href="#" id="desert"><i class="po po-salads"></i>Dessert</a></li>
+							<li class="menu-item "> <a href="#" id="drink"><i class="po po-drinks"></i>Drink</a></li>
+							<li class="menu-item "> <a href="#" id="main"><i class="po po-burger"></i>Main Course</a></li>
+							<li class="menu-item "> <a href="#" id="snack"><i class="po po-fries"></i>Snack</a></li>
+
+							<button class="btn btn-primary mr-5" id="hiddenKan" type="button" style="
+								margin-left: 290px;
+							">Hidden</button>
 						</ul>
 					</nav>
 				</div>
@@ -220,19 +225,44 @@ $bu = base_url();
 					});
 			});
 		});
-		loadProduk()
+		hiddenKan
+		$('#hiddenKan').click(function(e) {
+			$('.owl-stage').hide()
 
-		function loadProduk($fl) {
+		});
+		loadProduk(0)
+		$('#all').click(function(e) {
+			loadProduk(0)
+
+		});
+		$('#desert').click(function(e) {
+			loadProduk(2)
+
+		});
+
+		$('#drink').click(function(e) {
+			loadProduk(3)
+
+		});
+
+		$('#main').click(function(e) {
+			loadProduk(4)
+
+		});
+
+		$('#snack').click(function(e) {
+			loadProduk(5)
+
+		});
+
+		function loadProduk(fl) {
+			console.log(fl)
 			$.ajax({
 				type: "POST",
 				dataType: 'json',
 				url: "<?= $bu; ?>Kasir/getProduk",
 				data: {
-					id_tipe_bid: '1',
-					search: $('#_bizSearch').val(),
-					sort: $('._bizSelect').attr('data-value'),
-					filter: $('#btnFilter').attr('data-value'),
-					page: $('#_page').val(),
+					id_kategori: fl,
 				},
 			}).done(function(e) {
 				$('#prodTampil').html('');
