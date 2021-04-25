@@ -479,6 +479,13 @@ public function index()
 			'message' => $message,
 		));
 	}
+		public function setting()
+	{
+		$obj['ci'] = $this;
+		$obj['content'] = 'admin/master_kasir';
+		$this->load->view('admin/templates/index', $obj);
+	}
+
 }
         
     /* End of file  Admin.php */

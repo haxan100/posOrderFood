@@ -15,8 +15,13 @@ class Kasir extends CI_Controller {
 	}
 
 public function index()
-{
-                $this->load->view('Kasir/index');
+{	
+	$data['konten'] = $this->SemuaModel->getSeting();
+	// echo json_encode($data['konten']);die;
+
+                $this->load->view('Kasir/headers',$data);
+                $this->load->view('Kasir/index', $data);
+                $this->load->view('Kasir/footer', $data);
 				
 }
 	public function getProduk()

@@ -38,7 +38,16 @@ public function getDataById($namaTable,$nama_id,$id_Dicari)
 		return $sql->result();
 
 		# code...
+	}         
+		public function getSeting()
+	{
+		$this->db->from('setting');
+		$sql = $this->db->get();
+		return $sql->result();
+
+		# code...
 	}                      
+                     
               
                             
                         
