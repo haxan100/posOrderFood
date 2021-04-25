@@ -8,6 +8,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 $bu = base_url();
 ?>
 <style>
+	.pagination {
+		display: flex;
+		justify-content: center;
+	}
+
 	.produkAwal {
 		width: 25% !important;
 	}
@@ -23,7 +28,7 @@ $bu = base_url();
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Dans-Resto | Digital Restaurant Menu</title>
+	<title>San Resto's | Digital Restaurant Menu</title>
 	<link rel="shortcut icon" href="<?= $bu; ?>assets/kasir/img\logo-icon.png">
 	<link rel="stylesheet" type="text/css" href="<?= $bu; ?>assets/kasir/frontend\css\bootstrap.min.css" media="all">
 	<link rel="stylesheet" type="text/css" href="<?= $bu; ?>assets/kasir/frontend\css\font-awesome.min.css" media="all">
@@ -66,7 +71,7 @@ $bu = base_url();
 					<div class="header-info-wrapper">
 						<div class="header-phone-numbers">
 							<span class="intro-text">Telp. dan Order ke</span>
-							<span id="city-phone-number-label" class="phone-number">(0285) 435146</span>
+							<span id="city-phone-number-label" class="phone-number">(0285) 8923232</span>
 						</div>
 						<ul class="site-header-cart-v2 menu">
 							<li class="cart-content ">
@@ -123,15 +128,26 @@ $bu = base_url();
 
 											</div>
 
+										</div>
 
-										</div><br>
+										<br>
 									</div>
+
+
 								</div>
 							</div>
+
 					</main>
 				</div>
 			</div>
 		</div>
+		<nav aria-label="Page navigation example" class="example">
+			<input type="hidden" id="_page" value=1></input>
+			<ul class="pagination" id="pagination-wrapper">
+
+			</ul>
+		</nav>
+
 		<footer id="colophon" class="site-footer footer-v1">
 			<div class="col-full">
 				<div class="footer-social-icons">
@@ -194,6 +210,15 @@ $bu = base_url();
 	<script type="text/javascript" src="<?= $bu; ?>assets/kasir/frontend\js\jquery.mCustomScrollbar.concat.min.js"></script>
 	<script type="text/javascript" src="<?= $bu; ?>assets/kasir/frontend\js\scripts.min.js"></script>
 	<script type="text/javascript">
+		$('#pagination-wrapper').show();
+
+		$('.owl-stage').hide()
+		$('body').on('click', '.page-link', function() {
+			var hal = $(this).attr('data-page');
+			$('#_page').val(hal);
+			loadProduk(0)
+		});
+
 		$('.addToCart').each(function(index, el) {
 			var data = {};
 			$(this).on('click', function(event) {
@@ -225,7 +250,7 @@ $bu = base_url();
 					});
 			});
 		});
-		hiddenKan
+
 		$('#hiddenKan').click(function(e) {
 			$('.owl-stage').hide()
 
@@ -256,13 +281,13 @@ $bu = base_url();
 		});
 
 		function loadProduk(fl) {
-			console.log(fl)
 			$.ajax({
 				type: "POST",
 				dataType: 'json',
 				url: "<?= $bu; ?>Kasir/getProduk",
 				data: {
 					id_kategori: fl,
+					page: $('#_page').val(),
 				},
 			}).done(function(e) {
 				$('#prodTampil').html('');
@@ -276,8 +301,8 @@ $bu = base_url();
 
 					if (berapa >= 1) {
 
-						// generatePagination(e.data.page);
-						// $('#pagination-wrapper').show();
+						generatePagination(e.data.page);
+						$('#pagination-wrapper').show();
 
 					} else {
 						$('#pagination-wrapper').hide();
@@ -311,6 +336,50 @@ $bu = base_url();
 				console.log(e);
 				alert('Terjadi kendala. silahkan coba beberapa saat lagi.');
 			});
+		}
+
+		function generatePagination(e) {
+			var pag = '';
+			// var pag = '';
+			var max_page = 5;
+
+			if (e.halaman <= 1) {
+				pag += '<button disabled data-page="1" class="page-link button btn-outline-secondary px-2 rounded mr-2 pg border-0"><i class="fas fa-arrow-left"></i></button> ';
+			} else {
+				pag += '<button data-page="' + (e.halaman - 1) + '" class="page-link button btn-primary px-2 rounded mr-2 pg border-0"><i class="fas fa-arrow-left"></i></button> ';
+			}
+			// console.log(p.total_halaman <= max_page);
+			if (e.total_halaman <= max_page) {
+				for (var i = 1; i <= e.total_halaman; i++) {
+					if (i == e.halaman) {
+						pag += '<button disabled data-page="' + i + '" class="page-link button btn-secondary px-2 rounded mr-2 text-center pg border-primary" disabled> ' + i + ' </button> ';
+					} else {
+						pag += '<button data-page="' + i + '" class="page-link button btn-primary px-2 rounded mr-2 text-center pg border-0"> ' + i + ' </button> ';
+					}
+				}
+			} else {
+				if (e.halaman - 2 > 1) {
+					pag += '.. ';
+				}
+				for (var i = e.halaman - 2; i <= e.halaman + 2; i++) {
+					// console.log(i);
+					if (i == e.halaman) {
+						pag += '<button disabled data-page="' + i + '" class="page-link button btn-secondary px-2 rounded mr-2 text-center pg border-primary" disabled> ' + i + ' </button> ';
+					} else if (i >= 1 && i <= e.total_halaman) {
+						pag += '<button data-page="' + i + '" class="page-link button btn-primary px-2 rounded mr-2 text-center pg border-0"> ' + i + ' </button> ';
+					}
+				}
+				if (e.halaman + 2 < e.total_halaman) {
+					pag += '.. ';
+				}
+			}
+
+			if (e.halaman >= e.total_halaman) {
+				pag += ' <button disabled data-page="' + e.total_halaman + '" class="page-link button btn-outline-secondary px-2 rounded mr-2 pg border-0"><i class="fas fa-arrow-right"></i></button>';
+			} else {
+				pag += ' <button data-page="' + (e.halaman + 1) + '" class="page-link button btn-primary px-2 rounded mr-2 pg border-0"><i class="fas fa-arrow-right"></i></button>';
+			}
+			$('#pagination-wrapper').html(pag);
 		}
 
 		function generateProduk(produk) {

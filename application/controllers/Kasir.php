@@ -22,8 +22,12 @@ public function index()
 	public function getProduk()
 	{
 		$id_kategori = $this->input->post('id_kategori', true);
+		$page = $this->input->post('page', true);
+		
 		$hasil = "";
-		$hasil = $this->ProdukModel->getProdukByIdTipeProduk($id_kategori);
+		$hasil = $this->ProdukModel->getProdukByIdTipeProduk($id_kategori, $page);
+		$data = array();
+
 		$status = false;
 		// var_dump($hasil);die;
 		if (count($hasil) > 0) {
