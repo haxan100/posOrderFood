@@ -13,9 +13,24 @@ class Admin extends CI_Controller {
 		// $this->load->model('SekolahModel');
 		$this->load->helper('url');
 	}
-
-public function index()
+	
+    function cekLogin()
 	{
+		if (!$this->isLoggedInAdmin()) {
+		$this->session->set_flashdata(
+			'notifikasi',
+			array(
+			'alert' => 'alert-danger',
+			'message' => 'Silahkan Login terlebih dahulu.',
+			)
+		);
+		redirect('login');
+		}
+	}
+	public function index()
+	{
+			$this->cekLogin();
+
 			$obj['ci'] = $this;
 			$obj['content'] =  "admin/blank";
 
@@ -23,6 +38,8 @@ public function index()
 	} 
 	public function master_admin()
 	{
+		$this->cekLogin();
+
 		$obj['ci'] = $this;
 		$obj['listKategori'] = $this->SemuaModel->getAllRole();
 
@@ -31,6 +48,8 @@ public function index()
 	}
 	public function master_item()
 	{
+		$this->cekLogin();
+
 		$obj['listKategori'] = $this->MenuModel->getKategori();
 		$obj['ci'] = $this;
 		$obj['content'] = 'admin/master_item';
@@ -228,6 +247,8 @@ public function index()
 	}
 	public function master_kasir()
 	{
+		$this->cekLogin();
+
 		$obj['ci'] = $this;
 		$obj['content'] = 'admin/master_kasir';
 		$this->load->view('admin/templates/index', $obj);
@@ -481,6 +502,8 @@ public function index()
 	}
 	public function setting()
 	{
+		$this->cekLogin();
+
 		$obj['ci'] = $this;
 		$obj['content'] = 'admin/setting';
 		$this->load->view('admin/templates/index', $obj);
@@ -523,6 +546,15 @@ public function index()
 			'errorInputs' => $errorInputs
 		));
 	}
+	public function isLoggedInAdmin()
+    {	
+		// var_dump($_SESSION);die;
+		   // Cek apakah terdapat session "admin_session"
+        if ($this->session->userdata('admin_session'))
+            return true; // sudah login
+        else
+            return false; // belum login
+    }
 
 }
         

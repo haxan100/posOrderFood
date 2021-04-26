@@ -144,16 +144,18 @@
                 },
             }).done(function(e) {
                 // console.log(e);
-                    Swal.fire(
-						'Login Success!',
-						e.message,
-						'success'
-					)
+                   
                 if (e.status) {
                     $('#username').val('');
                     $('#password').val('');
                     $('#captcha').val('');
                     $('#alertNotif').html('<div class="alert alert-success alert-dismissible show" role="alert"><span>' + e.message + '</span><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+
+                    Swal.fire(
+						'Login Success!',
+						e.message,
+						'success'
+					)
 
                     setTimeout(() => {
                         window.location = win ;
