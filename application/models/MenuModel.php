@@ -8,13 +8,13 @@ class MenuModel extends CI_Model {
 	{
 		$columns = array(
 			'nama_menu',
-			'id_kategori',		
+			'k.id_kategori',		
 			'harga',
 			'foto'
 		);		
 		$columnsSearch = array(
 			'nama_menu',
-			'id_kategori',			
+			'k.id_kategori',			
 			'harga',
 			'foto'
 		);
@@ -24,30 +24,18 @@ class MenuModel extends CI_Model {
 		$sql = "SELECT* FROM {$from}   join kategori k on k.id_kategori=m.id_kategori
 		";
 		$where = "";
+		// var_dump(
+		// 		$post['kategori'],
+		// 		isset($post['ketegori']) ,  
+		// 		$post['ketegori'] != 'default'
+		// );die;
 
-		// if (isset($post['id_tipe_produk']) && $post['id_tipe_produk'] != 'default') {
-
-		// 	if ($where != "") $where .= "AND";
-
-		// 	$where .= " (p.id_tipe_produk='" . $post['id_tipe_produk'] . "')";
-		// }
-
+		if (isset($post['kategori']) && $post['kategori'] != 'default') {
+			if ($where != "") $where .= "AND";
+			// die("t");
+			$where .= " (k.id_kategori='" . $post['kategori'] . "')";
+		}
 		$whereTemp = "";
-		// if (isset($post['date']) && $post['date'] != '') {
-
-		//     $date = explode(' / ', $post['date']);
-
-		//     if (count($date) == 1) {
-
-		//         $whereTemp .= "(created_at LIKE '%" . $post['date'] . "%')";
-
-		//     } else {
-
-		//         // $whereTemp .= "(created_at BETWEEN '".$date[0]."' AND '".$date[1]."')";
-
-		//         $whereTemp .= "(date_format(created_at, \"%Y-%m-%d\") >='$date[0]' AND date_format(created_at, \"%Y-%m-%d\") <= '$date[1]')";
-		//     }
-		// }
 		if ($whereTemp != '' && $where != '') $where .= " AND (" . $whereTemp . ")";
 		else if ($whereTemp != '') $where .= $whereTemp;
 		// search
@@ -77,7 +65,9 @@ class MenuModel extends CI_Model {
 		$start  = isset($post['start']) ? $post['start'] : 0;
 		$length = isset($post['length']) ? $post['length'] : 10;
 		$sql .= " LIMIT {$start}, {$length}";
+		// echo $this->db->last_query();die;
 		$data  = $this->db->query($sql);
+
 		return array(
 			'totalData' => $totaldata,
 			'data' => $data,

@@ -14,6 +14,16 @@
 		<div class="x_content">
 			<div class="row">
 				<div class="col-sm-12">
+					
+				<select id="dt_filter_kategori" name="dt_filter_kategori" class="btn btn-primary m-t-18 btn-info waves-effect waves-light">
+					<option value="default" selected >Pilih Kategori</option>
+					<?php
+					foreach ($listKategori as $r) {
+						echo '
+						<option value="' . $r->id_kategori . '">' . $r->nama_kategori . '</option> ';
+						}
+					?>
+				</select>
 
 					<div class="card-box table-responsive">
 
@@ -24,7 +34,7 @@
 								<tr>
 									<th>No</th>
 									<th>Nama Menu</th>
-									<th>Id kategori(belum diupdate)</th>
+									<th>Kategori</th>
 									<th>Harga</th>
 									<th>Foto</th>
 									<th>Aksi</th>
@@ -136,6 +146,10 @@
 
 <script type="text/javascript">
 	document.addEventListener("DOMContentLoaded", function(event) {
+		$('#dt_filter_kategori').on('change', function() {
+			datatable.ajax.reload();
+		}); // belum
+
 		// $('#modal-detail').modal('show');
 		var bu = '<?= base_url(); ?>';
 		var url_form_ubah = bu + 'Admin/ubah_menu_proses';
@@ -327,14 +341,17 @@
 		});
 
 		var datatable = $('#datatable_data').DataTable({
+			'lengthMenu': [
+				[5, 10, 25, 50, 100],
+				[5, 10, 25, 50, 100],
+			],
 			dom: "Bfrltip",
-			'pageLength': 10,
+			'pageLength': 4,
 			"responsive": true,
 			"processing": true,
 			"bProcessing": true,
 			"autoWidth": false,
 			"serverSide": true,
-
 
 			"columnDefs": [{
 					"targets": 0,
@@ -369,6 +386,8 @@
 				url: bu + 'Data/getAllMenuItem',
 				type: 'POST',
 				"data": function(d) {
+					
+					d.kategori = $('#dt_filter_kategori').children('option:selected').val();
 
 					return d;
 				}

@@ -9,14 +9,14 @@ class AdminModel extends CI_Model {
 		$columns = array(
 			'nama_admin',
 			'username',
-			'id_role',
+			'r.id_role',
 			'password',
 
 		);
 		$columnsSearch = array(
 			'nama_admin',
 			'username',
-			'id_role',
+			'r.id_role',
 			'password',
 
 		);
