@@ -24,7 +24,7 @@ class Admin extends CI_Controller {
 			'message' => 'Silahkan Login terlebih dahulu.',
 			)
 		);
-		redirect('login');
+		redirect('LoginAdmin');
 		}
 	}
 	public function index()
@@ -555,6 +555,24 @@ class Admin extends CI_Controller {
         else
             return false; // belum login
     }
+	public function logout()
+	{
+		$id_admin = $_SESSION['id_admin'];
+		$CI = &get_instance();
+		$CI->load->library('session');
+		$CI->session->sess_destroy();		
+		$pesan = "Berhasil Keluar";
+		$eror = false;
+		// $aksi = 'Log Out';
+        // $id_kategori = 82;
+        // $this->AdminModel->log($id_admin, $id_kategori, $aksi);
+		redirect('LoginAdmin');
+		// return $this->login;
+		echo json_encode(array(
+			'pesan' => $pesan,
+			'error' => $eror,
+		));
+	}
 
 }
         

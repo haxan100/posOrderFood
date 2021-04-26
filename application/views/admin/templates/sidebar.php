@@ -57,7 +57,7 @@
 										<li><a href="form_validation.html">Form Validation</a></li>
 										<li><a href="form_wizards.html">Form Wizard</a></li>
 										<li><a href="form_upload.html">Form Upload</a></li>
-										<li><a href="form_buttons.html">Form Buttons</a></li>
+										<li><a href="<?=$bu ?>/Admin/logout">Logout</a></li>
 									</ul>
 								</li>
 							</ul>
