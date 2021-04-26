@@ -1,27 +1,7 @@
+<?php
+$bu = base_url();
+?>
 
-	<?php
-	$bu = base_url();
-	?>
-<!DOCTYPE html>
-<html lang="en-US" itemscope="itemscope" itemtype="http://schema.org/WebPage">
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Dans-Resto | Digital Restaurant Menu</title>
-	<link rel="shortcut icon"  href="<?= $bu; ?>assets/kasir/img/logo-icon.png">
-	<link rel="stylesheet" type="text/css"  href="<?= $bu; ?>assets/kasir/frontend/css/bootstrap.min.css" media="all" />
-	<link rel="stylesheet" type="text/css"  href="<?= $bu; ?>assets/kasir/frontend/css/font-awesome.min.css" media="all" />
-	<link rel="stylesheet" type="text/css"  href="<?= $bu; ?>assets/kasir/frontend/css/animate.min.css" media="all" />
-	<link rel="stylesheet" type="text/css"  href="<?= $bu; ?>assets/kasir/frontend/css/font-pizzaro.css" media="all" />
-	<link rel="stylesheet" type="text/css"  href="<?= $bu; ?>assets/kasir/frontend/css/style.css" media="all" />
-	<link rel="stylesheet" type="text/css"  href="<?= $bu; ?>assets/kasir/frontend/css/colors/red.css" media="all" />
-	<link rel="stylesheet" type="text/css"  href="<?= $bu; ?>assets/kasir/frontend/css/jquery.mCustomScrollbar.min.css" media="all" />
-	<!-- <link hressf="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CYanone+Kaffeesatz:200,300,400,700" rel="stylesheet"> -->
-	<link  href="<?= $bu; ?>assets/kasir/backend/js/sweetalert2.css" rel="stylesheet" type="text/css" />
-	<script src="<?= $bu; ?>assets/kasir/backend/js/sweetalert2.min.js"></script>
-	<script type="text/javascript" src="<?= $bu; ?>assets/kasir/frontend/js/jquery.min.js"></script>
-</head>
 
 <body class="woocommerce-cart">
 	<div id="page" class="hfeed site">
@@ -31,7 +11,7 @@
 				<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
 				<div class="header-wrap">
 					<div class="site-branding">
-						<a  href="<?= $bu; ?>assets/kasir/" class="custom-logo-link" rel="home">
+						<a href="<?= $bu; ?>assets/kasir/" class="custom-logo-link" rel="home">
 							<img src="<?= $bu; ?>assets/kasir/img/logo-front.png">
 						</a>
 					</div>
@@ -40,10 +20,10 @@
 						<div class="handheld-navigation">
 							<span class="phm-close">Tutup</span>
 							<ul class="menu">
-								<li class="menu-item "><a  href="<?= $bu; ?>assets/kasir/kategori/dessert"><i class="po po-salads"></i>Dessert</a></li>
-								<li class="menu-item "><a  href="<?= $bu; ?>assets/kasir/kategori/drink"><i class="po po-drinks"></i>Drink</a></li>
-								<li class="menu-item "><a  href="<?= $bu; ?>assets/kasir/kategori/main-course"><i class="po po-burger"></i>Main Course</a></li>
-								<li class="menu-item "><a  href="<?= $bu; ?>assets/kasir/kategori/snack"><i class="po po-fries"></i>Snack</a></li>
+								<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori/dessert"><i class="po po-salads"></i>Dessert</a></li>
+								<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori/drink"><i class="po po-drinks"></i>Drink</a></li>
+								<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori/main-course"><i class="po po-burger"></i>Main Course</a></li>
+								<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori/snack"><i class="po po-fries"></i>Snack</a></li>
 							</ul>
 						</div>
 					</nav>
@@ -54,14 +34,14 @@
 						</div>
 						<ul class="site-header-cart-v2 menu">
 							<li class="cart-content ">
-								<a  href="<?= $bu; ?>assets/kasir/cart" title="Tampilkan Cart Order Anda">
+								<a href="<?= $bu; ?>assets/kasir/cart" title="Tampilkan Cart Order Anda">
 									<i class="fa fa-cart-plus"></i>
 									<span>Cart Order Anda</span>
 								</a>
 								<ul class="sub-menu cart_dropdown_container">
 									<li>
 										<a href="" title="Tampilkan Cart Order Anda">
-											<span class="count cart_count">5 Item</span> <span class="amount cart_total_format">50,000</span>
+											<span class="count cart_count"><?= $totalcart ?> Item</span> <span class="amount cart_total_format">Rp.<?= $totalHarga ?></span>
 										</a>
 									</li>
 								</ul>
@@ -72,10 +52,10 @@
 				<div class="pizzaro-secondary-navigation">
 					<nav class="secondary-navigation" aria-label="Secondary Navigation">
 						<ul class="menu">
-							<li class="menu-item "><a  href="<?= $bu; ?>assets/kasir/kategori/dessert"><i class="po po-salads"></i>Dessert</a></li>
-							<li class="menu-item "><a  href="<?= $bu; ?>assets/kasir/kategori/drink"><i class="po po-drinks"></i>Drink</a></li>
-							<li class="menu-item "><a  href="<?= $bu; ?>assets/kasir/kategori/main-course"><i class="po po-burger"></i>Main Course</a></li>
-							<li class="menu-item "><a  href="<?= $bu; ?>assets/kasir/kategori/snack"><i class="po po-fries"></i>Snack</a></li>
+							<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori/dessert"><i class="po po-salads"></i>Dessert</a></li>
+							<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori/drink"><i class="po po-drinks"></i>Drink</a></li>
+							<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori/main-course"><i class="po po-burger"></i>Main Course</a></li>
+							<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori/snack"><i class="po po-fries"></i>Snack</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -85,7 +65,7 @@
 			<div class="col-full">
 				<div class="pizzaro-breadcrumb">
 					<nav class="woocommerce-breadcrumb">
-						<a  href="<?= $bu; ?>assets/kasir/">Beranda</a>
+						<a href="<?= $bu; ?>assets/kasir/">Beranda</a>
 						<span class="delimiter"><i class="po po-arrow-right-slider"></i></span>Cart
 					</nav>
 				</div>
@@ -120,144 +100,40 @@
 												</tr>
 											</thead>
 											<tbody>
-												<tr class="cart_item c20ad4d76fe97759aa27a0c99bff6710">
-													<td class="product-remove">
-														<a href="#" title="Hapus Item" class="remove cart_remove_item" data-rowid="c20ad4d76fe97759aa27a0c99bff6710">&times;</a>
-													</td>
-													<td class="product-thumbnail">
-														<a  href="<?= $bu; ?>assets/kasir/menuorder/es-susu-cokelat">
-															<img width="180" height="180" src="<?= $bu; ?>assets/kasir/img/menu_folder/thumbs/Menu_makanan_es-susu-cokelat_1552202151.jpg" alt="" />
-														</a>
-													</td>
-													<td class="product-name" data-title="Menu">
-														<a  href="<?= $bu; ?>assets/kasir/menuorder/es-susu-cokelat">ES SUSU COKELAT</a>
-													</td>
-													<td class="product-price" data-title="Harga">
-														<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span>10,000</span>
-													</td>
-													<td class="product-quantity" data-title="Jumlah">
-														<div class="qty-btn">
-															<div class="quantity">
-																<input type="text" value="1" title="Qty" class="input-text qty text" data-rowid="c20ad4d76fe97759aa27a0c99bff6710" />
+												<?php foreach ($cart_content as $key => $k) {
+												?>
+
+													<tr class="cart_item c20ad4d76fe97759aa27a0c99bff6710">
+														<td class="product-remove">
+															<a href="#" title="Hapus Item" class="remove cart_remove_item" data-rowid="c20ad4d76fe97759aa27a0c99bff6710">&times;</a>
+														</td>
+														<td class="product-thumbnail">
+															<a href="<?= $bu; ?>assets/kasir/menuorder/es-susu-cokelat">
+																<img width="180" height="180" src="<?= $bu; ?>assets/kasir/img/menu_folder/thumbs/Menu_makanan_es-susu-cokelat_1552202151.jpg" alt="" />
+															</a>
+														</td>
+														<td class="product-name" data-title="Menu">
+															<a href="<?= $bu; ?>assets/kasir/menuorder/es-susu-cokelat"><?= $k->nama_menu ?></a>
+														</td>
+														<td class="product-price" data-title="Harga">
+															<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span><?= $k->harga ?></span>
+														</td>
+														<td class="product-quantity" data-title="Jumlah">
+															<div class="qty-btn">
+																<div class="quantity">
+																	<input type="text" value="<?= $k->qty ?>" title="Qty" class="input-text qty text" data-rowid="c20ad4d76fe97759aa27a0c99bff6710" />
+																</div>
 															</div>
-														</div>
-													</td>
-													<td class="product-subtotal" data-title="Sub Total">
-														<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span>Rp. <span id="price_sub_format_c20ad4d76fe97759aa27a0c99bff6710">10,000</span></span>
-													</td>
-												</tr>
-												<tr class="cart_item aab3238922bcc25a6f606eb525ffdc56">
-													<td class="product-remove">
-														<a href="#" title="Hapus Item" class="remove cart_remove_item" data-rowid="aab3238922bcc25a6f606eb525ffdc56">&times;</a>
-													</td>
-													<td class="product-thumbnail">
-														<a  href="<?= $bu; ?>assets/kasir/menuorder/friench-fries">
-															<img width="180" height="180" src="<?= $bu; ?>assets/kasir/img/menu_folder/thumbs/Menu_makanan_friench-fries_1552202378.jpg" alt="" />
-														</a>
-													</td>
-													<td class="product-name" data-title="Menu">
-														<a  href="<?= $bu; ?>assets/kasir/menuorder/friench-fries">FRIENCH FRIES</a>
-													</td>
-													<td class="product-price" data-title="Harga">
-														<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span>5,000</span>
-													</td>
-													<td class="product-quantity" data-title="Jumlah">
-														<div class="qty-btn">
-															<div class="quantity">
-																<input type="text" value="1" title="Qty" class="input-text qty text" data-rowid="aab3238922bcc25a6f606eb525ffdc56" />
-															</div>
-														</div>
-													</td>
-													<td class="product-subtotal" data-title="Sub Total">
-														<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span>Rp. <span id="price_sub_format_aab3238922bcc25a6f606eb525ffdc56">5,000</span></span>
-													</td>
-												</tr>
-												<tr class="cart_item 6512bd43d9caa6e02c990b0a82652dca">
-													<td class="product-remove">
-														<a href="#" title="Hapus Item" class="remove cart_remove_item" data-rowid="6512bd43d9caa6e02c990b0a82652dca">&times;</a>
-													</td>
-													<td class="product-thumbnail">
-														<a  href="<?= $bu; ?>assets/kasir/menuorder/es-teh-lemon">
-															<img width="180" height="180" src="<?= $bu; ?>assets/kasir/img/menu_folder/thumbs/Menu_makanan_es-teh-lemon_1552202101.jpg" alt="" />
-														</a>
-													</td>
-													<td class="product-name" data-title="Menu">
-														<a  href="<?= $bu; ?>assets/kasir/menuorder/es-teh-lemon">ES TEH LEMON</a>
-													</td>
-													<td class="product-price" data-title="Harga">
-														<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span>5,000</span>
-													</td>
-													<td class="product-quantity" data-title="Jumlah">
-														<div class="qty-btn">
-															<div class="quantity">
-																<input type="text" value="1" title="Qty" class="input-text qty text" data-rowid="6512bd43d9caa6e02c990b0a82652dca" />
-															</div>
-														</div>
-													</td>
-													<td class="product-subtotal" data-title="Sub Total">
-														<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span>Rp. <span id="price_sub_format_6512bd43d9caa6e02c990b0a82652dca">5,000</span></span>
-													</td>
-												</tr>
-												<tr class="cart_item 1679091c5a880faf6fb5e6087eb1b2dc">
-													<td class="product-remove">
-														<a href="#" title="Hapus Item" class="remove cart_remove_item" data-rowid="1679091c5a880faf6fb5e6087eb1b2dc">&times;</a>
-													</td>
-													<td class="product-thumbnail">
-														<a  href="<?= $bu; ?>assets/kasir/menuorder/masi-goreng-teri-gurih">
-															<img width="180" height="180" src="<?= $bu; ?>assets/kasir/img/menu_folder/thumbs/Menu_makanan_masi-goreng-teri-gurih_1552200907.jpg" alt="" />
-														</a>
-													</td>
-													<td class="product-name" data-title="Menu">
-														<a  href="<?= $bu; ?>assets/kasir/menuorder/masi-goreng-teri-gurih">MASI GORENG TERI GURIH</a>
-													</td>
-													<td class="product-price" data-title="Harga">
-														<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span>17,000</span>
-													</td>
-													<td class="product-quantity" data-title="Jumlah">
-														<div class="qty-btn">
-															<div class="quantity">
-																<input type="text" value="1" title="Qty" class="input-text qty text" data-rowid="1679091c5a880faf6fb5e6087eb1b2dc" />
-															</div>
-														</div>
-													</td>
-													<td class="product-subtotal" data-title="Sub Total">
-														<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span>Rp. <span id="price_sub_format_1679091c5a880faf6fb5e6087eb1b2dc">17,000</span></span>
-													</td>
-												</tr>
-												<tr class="cart_item c9f0f895fb98ab9159f51fd0297e236d">
-													<td class="product-remove">
-														<a href="#" title="Hapus Item" class="remove cart_remove_item" data-rowid="c9f0f895fb98ab9159f51fd0297e236d">&times;</a>
-													</td>
-													<td class="product-thumbnail">
-														<a  href="<?= $bu; ?>assets/kasir/menuorder/mie-goreng-seafood">
-															<img width="180" height="180" src="<?= $bu; ?>assets/kasir/img/menu_folder/thumbs/Menu_makanan_mie-goreng-seafood_1552201071.jpg" alt="" />
-														</a>
-													</td>
-													<td class="product-name" data-title="Menu">
-														<a  href="<?= $bu; ?>assets/kasir/menuorder/mie-goreng-seafood">MIE GORENG SEAFOOD</a>
-													</td>
-													<td class="product-price" data-title="Harga">
-														<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span>13,000</span>
-													</td>
-													<td class="product-quantity" data-title="Jumlah">
-														<div class="qty-btn">
-															<div class="quantity">
-																<input type="text" value="1" title="Qty" class="input-text qty text" data-rowid="c9f0f895fb98ab9159f51fd0297e236d" />
-															</div>
-														</div>
-													</td>
-													<td class="product-subtotal" data-title="Sub Total">
-														<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span>Rp. <span id="price_sub_format_c9f0f895fb98ab9159f51fd0297e236d">13,000</span></span>
-													</td>
-												</tr>
-												<tr>
-													<td colspan="6" class="actions">
-														<input type="button" class="button" id="update_cart" value="Update Order" />
-														<div class="wc-proceed-to-checkout">
-															<a  href="<?= $bu; ?>assets/kasir/checkout" class="checkout-button button alt wc-forward">Konfirmasi</a>
-														</div>
-													</td>
-												</tr>
+														</td>
+														<td class="product-subtotal" data-title="Sub Total">
+															<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span>Rp. <span id="price_sub_format_c20ad4d76fe97759aa27a0c99bff6710"><?= $k->total ?></span></span>
+														</td>
+													</tr>
+
+												<?php
+												} ?>
+
+
 											</tbody>
 										</table>
 									</form>
@@ -283,9 +159,19 @@
 														<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">Rp. </span><span class="cart_total_format">50.000</span></span>
 													</td>
 												</tr>
+												<tr>
+													<td colspan="6" class="actions">
+														<input type="button" class="button" id="update_cart" value="CekOut" />
+														<div class="wc-proceed-to-checkout">
+															<a href="http://dansdigitalmedia.com/resto/checkout" class="checkout-button button alt wc-forward">Konfirmasi</a>
+														</div>
+													</td>
+
+												</tr>
+												
 											</table>
 											<div class="wc-proceed-to-checkout">
-												<a  href="<?= $bu; ?>assets/kasir/checkout" class="checkout-button button alt wc-forward">Checkout</a>
+												<a href="<?= $bu; ?>assets/kasir/checkout" class="checkout-button button alt wc-forward">Checkout</a>
 											</div>
 										</div>
 									</div>
@@ -381,7 +267,7 @@
 					</ul>
 				</div>
 				<div class="footer-logo">
-					<a  href="<?= $bu; ?>assets/kasir/" class="custom-logo-link" rel="home">
+					<a href="<?= $bu; ?>assets/kasir/" class="custom-logo-link" rel="home">
 						<img src="<?= $bu; ?>assets/kasir/img/logo-front.png">
 					</a>
 				</div>
@@ -415,7 +301,7 @@
 							</div>
 						</li>
 						<li class="cart">
-							<a class="footer-cart-contents"  href="<?= $bu; ?>assets/kasir/cart" title="Tampilkan Cart Order Anda">
+							<a class="footer-cart-contents" href="<?= $bu; ?>assets/kasir/cart" title="Tampilkan Cart Order Anda">
 								<span class="count cart_count">5</span> </a>
 						</li>
 					</ul>

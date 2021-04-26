@@ -372,9 +372,9 @@ class CartModel extends CI_Model {
 		$query = $this->db->get()->result();
 		return count($query);
 	}
-	public function getCart()
+	public function getCart($id_user =1 )
 	{
-		// $this->db->where('id_user', 9);
+		$this->db->where('id_user', $id_user);
 		$sql = "SELECT `k`.*, `m`.*, k.qty * m.harga as total FROM `keranjang` `k` LEFT JOIN `menu` `m` ON `m`.`id_menu` = `k`.`id_produk`";
 		
 		$data  = $this->db->query($sql);

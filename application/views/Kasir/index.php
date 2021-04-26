@@ -38,15 +38,16 @@ $bu = base_url();
 						</div>
 						<ul class="site-header-cart-v2 menu">
 							<li class="cart-content ">
-								<a href="<?= $bu; ?>assets/kasir/cart.html" title="Tampilkan Cart Order Anda">
+								<a href="<?= $bu; ?>assets/kasir/cart" title="Tampilkan Cart Order Anda">
 									<i class="fa fa-cart-plus"></i>
 									<span>Cart Order Anda</span>
-									<a href="" title="Tampilkan Cart Ordsser Anda">
-										<span class="count cart_counts"><?= $totalcart ?> Item</span>
-										<span class="amount cart_total_formats">Rp .<?= $totalHarga ?></span>
-									</a>
 								</a>
 								<ul class="sub-menu cart_dropdown_container">
+									<li>
+										<a href="" title="Tampilkan Cart Order Anda">
+											<span class="count cart_counts"><?= $totalcart ?> Item</span> <span class="amount cart_total_formats">Rp.<?= $totalHarga ?></span>
+										</a>
+									</li>
 								</ul>
 							</li>
 						</ul>
