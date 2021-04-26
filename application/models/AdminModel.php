@@ -85,6 +85,18 @@ class AdminModel extends CI_Model {
 			'data' => $data,
 		);
 	}     
+	public function loginAdminAct($pw,$un)
+	{
+		$this->db->from('admin');
+		$this->db->where('username', $un);
+		$this->db->where('password', $pw);
+		$sql = $this->db->get();
+		return $sql->row();
+		
+		
+		
+		# code...
+	}
 	                 
                             
                         
