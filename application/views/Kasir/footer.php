@@ -26,7 +26,7 @@
 				</ul>
 			</div>
 			<div class="site-info">
-				<p class="copyright">Copyright &copy; 2019 <?= $konten[0]->isi ?> | Digital Restaurant Menu</p>
+				<p class="copyright">Copyright &copy; <?= date("Y");?> <?= $konten[0]->isi ?> | Digital Restaurant Menu</p>
 			</div>
 			<div class="pizzaro-handheld-footer-bar">
 				<ul class="columns-3">

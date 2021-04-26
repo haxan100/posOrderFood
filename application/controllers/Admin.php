@@ -479,7 +479,7 @@ public function index()
 			'message' => $message,
 		));
 	}
-		public function setting()
+	public function setting()
 	{
 		$obj['ci'] = $this;
 		$obj['content'] = 'admin/setting';
