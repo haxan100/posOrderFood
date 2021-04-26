@@ -57,7 +57,7 @@
 										<li><a href="form_validation.html">Form Validation</a></li>
 										<li><a href="form_wizards.html">Form Wizard</a></li>
 										<li><a href="form_upload.html">Form Upload</a></li>
-										<li><a href="<?=$bu ?>/Admin/logout">Logout</a></li>
+										<li><a  id="keluar" >Logout</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -88,7 +88,7 @@
 										<span>Settings</span>
 									</a>
 									<a class="dropdown-item" href="javascript:;">Help</a>
-									<a class="dropdown-item" href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+									<a class="dropdown-item" id="keluar"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
 								</div>
 							</li>
 

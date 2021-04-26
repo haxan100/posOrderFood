@@ -62,3 +62,47 @@ $bu = base_url();
 </body>
 
 </html>
+<script>
+	$(document).ready(function() {
+		$('body').on('click', '#keluar', function() {
+			Swal.fire({
+				title: 'Apakah Anda Yakin ?',
+				text: "Anda Akan Keluar Dari Aplikasi Ini",
+				icon: 'question',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Yes, Keluar!'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					$.ajax({
+						type: "POST",
+						url: "<?= $bu ?>Admin/logout",
+						success: function(e) {
+							if (!e.error) {
+								console.log(e)
+								Swal.fire(
+									'Berhasil !',
+									'Anda Akan Dialihkan Ke Halaman Login',
+									'success'
+								)
+								setTimeout(() => {
+									window.location = '<?= $bu ?>LoginAdmin';
+								}, 2000);
+
+							}
+						}
+					});
+				}
+
+			})
+
+		});
+
+
+		$('body').on('click', '#reload', function() {
+			loadSidebar();
+		});
+
+	});
+</script>
