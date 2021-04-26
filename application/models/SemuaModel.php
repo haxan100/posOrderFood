@@ -102,7 +102,15 @@ public function getDataById($namaTable,$nama_id,$id_Dicari)
 			'totalData' => $totaldata,
 			'data' => $data,
 		);
-	}             
+	}
+	public function HapusCartSatu($id_user, $id_menu)
+	{
+		$this->db->where('id_produk', $id_menu);
+		$this->db->where('id_user', $id_user);
+		 $this->db->delete('keranjang');
+		$query = $this->db->get('keranjang');
+		return $query->result();
+	}     
                      
               
                             

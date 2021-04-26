@@ -40,12 +40,10 @@ public function setBid()
 	}
 	$totalHarga = $d;
 	$getHargaByIdProd = $this->CartModel->getProdByIdProd($id_produk)->harga;
+	// var_dump($totalHarga);die;
 
 	$hargaSemua = $totalHarga + $getHargaByIdProd; 
 	$totalsemua = $TotalgetData + 1;
-	// var_dump($hargaSemua);die;
-
-
 	if (count($keranjangOld) >= 1) {  // jika di keranjang ada produk , maka di updte qty nya
 		$qtyOld = $keranjangOld[0]->qty;
 		$qtyNew = $qtyOld + $qty;

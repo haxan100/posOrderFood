@@ -67,6 +67,29 @@ public function checkout()
 		$this->load->view('keranjang/cekout');
 	
 }
+public function hapusSatuKeranjang()
+{
+	$id_user = 1;
+	// var_dump($_POST);die;
+	$id_produk = $this->input->post('id', TRUE);
+	$msg = "Gagal Hapus";
+	$status = false;
+	if($this->SemuaModel->HapusCartSatu($id_user, $id_produk)){
+
+		$msg = "Item Berhasil di Tambah Ke Keranjang";
+		$status = true;
+
+	}
+
+		$data = array(
+			'status' => $status,
+			'msg' => $msg,
+		);
+		echo json_encode($data);
+
+
+	# code...
+}
         
 }
         

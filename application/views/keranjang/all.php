@@ -105,7 +105,7 @@ $bu = base_url();
 
 													<tr class="cart_item c20ad4d76fe97759aa27a0c99bff6710">
 														<td class="product-remove">
-															<a href="#" title="Hapus Item" class="remove cart_remove_item" data-rowid="c20ad4d76fe97759aa27a0c99bff6710">&times;</a>
+															<a href="#" title="Hapus Item" class="remove cart_remove_item" data-rowid="c20ad4d76fe97759aa27a0c99bff6710" data-id=<?= $k->id_menu ?>>&times;</a>
 														</td>
 														<td class="product-thumbnail">
 															<a href="<?= $bu; ?>assets/kasir/menuorder/es-susu-cokelat">
@@ -144,19 +144,13 @@ $bu = base_url();
 												<tr class="cart-subtotal">
 													<th>Total Qty</th>
 													<td data-title="Total Item">
-														<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">5</span>
-													</td>
-												</tr>
-												<tr class="cart-subtotal">
-													<th>Total Waktu</th>
-													<td data-title="Total Waktu">
-														<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">24 Menit</span>
+														<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"><?= $totalcart ?></span>
 													</td>
 												</tr>
 												<tr class="cart-subtotal">
 													<th>Total</th>
 													<td data-title="Total">
-														<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">Rp. </span><span class="cart_total_format">50.000</span></span>
+														<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">Rp. </span><span class="cart_total_format"><?= $totalHarga ?></span></span>
 													</td>
 												</tr>
 												<tr>
@@ -168,19 +162,24 @@ $bu = base_url();
 													</td>
 
 												</tr>
-												
+
 											</table>
 											<div class="wc-proceed-to-checkout">
 												<a href="<?= $bu; ?>assets/kasir/checkout" class="checkout-button button alt wc-forward">Checkout</a>
 											</div>
 										</div>
 									</div>
+									<!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script> -->
+
 									<script type="text/javascript">
 										$('.cart_remove_item').each(function(index, el) {
 											$(this).on('click', function(event) {
 												cart_remove_item = $(this);
 												event.preventDefault();
 												var rowid = $(this).data('rowid');
+												var id = $(this).data('id');
+												// console.log(id)
+												// return false
 												swal({
 													title: 'Anda Yakin ?',
 													text: 'Item ini akan di Hapus !',
@@ -194,10 +193,30 @@ $bu = base_url();
 												}, function(isConfirm) {
 													if (isConfirm) {
 														$.ajax({
-																url: "http://dansdigitalmedia.com/resto/cart/remove_item/" + rowid,
+																url: '<?= $bu; ?>/Cart/hapusSatuKeranjang',
+																type: "POST",
+																dataType: 'json',
+																data: {
+																	id
+																},
 															})
 															.done(function(res) {
-																location.reload();
+																if (status) {
+																	swal(
+																		'Deleted! Success!',
+																		message,
+																		'success'
+																	)
+																	setTimeout(() => {
+																		location.reload();
+																	}, 1300);
+																} else {
+																	Swal(
+																		'Galat!!',
+																		message,
+																		'error'
+																	)
+																}
 															})
 															.fail(function(error) {
 																console.log(error.responseText);

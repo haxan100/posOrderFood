@@ -388,6 +388,8 @@ class CartModel extends CI_Model {
 		$this->db->from('menu');
 		$sql = $this->db->get();
 		return $sql->row() ;
+		
+		var_dump($this->db->last_query());die;
 	}
 
 
