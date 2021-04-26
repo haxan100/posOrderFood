@@ -1,0 +1,1 @@
+INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES (NULL, 'All'), (NULL, 'Desert'), (NULL, 'Snack');

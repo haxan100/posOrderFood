@@ -275,7 +275,7 @@
 						'success'
 					);
 					$('.cart_counts').html(e.total + " Item");
-					$('.cart_total_formats').html("Rp " + e.total);
+					$('.cart_total_formats').html("Rp " + e.harga);
 					// setTimeout(function() {
 					// 	location.reload();
 					// }, 2000);

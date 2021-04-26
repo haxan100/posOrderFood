@@ -382,6 +382,13 @@ class CartModel extends CI_Model {
 		# code...
 	}
 
+	public function getProdByIdProd($id_prod)
+	{
+		$this->db->where('id_menu', $id_prod);
+		$this->db->from('menu');
+		$sql = $this->db->get();
+		return $sql->row() ;
+	}
 
 
 
