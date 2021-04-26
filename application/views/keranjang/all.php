@@ -121,7 +121,7 @@ $bu = base_url();
 														<td class="product-quantity" data-title="Jumlah">
 															<div class="qty-btn">
 																<div class="quantity">
-																	<input type="text" value="<?= $k->qty ?>" title="Qty" class="input-text qty text" data-rowid="c20ad4d76fe97759aa27a0c99bff6710" />
+																	<input type="number" value="<?= $k->qty ?>" title="Qty" class="input-text qty text" data-rowid="c20ad4d76fe97759aa27a0c99bff6710" />
 																</div>
 															</div>
 														</td>
@@ -201,21 +201,27 @@ $bu = base_url();
 																},
 															})
 															.done(function(res) {
-																if (status) {
-																	swal(
-																		'Deleted! Success!',
-																		message,
-																		'success'
-																	)
+																console.log(res)
+																console.log(res.status)
+																// return false
+																if (res.status) {
+																	// 	swal({
+																	// 	title: 'Anda Yakin ?',
+																	// 	text: 'Item ini akan di Hapus !',
+																	// 	type: 'warning',
+																	// 	showCancelButton: true,
+																	// 	confirmButtonColor: '#3085d6',
+																	// 	cancelButtonColor: '#d33',
+																	// 	confirmButtonText: 'Ya',
+																	// 	cancelButtonText: 'Batal',
+																	// 	closeOnConfirm: true
+																	// });
 																	setTimeout(() => {
 																		location.reload();
-																	}, 1300);
+																	}, 1000);
 																} else {
-																	Swal(
-																		'Galat!!',
-																		message,
-																		'error'
-																	)
+																	alert("Gagal!")
+
 																}
 															})
 															.fail(function(error) {

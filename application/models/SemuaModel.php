@@ -111,6 +111,7 @@ public function getDataById($namaTable,$nama_id,$id_Dicari)
 		$query = $this->db->get('keranjang');
 		return $query->result();
 	}     
+	
                      
               
                             

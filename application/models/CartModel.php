@@ -34,11 +34,10 @@ class CartModel extends CI_Model {
 		public function getAllCartByUser($id_user)
 	{
 		$this->db->select('*,keranjang.qty as qty');
-		$this->db->from('keranjang');
-		// $this->db->join('produk', 'produk.id_produk = keranjang.id_produk');
-		
-		$sql =	$this->db->where('id_user', $id_user);
-		return  $sql->get()->result();	
+		$this->db->from('keranjang');		
+		$this->db->where('id_user', $id_user);
+		 $sql = $this->db->get();
+		return $sql->result();	
 	}
 		public function data_AllCartByUser($post)
 
@@ -387,9 +386,9 @@ class CartModel extends CI_Model {
 		$this->db->where('id_menu', $id_prod);
 		$this->db->from('menu');
 		$sql = $this->db->get();
+		// var_dump($this->db->last_query());die;
 		return $sql->row() ;
 		
-		var_dump($this->db->last_query());die;
 	}
 
 

@@ -28,18 +28,22 @@ public function setBid()
 	// $id_user = $this->session->userdata('id_user');
 	$tgl = $now;
 	$keranjangOld = $this->CartModel->getCartByIdUserAndProduk($id_user, $id_produk);
+		$getHargaByIdProd = $this->CartModel->getProdByIdProd($id_produk)->harga;
+		// var_dump($getHargaByIdProd);
+		// die;
 	$getData = $this->CartModel->getAllCartByUser($id_user);
 	$TotalgetData = count($this->CartModel->getAllCartByUser($id_user));
 	$cart= $this->CartModel->getCart();
-
+	
 	$d = 0 ;
 	// var_dump($cart);die;
-
+	
 	foreach ($cart as $da ) {
 		$d += $da->total;
 	}
+	
 	$totalHarga = $d;
-	$getHargaByIdProd = $this->CartModel->getProdByIdProd($id_produk)->harga;
+
 	// var_dump($totalHarga);die;
 
 	$hargaSemua = $totalHarga + $getHargaByIdProd; 
