@@ -1,5 +1,6 @@
 <?php
 $bu = base_url();
+
 ?>
 
 
@@ -116,7 +117,7 @@ $bu = base_url();
 															<a href="<?= $bu; ?>assets/kasir/menuorder/es-susu-cokelat"><?= $k->nama_menu ?></a>
 														</td>
 														<td class="product-price" data-title="Harga">
-															<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span><?= $k->harga ?></span>
+															<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span><?= convert_to_rupiah($k->harga) ?></span>
 														</td>
 														<td class="product-quantity" data-title="Jumlah">
 															<div class="qty-btn">
@@ -126,7 +127,7 @@ $bu = base_url();
 															</div>
 														</td>
 														<td class="product-subtotal" data-title="Sub Total">
-															<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span>Rp. <span id="TOTAL<?= $k->id_menu ?>"><?= $k->total ?></span></span>
+															<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span>Rp. <span id="TOTAL<?= $k->id_menu ?>"><?= convert_to_rupiah($k->total) ?></span></span>
 														</td>
 													</tr>
 
@@ -150,7 +151,7 @@ $bu = base_url();
 												<tr class="cart-subtotal">
 													<th>Total</th>
 													<td data-title="Total">
-														<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">Rp. </span><span class="cart_total_format"><?= $totalHarga ?></span></span>
+														<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">Rp. </span><span class="cart_total_format"><?= convert_to_rupiah($totalHarga) ?></span></span>
 													</td>
 												</tr>
 												<tr>
