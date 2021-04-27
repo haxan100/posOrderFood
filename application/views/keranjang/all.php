@@ -109,7 +109,7 @@ $bu = base_url();
 														</td>
 														<td class="product-thumbnail">
 															<a href="<?= $bu; ?>assets/kasir/menuorder/es-susu-cokelat">
-																<img width="180" height="180" src="<?= $bu; ?>assets/kasir/img/menu_folder/thumbs/Menu_makanan_es-susu-cokelat_1552202151.jpg" alt="" />
+																<img width="180" height="180" src="<?= $bu; ?>assets/images/foods/<?= $k->foto ?>" alt="" />
 															</a>
 														</td>
 														<td class="product-name" data-title="Menu">
@@ -261,8 +261,8 @@ $bu = base_url();
 														.done(function(res) {
 															console.log(res); 
 															var totalHarga =  res.harga;
-															$('#TOTAL' + id).html(SubTotalHarga);
-															$('.cart_total_format').html(totalHarga);
+															$('#TOTAL' + id).html(convertToRupiah(SubTotalHarga));
+															$('.cart_total_format').html(convertToRupiah(totalHarga));
 														})
 														.fail(function(error) {
 															console.log(error.responseText);
@@ -348,6 +348,7 @@ $bu = base_url();
 	<script type="text/javascript" src="<?= $bu; ?>assets/kasir/frontend/js/social.share.min.js"></script>
 	<script type="text/javascript" src="<?= $bu; ?>assets/kasir/frontend/js/jquery.mCustomScrollbar.concat.min.js"></script>
 	<script type="text/javascript" src="<?= $bu; ?>assets/kasir/frontend/js/scripts.min.js"></script>
+	<script type="text/javascript" src="<?= $bu; ?>assets/kasir/frontend/js/rupiah.js"></script>
 	<script type="text/javascript">
 		// function qty_change() {
 		//     var qty = 1;
