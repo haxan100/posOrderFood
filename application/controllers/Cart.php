@@ -90,6 +90,50 @@ public function hapusSatuKeranjang()
 
 	# code...
 }
+public function updateCart()
+{
+	$id_user = 1;
+	// var_dump($_POST);die;
+	$id_produk = $this->input->post('id', TRUE);
+	$qty = $this->input->post('qty', TRUE);
+	$in = array('qty' => $qty );
+	$id_user = 1 ;
+
+	$msg = "Gagal Update";
+	$status = false;
+	$getData = $this->CartModel->getAllCartByUser($id_user);
+	$TotalgetData = count($this->CartModel->getAllCartByUser($id_user));
+	$cart= $this->CartModel->getCart();
+	$totalHarga =	" ";
+
+	if($this->CartModel->updateCartByIDprodAndUser($in,$id_produk,$id_user)){
+		$status = true;
+		$msg = " berhasil merubah";
+		
+
+		$cart = $this->CartModel->getCart($id_user);
+			$data['totalcart'] = count($cart);
+			$d = 0;
+			foreach ($cart as $da) {
+				$d += $da->total;
+			}
+			$totalHarga 			= $d;
+			$data['totalHarga'] 	= $d;
+			$data['cart_content'] 	= $cart;
+			$totalHarga				= $d;
+	}
+
+		$data = array(
+			'status' => $status,
+			'msg' => $msg,
+			'data' => $getData,
+			'harga' => $totalHarga,
+		);
+		echo json_encode($data);
+
+
+	# code...
+}
         
 }
         

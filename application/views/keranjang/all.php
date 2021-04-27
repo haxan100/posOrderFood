@@ -121,7 +121,7 @@ $bu = base_url();
 														<td class="product-quantity" data-title="Jumlah">
 															<div class="qty-btn">
 																<div class="quantity">
-																	<input type="number" value="<?= $k->qty ?>" title="Qty" class="input-text qty text" data-rowid="c20ad4d76fe97759aa27a0c99bff6710" data-id=<?= $k->id_menu ?> />
+																	<input type="number" value="<?= $k->qty ?>" data-harga= <?= $k->harga ?> title="Qty" class="input-text qty text" data-rowid="c20ad4d76fe97759aa27a0c99bff6710" data-id=<?= $k->id_menu ?> />
 																</div>
 															</div>
 														</td>
@@ -242,9 +242,13 @@ $bu = base_url();
 											$(this).on('change keyup', function(event) {
 												event.preventDefault();
 												rowid = $(this).data('rowid');
+												var harga = $(this).data('harga');
+												// console.log(harga)
+												// return false
 												// id = $(this).data('id');
 												var id = $(this).data('id');
 												qty = $(this).val();
+												var SubTotalHarga = qty * harga ;
 												if (qty > 0) {
 													$.ajax({
 															url: '<?= $bu; ?>/Cart/updateCart',
@@ -256,9 +260,9 @@ $bu = base_url();
 														})
 														.done(function(res) {
 															console.log(res); 
-															return false
-															$('#price_sub_format_' + rowid).html(res.cart_content.price_sub_format);
-															$('.cart_total_format').html(res.cart_total_format);
+															var totalHarga =  res.harga;
+															$('#TOTAL' + id).html(SubTotalHarga);
+															$('.cart_total_format').html(totalHarga);
 														})
 														.fail(function(error) {
 															console.log(error.responseText);
