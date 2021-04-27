@@ -38,7 +38,7 @@ $bu = base_url();
 						</div>
 						<ul class="site-header-cart-v2 menu">
 							<li class="cart-content ">
-								<a href="<?= $bu; ?>assets/kasir/cart" title="Tampilkan Cart Order Anda">
+								<a href="<?= $bu; ?>cart" title="Tampilkan Cart Order Anda">
 									<i class="fa fa-cart-plus"></i>
 									<span>Cart Order Anda</span>
 								</a>

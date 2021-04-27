@@ -34,7 +34,7 @@ $bu = base_url();
 						</div>
 						<ul class="site-header-cart-v2 menu">
 							<li class="cart-content ">
-								<a href="<?= $bu; ?>assets/kasir/cart" title="Tampilkan Cart Order Anda">
+								<a href="<?= $bu; ?>cart" title="Tampilkan Cart Order Anda">
 									<i class="fa fa-cart-plus"></i>
 									<span>Cart Order Anda</span>
 								</a>
@@ -105,7 +105,7 @@ $bu = base_url();
 
 													<tr class="cart_item c20ad4d76fe97759aa27a0c99bff6710">
 														<td class="product-remove">
-															<a href="#" title="Hapus Item" class="remove cart_remove_item" data-rowid="c20ad4d76fe97759aa27a0c99bff6710" data-id=<?= $k->id_menu ?>>&times;</a>
+															<a href="#" title="Hapus Item" class="remove cart_remove_item" data-rowid="c20ad4d76fe97759aa27a0c99bff6710" data-id=<?= $k->id_menu ?> >&times;</a>
 														</td>
 														<td class="product-thumbnail">
 															<a href="<?= $bu; ?>assets/kasir/menuorder/es-susu-cokelat">
@@ -121,12 +121,12 @@ $bu = base_url();
 														<td class="product-quantity" data-title="Jumlah">
 															<div class="qty-btn">
 																<div class="quantity">
-																	<input type="number" value="<?= $k->qty ?>" title="Qty" class="input-text qty text" data-rowid="c20ad4d76fe97759aa27a0c99bff6710" />
+																	<input type="number" value="<?= $k->qty ?>" title="Qty" class="input-text qty text" data-rowid="c20ad4d76fe97759aa27a0c99bff6710" data-id=<?= $k->id_menu ?> />
 																</div>
 															</div>
 														</td>
 														<td class="product-subtotal" data-title="Sub Total">
-															<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span>Rp. <span id="price_sub_format_c20ad4d76fe97759aa27a0c99bff6710"><?= $k->total ?></span></span>
+															<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span>Rp. <span id="TOTAL<?= $k->id_menu ?>"><?= $k->total ?></span></span>
 														</td>
 													</tr>
 
@@ -242,18 +242,21 @@ $bu = base_url();
 											$(this).on('change keyup', function(event) {
 												event.preventDefault();
 												rowid = $(this).data('rowid');
+												// id = $(this).data('id');
+												var id = $(this).data('id');
 												qty = $(this).val();
 												if (qty > 0) {
 													$.ajax({
-															url: "http://dansdigitalmedia.com/resto/cart/update_item/",
-															type: 'POST',
-															data: {
-																rowid: rowid,
-																qty: qty
-															}
+															url: '<?= $bu; ?>/Cart/updateCart',
+																type: "POST",
+																dataType: 'json',
+																data: {
+																	id,qty
+																},
 														})
 														.done(function(res) {
-															// console.log(res); 
+															console.log(res); 
+															return false
 															$('#price_sub_format_' + rowid).html(res.cart_content.price_sub_format);
 															$('.cart_total_format').html(res.cart_total_format);
 														})
@@ -326,7 +329,7 @@ $bu = base_url();
 							</div>
 						</li>
 						<li class="cart">
-							<a class="footer-cart-contents" href="<?= $bu; ?>assets/kasir/cart" title="Tampilkan Cart Order Anda">
+							<a class="footer-cart-contents" href="<?= $bu; ?>cart" title="Tampilkan Cart Order Anda">
 								<span class="count cart_count">5</span> </a>
 						</li>
 					</ul>

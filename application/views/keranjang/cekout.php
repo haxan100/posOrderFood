@@ -53,7 +53,7 @@
 						</div>
 						<ul class="site-header-cart-v2 menu">
 							<li class="cart-content ">
-								<a  href="<?= $bu; ?>assets/kasir/cart" title="Tampilkan Cart Order Anda">
+								<a  href="<?= $bu; ?>cart" title="Tampilkan Cart Order Anda">
 									<i class="fa fa-cart-plus"></i>
 									<span>Cart Order Anda</span>
 								</a>
@@ -342,7 +342,7 @@
 							</div>
 						</li>
 						<li class="cart">
-							<a class="footer-cart-contents"  href="<?= $bu; ?>assets/kasir/cart" title="Tampilkan Cart Order Anda">
+							<a class="footer-cart-contents"  href="<?= $bu; ?>cart" title="Tampilkan Cart Order Anda">
 								<span class="count cart_count">5</span> </a>
 						</li>
 					</ul>
