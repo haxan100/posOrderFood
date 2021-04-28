@@ -235,8 +235,6 @@ $bu = base_url();
 										///////////////
 										$('#update_cart').on('click', function(event) {
 											console.log(bu)
-											return false
-
 											var url = bu + 'Cart/checkout';
 											window.location = url;
 											return false

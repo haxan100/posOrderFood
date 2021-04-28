@@ -64,6 +64,7 @@ public function index()
 }
 public function checkout()
 {
+		// $this->load->view('keranjang/cekoutOLD');
 		$this->load->view('keranjang/cekout');
 	
 }
