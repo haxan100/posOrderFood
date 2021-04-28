@@ -39,3 +39,6 @@ $bu = base_url();
 </head>
 
 <body class="page-template-template-homepage-v1 home-v1">
+<script>
+	var bu = '<?= $bu ?>';
+</script>

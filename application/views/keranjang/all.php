@@ -166,7 +166,7 @@ $bu = base_url();
 
 											</table>
 											<div class="wc-proceed-to-checkout">
-												<a href="<?= $bu; ?>assets/kasir/checkout" class="checkout-button button alt wc-forward">Checkout</a>
+												<a href="<?= $bu; ?>assets/kasir/checdkout" class="checkout-button button alt wc-forward">Checkout</a>
 											</div>
 										</div>
 									</div>
@@ -234,8 +234,12 @@ $bu = base_url();
 										});
 										///////////////
 										$('#update_cart').on('click', function(event) {
-											event.preventDefault();
-											location.reload();
+											console.log(bu)
+											return false
+
+											var url = bu + 'Cart/checkout';
+											window.location = url;
+											return false
 										});
 										///////////////
 

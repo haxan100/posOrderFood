@@ -43,3 +43,6 @@ $bu = base_url();
 	<script src="<?= $bu; ?>assets/kasir/backend\js\sweetalert2.min.js"></script>
 	<script type="text/javascript" src="<?= $bu; ?>assets/kasir/frontend\js\jquery.min.js"></script>
 </head>
+<script>
+	var bu = '<?= $bu ?>';
+</script>
