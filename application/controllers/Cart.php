@@ -64,6 +64,7 @@ public function index()
 }
 public function checkout()
 {
+		$data['konten'] = $this->SemuaModel->getSeting();
 	
 		$id_user = 1 ;
 		$cart = $this->CartModel->getCart($id_user);
@@ -79,9 +80,9 @@ public function checkout()
 		$data['totalHarga'] = $d;
 		
 
-		$this->load->view('Kasir/headers',$data);
-	  	// $this->load->view('keranjang/all');
+		// $this->load->view('keranjang/all');
 		// $this->load->view('keranjang/cekoutOLD');
+		$this->load->view('Kasir/headers',$data);
 		$this->load->view('keranjang/cekout');
 	
 }
@@ -150,6 +151,93 @@ public function updateCart()
 		echo json_encode($data);
 
 
+	# code...
+}
+public function konfirmasi()
+{
+	$nama = $this->input->post('nama');
+	$pilihtempat = $this->input->post('pilihtempat');
+	$meja_id = $this->input->post('meja_id');
+	$totalharga = $this->input->post('totalharga');
+	$id_user = 1; // nantinya id user bakalan jadi session
+	$now = date('Y-m-d H:i:s');
+
+	$cart = $this->CartModel->getCart($id_user);
+	$status = false;
+	$msg ="";
+	$id = 0;
+
+	$data['totalcart'] = count($cart);
+	$d = 0;
+	if($pilihtempat==1){
+		$pesan= 'dine_in';
+	}else{
+		$pesan= 'makan_luar';
+	}
+
+
+	$ran = $this->generateRandomString();
+
+	$inToTrans = array(
+		'kode_transaksi' => $ran , 
+		'nama_user' => $nama , 
+		'tipe_pesan' => $pesan , 
+		'nomor_meja' => $meja_id , 
+		'harga_total' => $totalharga ,
+		'id_user' => $id_user ,
+		'created_at' => $now ,
+		);
+	$id_transaksi = $this->SemuaModel->AddTransaksi($inToTrans);
+
+	foreach ($cart as $da) {
+		$inTodetTrans = array(
+			'id_transaksi' =>$id_transaksi,
+			'id_menu' =>$da->id_produk,
+			'qty' =>$da->qty,
+			'total' =>$da->total,
+	 	);
+		 $this->SemuaModel->Tambah('transaksi_detail',$inTodetTrans);
+	}
+	if($id_transaksi!=null){
+			$status = true;
+			$msg = "Berhasil";
+			$id = $id_transaksi;
+	}
+
+		$data = array(
+			'status' => $status,
+			'msg' => $msg,
+			'id'=> $id,
+		);
+		echo json_encode($data);
+		die();
+
+
+
+}
+function generateRandomString($length = 10)
+	{
+		$characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$charactersLength = strlen($characters);
+		$randomString = '';
+		for ($i = 0; $i < $length; $i++) {
+			$randomString .= $characters[rand(0, $charactersLength - 1)];
+		}
+		$tgl = date('Y');
+
+		// var_dump($tgl);die;
+
+
+		return "TR_" . $tgl . $randomString;
+	}
+public function selesai()
+{
+	$id = $_GET['id'];
+	$Data = $this->SemuaModel->getDataTransaksiById($id);
+
+	var_dump($Data);die;
+	$this->load->view('keranjang/selesai');
+	
 	# code...
 }
         

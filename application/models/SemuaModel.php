@@ -12,6 +12,11 @@ public function Tambah($nama,$data)
 {
 		return $this->db->insert($nama, $data);
 }
+	public function AddTransaksi($data)
+	{
+		$this->db->insert('transaksi', $data);
+		return $this->db->insert_id();
+	}
 public function getDataById($namaTable,$nama_id,$id_Dicari)
 	{
 		$this->db->select('*');
@@ -111,6 +116,16 @@ public function getDataById($namaTable,$nama_id,$id_Dicari)
 		$query = $this->db->get('keranjang');
 		return $query->result();
 	}     
+	public function getDataTransaksiById($id)
+	{
+		$this->db->where('id_transaksi', $id);
+		$this->db->from('transaksi');
+		$sql = $this->db->get()->row();
+		return $sql;
+		
+		
+		# code...
+	}
 	
                      
               
