@@ -1,26 +1,7 @@
 <?php
-	$bu = base_url();
-?>
-<!DOCTYPE html>
-<html lang="en-US" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+$bu = base_url();
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Dans-Resto | Digital Restaurant Menu</title>
-	<link rel="shortcut icon"  href="<?= $bu; ?>assets/kasir/img/logo-icon.png">
-	<link rel="stylesheet" type="text/css"  href="<?= $bu; ?>assets/kasir/frontend/css/bootstrap.min.css" media="all" />
-	<link rel="stylesheet" type="text/css"  href="<?= $bu; ?>assets/kasir/frontend/css/font-awesome.min.css" media="all" />
-	<link rel="stylesheet" type="text/css"  href="<?= $bu; ?>assets/kasir/frontend/css/animate.min.css" media="all" />
-	<link rel="stylesheet" type="text/css"  href="<?= $bu; ?>assets/kasir/frontend/css/font-pizzaro.css" media="all" />
-	<link rel="stylesheet" type="text/css"  href="<?= $bu; ?>assets/kasir/frontend/css/style.css" media="all" />
-	<link rel="stylesheet" type="text/css"  href="<?= $bu; ?>assets/kasir/frontend/css/colors/red.css" media="all" />
-	<link rel="stylesheet" type="text/css"  href="<?= $bu; ?>assets/kasir/frontend/css/jquery.mCustomScrollbar.min.css" media="all" />
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CYanone+Kaffeesatz:200,300,400,700" rel="stylesheet">
-	<link  href="<?= $bu; ?>assets/kasir/backend/js/sweetalert2.css" rel="stylesheet" type="text/css" />
-	<script src="http://dansdigitalmedia.com/resto/backend/js/sweetalert2.min.js"></script>
-	<script type="text/javascript" src="http://dansdigitalmedia.com/resto/frontend/js/jquery.min.js"></script>
-</head>
+?>
 
 <body class="woocommerce-checkout">
 	<div id="page" class="hfeed site">
@@ -154,51 +135,26 @@
 													</tr>
 												</thead>
 												<tbody>
+
+												<?php foreach ($cart_content as $key => $k) {
+												?>
 													<tr class="cart_item">
 														<td class="product-name">
-															ES SUSU COKELAT&nbsp;<strong class="product-quantity">&times; 1</strong>
+														<?= $k->nama_menu ?>  &nbsp;<strong class="product-quantity">&times; <?= $k->qty ?> </strong>
 														</td>
 														<td class="product-total">
 															<span class="woocommerce-Price-amount amount">
-																<span class="woocommerce-Price-currencySymbol">Rp. </span>10,000</span>
+																<span class="woocommerce-Price-currencySymbol">Rp. </span> <?= convert_to_rupiah($k->total) ?> </span>
 														</td>
 													</tr>
-													<tr class="cart_item">
-														<td class="product-name">
-															FRIENCH FRIES&nbsp;<strong class="product-quantity">&times; 1</strong>
-														</td>
-														<td class="product-total">
-															<span class="woocommerce-Price-amount amount">
-																<span class="woocommerce-Price-currencySymbol">Rp. </span>5,000</span>
-														</td>
-													</tr>
-													<tr class="cart_item">
-														<td class="product-name">
-															ES TEH LEMON&nbsp;<strong class="product-quantity">&times; 1</strong>
-														</td>
-														<td class="product-total">
-															<span class="woocommerce-Price-amount amount">
-																<span class="woocommerce-Price-currencySymbol">Rp. </span>5,000</span>
-														</td>
-													</tr>
-													<tr class="cart_item">
-														<td class="product-name">
-															MASI GORENG TERI GURIH&nbsp;<strong class="product-quantity">&times; 1</strong>
-														</td>
-														<td class="product-total">
-															<span class="woocommerce-Price-amount amount">
-																<span class="woocommerce-Price-currencySymbol">Rp. </span>17,000</span>
-														</td>
-													</tr>
-													<tr class="cart_item">
-														<td class="product-name">
-															MIE GORENG SEAFOOD&nbsp;<strong class="product-quantity">&times; 1</strong>
-														</td>
-														<td class="product-total">
-															<span class="woocommerce-Price-amount amount">
-																<span class="woocommerce-Price-currencySymbol">Rp. </span>13,000</span>
-														</td>
-													</tr>
+												<?php
+												} ?>
+
+
+
+
+
+
 												</tbody>
 												<tfoot>
 													<input type="hidden" name="resto_order[total_waktu]" value="24">
@@ -208,20 +164,14 @@
 														<th>Total Qty</th>
 														<td>
 															<span class="woocommerce-Price-amount amount">
-																<span class="woocommerce-Price-currencySymbol"></span>5</span>
+																<span class="woocommerce-Price-currencySymbol"></span><?= $totalcart ?></span>
 														</td>
 													</tr>
-													<tr class="cart-subtotal">
-														<th>Total Waktu</th>
-														<td>
-															<span class="woocommerce-Price-amount amount">
-																<span class="woocommerce-Price-currencySymbol"></span>24 Menit</span>
-														</td>
-													</tr>
+
 													<tr class="order-total">
 														<th>Total Bayar</th>
 														<td>
-															<strong><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">Rp. </span>50.000</span></strong>
+															<strong><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">Rp. </span><?= convert_to_rupiah($totalHarga) ?></span></strong>
 														</td>
 													</tr>
 												</tfoot>

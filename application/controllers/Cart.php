@@ -64,6 +64,23 @@ public function index()
 }
 public function checkout()
 {
+	
+		$id_user = 1 ;
+		$cart = $this->CartModel->getCart($id_user);
+		$data['cart_content']      = $cart;
+		$data['totalcart'] = count($cart);
+		$d = 0;
+		// echo json_encode($cart);die;
+		// var_dump($cart);die;
+		foreach ($cart as $da) {
+			$d += $da->total;
+		}
+		$totalHarga = $d;
+		$data['totalHarga'] = $d;
+		
+
+		$this->load->view('Kasir/headers',$data);
+	  	// $this->load->view('keranjang/all');
 		// $this->load->view('keranjang/cekoutOLD');
 		$this->load->view('keranjang/cekout');
 	
