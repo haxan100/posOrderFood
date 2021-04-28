@@ -62,6 +62,7 @@
 	<script type="text/javascript" src="<?= $bu; ?>assets/kasir/frontend\js\social.share.min.js"></script>
 	<script type="text/javascript" src="<?= $bu; ?>assets/kasir/frontend\js\jquery.mCustomScrollbar.concat.min.js"></script>
 	<script type="text/javascript" src="<?= $bu; ?>assets/kasir/frontend\js\scripts.min.js"></script>
+	<script type="text/javascript" src="<?= $bu; ?>assets/kasir/frontend\js\rupiah.js"></script>
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 	<script type="text/javascript">
@@ -241,7 +242,7 @@
 														</div>
 													</a>
 													<div class="hover-area">
-														<a data-id="${produk.id_menu}"  data-harga="${produk.harga}" data-qty="1"  title="Tambah ke Keranjang" type="button" class="btn-tawar button product_type_simple add_to_cart_button">Order</a>
+														<a data-id="${produk.id_menu}"  data-harga="${convertToRupiah(produk.harga)}" data-qty="1"  title="Tambah ke Keranjang" type="button" class="btn-tawar button product_type_simple add_to_cart_button">Order</a>
 													</div></div>
 											</div>
 										</div>
