@@ -217,6 +217,7 @@ class Data extends CI_Controller {
 			$fields[] = $row->nama_menu . '<br>';
 			$fields[] = $row->qty . '<br>';
 			$fields[] = $row->harga . '<br>';
+			$fields[] = $row->total . '<br>';
 			
 			$datatable['data'][] = $fields;
 		}

@@ -74,6 +74,7 @@
 								<th>Nama Menu</th>
 								<th> QTY</th>
 								<th>Harga</th>
+								<th>Total Harga</th>
 							</tr>
 						</thead>
 					</table>
