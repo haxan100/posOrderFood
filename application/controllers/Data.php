@@ -200,6 +200,33 @@ class Data extends CI_Controller {
 
 		exit();
 	}
+	public function getAllTransaksiDetail()
+	{
+		$bu = base_url();
+		$dt = $this->TransaksiModel->dt_transaksi_detail($_POST);
+		$datatable['draw']      = isset($_POST['draw']) ? $_POST['draw'] : 1;
+		$datatable['recordsTotal']    = $dt['totalData'];
+		$datatable['recordsFiltered'] = $dt['totalData'];
+		$datatable['data']            = array();
+		$start  = isset($_POST['start']) ? $_POST['start'] : 0;
+		// var_dump($dt['data']->result());die();
+		$no = $start + 1;
+		foreach ($dt['data']->result() as $row) {
+			$fields = array($no++);
+			// $fields[] = $row->id_menu . '<br>';
+			$fields[] = $row->nama_menu . '<br>';
+			$fields[] = $row->qty . '<br>';
+			$fields[] = $row->harga . '<br>';
+			
+			$datatable['data'][] = $fields;
+		}
+
+
+
+		echo json_encode($datatable);
+
+		exit();
+	}
 
         
 }

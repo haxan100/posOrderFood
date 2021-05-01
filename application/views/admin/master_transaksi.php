@@ -41,7 +41,7 @@
 										<th>Kasir</th>
 										<th>Kode Transaksi<br>Tanggal Transaksi</th>
 										<th>Nama User</th>
-										<th> Jual</th>\
+										<th> Jual</th>
 										<th>Status</th>
 										<th style="width: 100px !important; ">Aksi</th>
 									</tr>
@@ -56,102 +56,41 @@
 		</div>
 	</div>
 
-
-	<div class="modal fade bs-example-modal-lg" id="modal-detail" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog modal-lg">
-			<form id="form">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<h4>Detail </h4>
-
-						<div class="row">
-							<div class="col-md-12 col-sm-12 ">
-								<div class="x_panel">
-
-									<div class="x_content">
-										<br />
-										<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-											<div class="item form-group">
-												<div class="col-md-6 col-sm-6 ">
-													<input type="hidden" id="id_admin" name="id_admin" class="form-control " placeholder="Isikan Nama" readonly type="text" class="form-control">
-
-												</div>
-											</div>
-
-											<div class="item form-group">
-												<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name"> Nama Admin <span class="required">*</span>
-												</label>
-												<div class="col-md-6 col-sm-6 ">
-													<input id="nama" name="nama" class="form-control " placeholder="Isikan Nama Admin" type="text" class="form-control">
-
-												</div>
-											</div>
-
-											<div class="item form-group">
-												<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Username<span class="required">*</span>
-												</label>
-												<div class="col-sm-9">
-
-													<input id="username" name="username" class="form-control " placeholder="Username" type="text" class="form-control">
-
-												</div>
-											</div>
-
-											<div class="item form-group">
-												<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Role <span class="required">*</span>
-												</label>
-												<div class="col-sm-9">
-													<select class="form-control select col-md-8 col-sm-8" name="role" id="role">
-														<option value="">Pilih</option>
-														<?php
-														foreach ($listKategori as $r) {
-															echo '
-														<option value="' . $r->id_role . '">' . $r->nama_role . '</option>
-														';
-														}
-														?>
-													</select>
-												</div>
-											</div>
-
-
-
-
-											<div class="item form-group">
-												<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Password <span class="required">*</span>
-												</label>
-												<div class="col-md-6 col-sm-6 ">
-													<input id="password" name="password" class="form-control " placeholder="password" type="text" class="form-control">
-
-												</div>
-											</div>
-											<div class="ln_solid"></div>
-											<div class="item form-group">
-											</div>
-										</form>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary" id="Edit">Save changes</button>
-
-						<button type="button" class="btn btn-success" id="tambah_act">Tambah</button>
-					</div>
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
 				</div>
-			</form>
-
+				<div class="modal-body">
+					<table id="datatable_detail" class="table table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>No.</th>
+								<th>Nama Menu</th>
+								<th> QTY</th>
+								<th>Harga</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
 		</div>
 	</div>
 
+
+
 	<script type="text/javascript">
 		document.addEventListener("DOMContentLoaded", function(event) {
+			// $('#tableDestroy').on('click', function() {
+			// });
 
 			$('#datepicker').datepicker({
 				numberOfMonths: 1,
@@ -183,55 +122,82 @@
 				datatable.ajax.reload();
 
 			});
-			// $('#modal-detail').modal('show');
+			// $('#exampleModal').modal('show');
 			var bu = '<?= base_url(); ?>';
 			var url_form_ubah = bu + 'Admin/ubah_admin_proses';
 			var url_form_tambah = bu + 'Admin/tambah_admin_proses';
-
+			$('#datatable_detail').dataTable().fnClearTable();
+			$('#datatable_detail').dataTable().fnDestroy();
 			$('body').on('click', '.btn_edit', function() {
 				url_form = url_form_ubah;
-				// console.log(url_form);
-				$('#tambah_act').hide();
-				// $("#kode_wali").removeAttr('readonly');
-				$("#id_menu").prop("readonly", true);
 
-				var id_admin = $(this).data('id_admin');
-				var nama_admin = $(this).data('nama_admin');
-				var username = $(this).data('username');
-				var password = $(this).data('password');
-				var role = $(this).data('id_role');
+				var id_transaksi = $(this).data('id_transaksi');
+				console.log(id_transaksi);
+				$('#exampleModal').modal('show');
+				// datatables.destroy();
 
-				$('#id_admin').val(id_admin);
-				$('#nama').val(nama_admin);
-				$('#username').val(username);
-				$('#password').val(password);
-				$('#role').val(role);
+				var datatables = $('#datatable_detail').DataTable({
+					dom: "Bfrltip",
+					// "retrieve": true,
+					'pageLength': 10,
+					"responsive": true,
+					"processing": true,
+					"bProcessing": true,
+					"autoWidth": false,
+					"serverSide": true,
+					"columnDefs": [{
+							"targets": 0,
+							"className": "dt-body-center dt-head-center",
+							"width": "20px",
+							"orderable": false
+						},
+						{
+							"targets": 1,
+							"className": "dt-head-center"
+						},
+						{
+							"targets": 2,
+							"className": "dt-head-center"
+						}, {
+							"targets": 3,
+							"className": "dt-head-center"
+						},
+					],
+					"order": [
+						[1, "desc"]
+					],
+					'ajax': {
+						url: bu + 'Data/getAllTransaksiDetail',
+						type: 'POST',
+						"data": function(d) {
 
-				$('#Edit').show();
+							d.id = id_transaksi;
+
+							return d;
+						}
+					},
+
+					language: {
+						searchPlaceholder: "Cari",
+
+					},
+					// columnDefs: [{
+					// 	targets: -1,
+					// 	visible: false
+					// }],
+					"lengthMenu": [
+						[10, 25, 50, 1000],
+						[10, 25, 50, 1000]
+					]
+
+				});
+				datatables.destroy();
 
 
 			});
-			$('#Edit').on('click', function() {
 
-				var id_admin = $('#id_admin').val();
-				var nama = $('#nama').val();
-				var username = $('#username').val();
-				var password = $('#password').val();
-				var role = $('#role').val();
-				if (
-					nama && username && password && role
-				) {
-					$("#form").submit();
-				} else {
-					Swal.fire({
-						icon: 'error',
-						title: 'Oopssss...',
-						text: 'Mohon Isi Semua Filed!'
 
-					})
-				}
-				// return false;
-			});
+
 			$('body').on('click', '.hapus', function() {
 
 				var id_admin = $(this).data('id_admin');
