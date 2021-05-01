@@ -35,13 +35,13 @@
 								<div class="woocommerce">
 									<p class="woocommerce-thankyou-order-received">Terima Kasih, Order Anda Kami Terima.</p>
 									<ul class="woocommerce-thankyou-order-details order_details">
-										<li class="order">No. Order #:<strong>9</strong></li>
-										<li class="date">Tanggal :<strong>01 Mei 2021</strong></li>
-										<li class="date">Qty dan Waktu :<strong>2 / 5 Menit</strong></li>
-										<li class="total">Total :<strong><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">Rp. </span>15,000</span></strong></li>
+										<li class="order">No. Order #:<strong><?= $Data->kode_transaksi ?></strong></li>
+										<li class="date">Tanggal :<strong><?= $Data->created_at ?></strong></li>
+
+										<li class="total">Total :<strong><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span><?= convert_to_rupiah($Data->harga_total) ?></span></strong></li>
 									</ul>
 									<div class="clear"></div>
-									<p>Silahkan melakukan Pembayaran setelah Anda menikmati hidangan Kami.</p>
+									<p>Silahkan Tunggu Pesananya :)</p>
 									<h2>Order Detail</h2>
 									<table class="shop_table order_details">
 										<thead>
@@ -51,25 +51,29 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr class="order_item">
-												<td class="product-name">
-													<a href="http://dansdigitalmedia.com/resto/menuorder/es-teh-lemon">Es Teh Lemon</a> <strong class="product-quantity">× 1</strong>
-												</td>
-												<td class="product-total"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">Rp. </span>5,000</span>
-												</td>
-											</tr>
-											<tr class="order_item">
-												<td class="product-name">
-													<a href="http://dansdigitalmedia.com/resto/menuorder/es-susu-cokelat">Es Susu Cokelat</a> <strong class="product-quantity">× 1</strong>
-												</td>
-												<td class="product-total"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">Rp. </span>10,000</span>
-												</td>
-											</tr>
+
+											<?php
+											foreach ($getData as $k) {
+											?>
+												<tr class="order_item">
+													<td class="product-name">
+														<a href="http://dansdigitalmedia.com/resto/menuorder/es-teh-lemon"><?= $k->nama_menu ?></a> <strong class="product-quantity"> <?= $k->qty ?></strong>
+													</td>
+													<td class="product-total"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"> </span> <?= convert_to_rupiah($k->total) ?></span>
+													</td>
+												</tr>
+
+											<?php
+											}
+											?>
+
+
+
 										</tbody>
 										<tfoot>
 											<tr>
 												<th scope="row">Total :</th>
-												<td><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">Rp. </span>15,000</span></td>
+												<td><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span> <?= convert_to_rupiah($Data->harga_total) ?></span></td>
 											</tr>
 										</tfoot>
 									</table>
@@ -80,11 +84,15 @@
 										<tbody>
 											<tr>
 												<th>Nama :</th>
-												<td>WEW</td>
+												<td> <?= $Data->nama_user ?></td>
+											</tr>
+											<tr>
+												<th>Tipe Pesan :</th>
+												<td> <?= $Data->tipe_pesan ?></td>
 											</tr>
 											<tr>
 												<th>No. Meja :</th>
-												<td>2</td>
+												<td> <?= $Data->nomor_meja ?></td>
 											</tr>
 										</tbody>
 									</table>

@@ -126,6 +126,15 @@ public function getDataById($namaTable,$nama_id,$id_Dicari)
 		
 		# code...
 	}
+	public function getDataFromDetTranAndPro($id)
+	{
+		$this->db->where('id_transaksi', $id);
+		$this->db->from('transaksi_detail td');
+		$this->db->join('menu m', 'm.id_menu = td.id_menu','left');
+		
+		$sql = $this->db->get()->result();
+		return $sql;
+	}
 	
                      
               

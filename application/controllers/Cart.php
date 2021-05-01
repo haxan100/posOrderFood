@@ -235,7 +235,10 @@ function generateRandomString($length = 10)
 public function selesai()
 {
 	$id = $_GET['id'];
-	$Data = $this->SemuaModel->getDataTransaksiById($id);
+	$data['Data'] = $this->SemuaModel->getDataTransaksiById($id);
+	$data['getData']=$this->SemuaModel->getDataFromDetTranAndPro($id);
+	// echo json_encode($getData);die;
+
 
 		$data['konten'] = $this->SemuaModel->getSeting();
 
@@ -256,8 +259,8 @@ public function selesai()
 		// $this->load->view('keranjang/all');
 		// $this->load->view('keranjang/cekoutOLD');
 		$this->load->view('Kasir/headers', $data);
-	// var_dump($Data);die;
-	$this->load->view('keranjang/selesai');
+		// var_dump($Data);die;
+		$this->load->view('keranjang/selesai');
 		// $this->load->view('Kasir/footer', $data);
 
 	
