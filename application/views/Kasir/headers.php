@@ -65,11 +65,11 @@ $bu = base_url();
 						<div class="handheld-navigation">
 							<span class="phm-close">Tutup</span>
 							<ul class="menu">
-								<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori\dessert.html"><i class="po po-salads"></i>All</a></li>
-								<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori\dessert.html"><i class="po po-salads"></i>Desssert</a></li>
-								<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori\drink.html"><i class="po po-drinks"></i>Drink</a></li>
-								<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori\main-course.html"><i class="po po-burger"></i>Main Course</a></li>
-								<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori\snack.html"><i class="po po-fries"></i>Snack</a></li>
+								<li class="menu-item "><a href="<?= $bu; ?>kasir"><i class="po po-salads"></i>All</a></li>
+								<li class="menu-item "><a href="<?= $bu; ?>kasir"><i class="po po-salads"></i>Desssert</a></li>
+								<li class="menu-item "><a href="<?= $bu; ?>kasir"><i class="po po-drinks"></i>Drink</a></li>
+								<li class="menu-item "><a href="<?= $bu; ?>kasir"><i class="po po-burger"></i>Main Course</a></li>
+								<li class="menu-item "><a href="<?= $bu; ?>kasir"><i class="po po-fries"></i>Snack</a></li>
 							</ul>
 						</div>
 					</nav>
