@@ -1,5 +1,5 @@
 ###################==========================
-resto Pos Order Foods!!!111111111111111111111111111111111
+resto Pos Order Foods!!!
 ###################===================
 Source Code PHP Program Restaurant pos Kasir
  adalah software manajemen cafe/restoran untuk membantu operasional restaurant skala menengah/besar.
