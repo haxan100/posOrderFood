@@ -115,7 +115,14 @@ public function getDataById($namaTable,$nama_id,$id_Dicari)
 		 $this->db->delete('keranjang');
 		$query = $this->db->get('keranjang');
 		return $query->result();
-	}     
+	}
+	public function HapusCartByIdUser($id_user)
+	{
+		$this->db->where('id_user', $id_user);
+		$this->db->delete('keranjang');
+		$query = $this->db->get('keranjang');
+		return $query->result();
+	}  
 	public function getDataTransaksiById($id)
 	{
 		$this->db->where('id_transaksi', $id);

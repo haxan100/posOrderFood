@@ -57,7 +57,7 @@
 											?>
 												<tr class="order_item">
 													<td class="product-name">
-														<a href="http://dansdigitalmedia.com/resto/menuorder/es-teh-lemon"><?= $k->nama_menu ?></a> <strong class="product-quantity"> <?= $k->qty ?></strong>
+														<a href="#"><?= $k->nama_menu ?></a> <strong class="product-quantity"> X <?= $k->qty ?></strong>
 													</td>
 													<td class="product-total"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"> </span> <?= convert_to_rupiah($k->total) ?></span>
 													</td>

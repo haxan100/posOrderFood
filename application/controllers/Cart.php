@@ -204,6 +204,7 @@ public function konfirmasi()
 			$status = true;
 			$msg = "Berhasil";
 			$id = $id_transaksi;
+			$this->SemuaModel->HapusCartByIdUser($id_user);
 	}
 
 		$data = array(
@@ -237,23 +238,7 @@ public function selesai()
 	$id = $_GET['id'];
 	$data['Data'] = $this->SemuaModel->getDataTransaksiById($id);
 	$data['getData']=$this->SemuaModel->getDataFromDetTranAndPro($id);
-	// echo json_encode($getData);die;
-
-
-		$data['konten'] = $this->SemuaModel->getSeting();
-
-		$id_user = 1;
-		$cart = $this->CartModel->getCart($id_user);
-		$data['cart_content']      = $cart;
-		$data['totalcart'] = count($cart);
-		$d = 0;
-		// echo json_encode($cart);die;
-		// var_dump($cart);die;
-		foreach ($cart as $da) {
-			$d += $da->total;
-		}
-		$totalHarga = $d;
-		$data['totalHarga'] = $d;
+	$data['konten'] = $this->SemuaModel->getSeting();
 
 
 		// $this->load->view('keranjang/all');
