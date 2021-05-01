@@ -13,7 +13,7 @@
 				</ul>
 			</div>
 			<div class="footer-logo">
-				<a href="<?= $bu; ?>assets/kasir/index.htm" class="custom-logo-link" rel="home">
+				<a href="<?= $bu; ?>" class="custom-logo-link" rel="home">
 					<img src="<?= $bu; ?>assets/kasir/img\logo-front.png">
 				</a>
 			</div>

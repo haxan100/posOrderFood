@@ -237,8 +237,29 @@ public function selesai()
 	$id = $_GET['id'];
 	$Data = $this->SemuaModel->getDataTransaksiById($id);
 
-	var_dump($Data);die;
+		$data['konten'] = $this->SemuaModel->getSeting();
+
+		$id_user = 1;
+		$cart = $this->CartModel->getCart($id_user);
+		$data['cart_content']      = $cart;
+		$data['totalcart'] = count($cart);
+		$d = 0;
+		// echo json_encode($cart);die;
+		// var_dump($cart);die;
+		foreach ($cart as $da) {
+			$d += $da->total;
+		}
+		$totalHarga = $d;
+		$data['totalHarga'] = $d;
+
+
+		// $this->load->view('keranjang/all');
+		// $this->load->view('keranjang/cekoutOLD');
+		$this->load->view('Kasir/headers', $data);
+	// var_dump($Data);die;
 	$this->load->view('keranjang/selesai');
+		// $this->load->view('Kasir/footer', $data);
+
 	
 	# code...
 }
