@@ -279,7 +279,7 @@ $bu = base_url();
 						</li>
 						<li class="cart">
 							<a class="footer-cart-contents" href="<?= $bu; ?>cart" title="Tampilkan Cart Order Anda">
-								<span class="count cart_count">5</span> </a>
+								<span class="count cart_count"><?= $totalcart ?></span> </a>
 						</li>
 					</ul>
 				</div>

@@ -183,7 +183,7 @@ $bu = base_url();
 										})
 										.done(function(res) {
 
-											location.href = "<?= $bu; ?>Cart/Selesai/?id="+res.id;
+											location.href = "<?= $bu; ?>Cart/Selesai/?id=" + res.id;
 											window.location = url;
 										})
 										.fail(function(error) {
@@ -277,38 +277,14 @@ $bu = base_url();
 		</div>
 		<div class="site-address">
 			<ul class="address">
-				<li>DANSTor</li>
-				<li>Jalan Trimargo santoso no.272 Pekalongan</li>
-				<li>Telp. (0285) 435146</li>
-				<li><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ceaaafa0bdaaa3abaaa7af8ea9a3afa7a2e0ada1a3">[email&#160;protected]</a></li>
+				<li>Hasan</li>
+				<li><?= $konten[1]->isi ?></li>
+				<li><?= $konten[2]->isi ?></li>
+				<li><a href="<?= $bu; ?>assets/kasir//cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="98fcf9f6ebfcf5fdfcf1f9d8fff5f9f1f4b6fbf7f5">[email&#160;protected]</a></li>
 			</ul>
 		</div>
 		<div class="site-info">
-			<p class="copyright">Copyright &copy; 2019 Dans-Resto | Digital Restaurant Menu</p>
-		</div>
-		<div class="pizzaro-handheld-footer-bar">
-			<ul class="columns-3">
-				<li class="my-account">
-					<a href="login-and-register.html">My Account</a>
-				</li>
-				<li class="search">
-					<a href="">Search</a>
-					<div class="site-search">
-						<div class="widget woocommerce widget_product_search">
-							<form role="search" method="get" class="woocommerce-product-search">
-								<label class="screen-reader-text" for="woocommerce-product-search-field">Search for:</label>
-								<input type="search" id="woocommerce-product-search-field" class="search-field" placeholder="Search Products&hellip;" value="" name="s" title="Search for:" />
-								<input type="submit" value="Search" />
-								<input type="hidden" name="post_type" value="product" />
-							</form>
-						</div>
-					</div>
-				</li>
-				<li class="cart">
-					<a class="footer-cart-contents" href="<?= $bu; ?>cart" title="Tampilkan Cart Order Anda">
-						<span class="count cart_count">5</span> </a>
-				</li>
-			</ul>
+			<p class="copyright">Copyright &copy; <?= date("Y"); ?> <?= $konten[0]->isi ?> | Digital Restaurant Menu</p>
 		</div>
 	</div>
 </footer>
