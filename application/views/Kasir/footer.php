@@ -26,13 +26,10 @@
 				</ul>
 			</div>
 			<div class="site-info">
-				<p class="copyright">Copyright &copy; <?= date("Y");?> <?= $konten[0]->isi ?> | Digital Restaurant Menu</p>
+				<p class="copyright">Copyright &copy; <?= date("Y"); ?> <?= $konten[0]->isi ?> | Digital Restaurant Menu</p>
 			</div>
 			<div class="pizzaro-handheld-footer-bar">
-				<ul class="columns-3">
-					<li class="my-account">
-						<a href="<?= $bu; ?>assets/kasir/login-and-register.html">My Account</a>
-					</li>
+				<ul class="columns-2">
 					<li class="search">
 						<a href="<?= $bu; ?>assets/kasir/">Search</a>
 						<div class="site-search">
@@ -47,7 +44,7 @@
 						</div>
 					</li>
 					<li class="cart">
-						<a class="footer-cart-contents" href="<?= $bu; ?>assets/kasir/casrt.html" title="Tampilkan Csssart Order Anda">
+						<a class="footer-cart-contents" href="<?= $bu; ?>cart" title="Tampilkan Csssart Order Anda">
 						</a>
 					</li>
 				</ul>

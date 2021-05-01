@@ -56,7 +56,7 @@ $bu = base_url();
 				<a class="skip-link screen-reader-text" href="<?= $bu; ?>assets/kasir/#content">Skip to content</a>
 				<div class="header-wrap">
 					<div class="site-branding">
-						<a href="<?= $bu; ?>assets/kasir/index.htm" class="custom-logo-link" rel="home">
+						<a href="<?= $bu; ?>" class="custom-logo-link" rel="home">
 							<img src="<?= $bu; ?>assets/kasir/img\logo-front.png">
 						</a>
 					</div>

@@ -31,6 +31,8 @@ public function index()
 		$data['cart_content']      = $cart;
 		$this->load->view('Kasir/headers',$data);
 		  $this->load->view('keranjang/all');
+		// $this->load->view('Kasir/footer', $data);
+
 		// $cart_content = $this->cart->contents();
 
 		// if ($cart_content) {

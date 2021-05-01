@@ -1,67 +1,11 @@
 <?php
 $bu = base_url();
-
 ?>
 
 
 <body class="woocommerce-cart">
 	<div id="page" class="hfeed site">
-		<header id="masthead" class="site-header header-v1" style="background-image: none; ">
-			<div class="col-full">
-				<a class="skip-link screen-reader-text" href="#site-navigation">Skip to navigation</a>
-				<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
-				<div class="header-wrap">
-					<div class="site-branding">
-						<a href="<?= $bu; ?>assets/kasir/" class="custom-logo-link" rel="home">
-							<img src="<?= $bu; ?>assets/kasir/img/logo-front.png">
-						</a>
-					</div>
-					<nav id="site-navigation" class="main-navigation" aria-label="Primary Navigation">
-						<button class="menu-toggle" aria-controls="site-navigation" aria-expanded="false"><span class="close-icon"><i class="po po-close-delete"></i></span><span class="menu-icon"><i class="po po-menu-icon"></i></span><span class=" screen-reader-text">Menu</span></button>
-						<div class="handheld-navigation">
-							<span class="phm-close">Tutup</span>
-							<ul class="menu">
-								<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori/dessert"><i class="po po-salads"></i>Dessert</a></li>
-								<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori/drink"><i class="po po-drinks"></i>Drink</a></li>
-								<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori/main-course"><i class="po po-burger"></i>Main Course</a></li>
-								<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori/snack"><i class="po po-fries"></i>Snack</a></li>
-							</ul>
-						</div>
-					</nav>
-					<div class="header-info-wrapper">
-						<div class="header-phone-numbers">
-							<span class="intro-text">Telp. dan Order ke</span>
-							<span id="city-phone-number-label" class="phone-number">(0285) 435146</span>
-						</div>
-						<ul class="site-header-cart-v2 menu">
-							<li class="cart-content ">
-								<a href="<?= $bu; ?>cart" title="Tampilkan Cart Order Anda">
-									<i class="fa fa-cart-plus"></i>
-									<span>Cart Order Anda</span>
-								</a>
-								<ul class="sub-menu cart_dropdown_container">
-									<li>
-										<a href="" title="Tampilkan Cart Order Anda">
-											<span class="count cart_count"><?= $totalcart ?> Item</span> <span class="amount cart_total_format">Rp.<?= $totalHarga ?></span>
-										</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="pizzaro-secondary-navigation">
-					<nav class="secondary-navigation" aria-label="Secondary Navigation">
-						<ul class="menu">
-							<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori/dessert"><i class="po po-salads"></i>Dessert</a></li>
-							<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori/drink"><i class="po po-drinks"></i>Drink</a></li>
-							<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori/main-course"><i class="po po-burger"></i>Main Course</a></li>
-							<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori/snack"><i class="po po-fries"></i>Snack</a></li>
-						</ul>
-					</nav>
-				</div>
-			</div>
-		</header>
+
 		<div id="content" class="site-content" tabindex="-1">
 			<div class="col-full">
 				<div class="pizzaro-breadcrumb">
@@ -106,7 +50,7 @@ $bu = base_url();
 
 													<tr class="cart_item c20ad4d76fe97759aa27a0c99bff6710">
 														<td class="product-remove">
-															<a href="#" title="Hapus Item" class="remove cart_remove_item" data-rowid="c20ad4d76fe97759aa27a0c99bff6710" data-id=<?= $k->id_menu ?> >&times;</a>
+															<a href="#" title="Hapus Item" class="remove cart_remove_item" data-rowid="c20ad4d76fe97759aa27a0c99bff6710" data-id=<?= $k->id_menu ?>>&times;</a>
 														</td>
 														<td class="product-thumbnail">
 															<a href="<?= $bu; ?>assets/kasir/menuorder/es-susu-cokelat">
@@ -122,7 +66,7 @@ $bu = base_url();
 														<td class="product-quantity" data-title="Jumlah">
 															<div class="qty-btn">
 																<div class="quantity">
-																	<input type="number" value="<?= $k->qty ?>" data-harga= <?= $k->harga ?> title="Qty" class="input-text qty text" data-rowid="c20ad4d76fe97759aa27a0c99bff6710" data-id=<?= $k->id_menu ?> />
+																	<input type="number" value="<?= $k->qty ?>" data-harga=<?= $k->harga ?> title="Qty" class="input-text qty text" data-rowid="c20ad4d76fe97759aa27a0c99bff6710" data-id=<?= $k->id_menu ?> />
 																</div>
 															</div>
 														</td>
@@ -251,19 +195,20 @@ $bu = base_url();
 												// id = $(this).data('id');
 												var id = $(this).data('id');
 												qty = $(this).val();
-												var SubTotalHarga = qty * harga ;
+												var SubTotalHarga = qty * harga;
 												if (qty > 0) {
 													$.ajax({
 															url: '<?= $bu; ?>/Cart/updateCart',
-																type: "POST",
-																dataType: 'json',
-																data: {
-																	id,qty
-																},
+															type: "POST",
+															dataType: 'json',
+															data: {
+																id,
+																qty
+															},
 														})
 														.done(function(res) {
-															console.log(res); 
-															var totalHarga =  res.harga;
+															console.log(res);
+															var totalHarga = res.harga;
 															$('#TOTAL' + id).html(convertToRupiah(SubTotalHarga));
 															$('.cart_total_format').html(convertToRupiah(totalHarga));
 														})
@@ -308,20 +253,17 @@ $bu = base_url();
 				</div>
 				<div class="site-address">
 					<ul class="address">
-						<li>DANSTor</li>
-						<li>Jalan Trimargo santoso no.272 Pekalongan</li>
-						<li>Telp. (0285) 435146</li>
-						<li><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1175707f62757c7475787051767c70787d3f727e7c">[email&#160;protected]</a></li>
+						<li>Hasan</li>
+						<li><?= $konten[1]->isi ?></li>
+						<li><?= $konten[2]->isi ?></li>
+						<li><a href="<?= $bu; ?>assets/kasir//cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="98fcf9f6ebfcf5fdfcf1f9d8fff5f9f1f4b6fbf7f5">[email&#160;protected]</a></li>
 					</ul>
 				</div>
 				<div class="site-info">
-					<p class="copyright">Copyright &copy; 2019 Dans-Resto | Digital Restaurant Menu</p>
+					<p class="copyright">Copyright &copy; <?= date("Y"); ?> <?= $konten[0]->isi ?> | Digital Restaurant Menu</p>
 				</div>
 				<div class="pizzaro-handheld-footer-bar">
-					<ul class="columns-3">
-						<li class="my-account">
-							<a href="login-and-register.html">My Account</a>
-						</li>
+					<ul class="columns-2">
 						<li class="search">
 							<a href="">Search</a>
 							<div class="site-search">
@@ -353,37 +295,6 @@ $bu = base_url();
 	<script type="text/javascript" src="<?= $bu; ?>assets/kasir/frontend/js/scripts.min.js"></script>
 	<script type="text/javascript" src="<?= $bu; ?>assets/kasir/frontend/js/rupiah.js"></script>
 	<script type="text/javascript">
-		// function qty_change() {
-		//     var qty = 1;
-		//     qty = parseInt($(this).parent().find('.product_quantity_value').val());
-		//     $(this).parent().parent().parent().find('.addToCart').attr('data-qty', qty);
-		//     console.log(qty);
-		// var qty = 1;
-		// $('.product_quantity_up').each(function(index, el) {
-		//     $(this).on('click', function(event) {
-		//         qty = parseInt($(this).parent().find('.product_quantity_value').val())+1;
-		//         if (qty > 0) {
-		//             $(this).parent().parent().parent().find('.addToCart').attr('data-qty', qty);
-		//         }else{
-		//             $(this).parent().parent().parent().find('.addToCart').attr('data-qty', 1);
-		//         }
-		//     });
-		// });
-
-		// $('.product_quantity_down').each(function(index, el) {
-		//     $(this).on('click', function(event) {
-		//         qty = parseInt($(this).parent().find('.product_quantity_value').val())-1;
-		//         if (qty > 0) {
-		//             $(this).parent().parent().parent().find('.addToCart').attr('data-qty', qty);
-		//         }else{
-		//             $(this).parent().parent().parent().find('.addToCart').attr('data-qty', 1);
-		//         }
-		//     });
-		// });
-		// }
-
-		// qty_change();
-
 		$('.addToCart').each(function(index, el) {
 			var data = {};
 			$(this).on('click', function(event) {
