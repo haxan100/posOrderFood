@@ -8,7 +8,7 @@ class Admin extends CI_Controller {
 		parent::__construct();
 		$this->load->model('MenuModel');
 		$this->load->model('SemuaModel');
-		// $this->load->model('WaliModel');
+		$this->load->model('TransaksiModel');
 		// $this->load->model('GuruModel');
 		// $this->load->model('SekolahModel');
 		$this->load->helper('url');
@@ -572,6 +572,16 @@ class Admin extends CI_Controller {
 			'pesan' => $pesan,
 			'error' => $eror,
 		));
+	}
+	public function master_transaksi()
+	{
+		$this->cekLogin();
+
+		$obj['ci'] = $this;
+		$obj['listKategori'] = $this->SemuaModel->getAllRole();
+
+		$obj['content'] = 'admin/master_transaksi';
+		$this->load->view('admin/templates/index', $obj);
 	}
 
 }

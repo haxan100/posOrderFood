@@ -16,6 +16,7 @@ $bu = base_url();
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>Gentelella Alela! | </title>
+	<link rel="stylesheet" href="https://biddingplus.id/assets/css/jquery.ui.css">
 
 	<!-- Bootstrap -->
 	<link href="<?= $bu; ?>assets/admin/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -25,7 +26,10 @@ $bu = base_url();
 	<link href="<?= $bu; ?>assets/admin/vendors/nprogress/nprogress.css" rel="stylesheet">
 
 	<!-- Custom Theme Style -->
-	<link href="<?= $bu; ?>assets/admin/build/css/custom.min.css" rel="stylesheet">
+	<!-- <link href="<?= $bu; ?>assets/admin/build/css/custom.min.css" rel="stylesheet"> -->
+
+	<link rel="stylesheet" href="https://biddingplus.id/assets/admin/dist/css/style.min.css">
+	<link rel="stylesheet" href="https://biddingplus.id/assets/admin/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css">
 </head>
 
 

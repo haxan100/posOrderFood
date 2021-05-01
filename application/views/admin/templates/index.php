@@ -26,6 +26,8 @@ $bu = base_url();
 
 	<!-- Custom Theme Style -->
 	<link href="<?= $bu; ?>assets/admin/build/css/custom.min.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://biddingplus.id/assets/css/jquery.ui.css">
 </head>
 
 <body class="nav-md">
@@ -58,6 +60,8 @@ $bu = base_url();
 	<script src="<?= $bu; ?>assets/admin/vendors/datatables.net/js/jquery.dataTables.js"></script>
 	<script src="<?= $bu; ?>assets/admin/vendors/datatables.net-responsive/js/dataTables.responsive.js"></script>
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 </body>
 

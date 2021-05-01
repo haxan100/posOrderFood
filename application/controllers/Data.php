@@ -11,7 +11,7 @@ class Data extends CI_Controller {
 		$this->load->model('KasirModel');
 		$this->load->model('AdminModel');
 		$this->load->model('SemuaModel');
-		// $this->load->model('SekolahModel');
+		$this->load->model('TransaksiModel');
 		$this->load->helper('url');
 	}
 
@@ -159,6 +159,45 @@ class Data extends CI_Controller {
 			$datatable['data'][] = $fields;
 		}
 		echo json_encode($datatable);
+		exit();
+	}
+	public function getAllTransaksi()
+	{
+		$bu = base_url();
+		$dt = $this->TransaksiModel->dt_transaksi($_POST);
+		$datatable['draw']      = isset($_POST['draw']) ? $_POST['draw'] : 1;
+		$datatable['recordsTotal']    = $dt['totalData'];
+		$datatable['recordsFiltered'] = $dt['totalData'];
+		$datatable['data']            = array();
+		$start  = isset($_POST['start']) ? $_POST['start'] : 0;
+		// var_dump($dt['data']->result());die();
+		$no = $start + 1;
+		foreach ($dt['data']->result() as $row) {
+			$fields = array($no++);
+			// $fields[] = $row->id_menu . '<br>';
+			$fields[] = $row->id_user . '<br>';
+			$fields[] = $row->kode_transaksi . '<br>';
+			$fields[] = $row->nama_user . '<br>';
+
+			$fields[] = $row->harga_total . '<br>';
+			$fields[] = 'Selesai <br>';
+			$fields[] = '
+
+			<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target=".bs-example-modal-lg"
+			 data-id_transaksi="' . $row->id_transaksi . '" data-kode_transaksi="' . $row->kode_transaksi . '" 
+			></i> Detail</button>
+
+			<button class="btn btn-round btn-danger hapus" data-id_transaksi="' . $row->id_transaksi . '" 
+			>Hapus</button>               
+
+        ';
+			$datatable['data'][] = $fields;
+		}
+
+
+
+		echo json_encode($datatable);
+
 		exit();
 	}
 

@@ -37,7 +37,7 @@
 										<li><a href="<?=$bu ?>/Admin/master_admin">Admin</a></li>
 										<li><a href="<?=$bu ?>/Admin/master_kasir">Kasir</a></li>
 										<li><a href="<?=$bu ?>/Admin/master_item">Item</a></li>
-										<li><a href="<?=$bu ?>/Admin/setting">xx</a></li>
+										<li><a href="<?=$bu ?>/Admin/transaksi">Master Transaksi</a></li>
 									</ul>
 								</li>
                                 
