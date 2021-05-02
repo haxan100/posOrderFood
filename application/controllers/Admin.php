@@ -878,6 +878,68 @@ class Admin extends CI_Controller {
 			$this->load->view('admin/templates/index', $obj);
 		}
 	}
+	public function getFotoSlider()
+	{
+		$id= $this->input->post('id');
+		$data = $this->SemuaModel->getFotoSliderById($id);
+
+		echo json_encode(array(
+			'data' => $data,
+		));
+		
+	}
+	public function ubah_slider_proses()
+	{
+		// var_dump($_POST,$_FILES);die;
+		$id_setting = $this->input->post('id_setting', TRUE);
+		$message = 'Gagal mengedit data !<br>Silahkan lengkapi data yang diperlukan.';
+		$errorInputs = array();
+		$status = true;
+	
+		$_FILES['f']['name']     = $_FILES['isi']['name'];
+		$_FILES['f']['type']     = $_FILES['isi']['type'];
+		$_FILES['f']['tmp_name'] = $_FILES['isi']['tmp_name'];
+		$_FILES['f']['error']     = $_FILES['isi']['error'];
+		$_FILES['f']['size']     = $_FILES['isi']['size'];
+		$config['upload_path']          = './assets/images/slider';
+		$config['allowed_types']        = 'jpg|jpeg|png|gif';
+		$config['max_size']             = 3 * 1024;
+		$config['max_width']            = 10 * 1024;
+		$config['max_height']           = 10 * 1024;
+		$config['file_name'] = $id_setting . "-" . date("Y-m-d-H-i-s") . ".jpg";
+		$this->load->library('image_lib');
+		$this->load->library('upload', $config);
+		$this->upload->initialize($config);
+		$this->image_lib->resize();
+
+		if (!$this->upload->do_upload('f')) {
+			$errorUpload = $this->upload->display_errors() . '<br>';
+			$status = false;
+			$errorInputs[] = array('#foto', $errorUpload);
+		}else{
+			$fileName = $this->upload->data()["file_name"];
+			$foto = array(
+				'foto' => $fileName,
+			);
+			if ($this->SemuaModel->EditData('slider', 'id_slider', $foto, $id_setting)) {
+				$status = true;
+				$message = "Berhasil Mengubah Data #1";
+			} else {
+				$status = false;
+				$message = "Gagal Mengubah Data #1";
+			}
+
+		}
+			
+
+
+
+		echo json_encode(array(
+			'status' => $status,
+			'message' => $message,
+			'errorInputs' => $errorInputs
+		));
+	}
 
 }
         

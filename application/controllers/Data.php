@@ -317,9 +317,11 @@ class Data extends CI_Controller {
 			$fields = array($no++);
 			$fields[] = $row->nama_foto . '<br>';
 			$fields[] = '<img src="../assets/images/slider/' . $row->foto . '" id="image" alt="image"><br>';
+
 			$fields[] = '
-			<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target=".bs-example-modal-lg"
-			 data-id_slider="' . $row->id_slider . '" data-nama_foto="' . $row->nama_foto . '" 
+			<button class="btn btn-round btn-info btn_edit"  
+
+			 data-id_slider=' . $row->id_slider . ' data-nama_foto="' . $row->nama_foto . '" 
 			data-foto="' . $row->foto . '" 
 			></i> Ubah</button>
 

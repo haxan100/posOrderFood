@@ -206,6 +206,17 @@ public function getDataById($namaTable,$nama_id,$id_Dicari)
 			'data' => $data,
 		);
 	}
+	public function getFotoSliderById($id)
+	{
+		$this->db->from('slider');
+		$this->db->where('id_slider', $id);
+		$sql = $this->db->get();
+		return $sql->row() ;
+		
+		
+		
+		# code...
+	}
 	
                      
               

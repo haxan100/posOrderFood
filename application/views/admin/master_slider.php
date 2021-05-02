@@ -7,6 +7,11 @@
 					max-width: 100px;
 					display: block;
 				}
+
+				#gambarList {
+					max-width: 100px;
+					display: block;
+				}
 			</style>
 
 			<div class="clearfix"></div>
@@ -78,8 +83,11 @@
 											</label>
 											<div class="col-sm-9">
 
-												<input id="isi" name="isi" class="form-control " placeholder="Username" type="text" class="form-control">
-
+												<input id="isi" name="isi" class="form-control " placeholder="Username" type="file" class="form-control">
+												<br>
+												<span class="biz-text-10">
+													<ul id="listFoto"></ul>
+												</span>
 											</div>
 										</div>
 										<div class="ln_solid"></div>
@@ -105,21 +113,24 @@
 
 <script type="text/javascript">
 	document.addEventListener("DOMContentLoaded", function(event) {
+		// cekFoto(2)
 		// $('#modal-detail').modal('show');
 		var bu = '<?= base_url(); ?>';
-		var url_form_ubah = bu + 'Admin/ubah_setting_proses';
+		var url_form_ubah = bu + 'Admin/ubah_slider_proses';
 		var url_form_tambah = bu + 'Admin/tambah_kasir_proses';
 
 		$('body').on('click', '.btn_edit', function() {
 			url_form = url_form_ubah;
 			$('#tambah_act').hide();
 			$("#id_menu").prop("readonly", true);
-			var id_setting = $(this).data('id_setting');
-			var konten = $(this).data('konten');
-			var isi = $(this).data('isi');
-			$('#id_setting').val(id_setting);
-			$('#konten').val(konten);
-			$('#isi').val(isi);
+			var id_slider = $(this).data('id_slider');
+			var nama_foto = $(this).data('nama_foto');
+			$('#modal-detail').modal('show');
+
+			cekFoto(id_slider)
+			$('#id_setting').val(id_slider);
+			$('#konten').val(nama_foto);
+			// $('#isi').val(foto);
 			$('#Edit').show();
 
 
@@ -129,17 +140,15 @@
 			var id_setting = $('#id_setting').val();
 			var konten = $('#konten').val();
 			var isi = $('#isi').val();
+			// console.log(konten,isi)
+			// return false
 			if (
 				konten && isi
 			) {
 				$("#form").submit();
-				// console.log(_foto);
-				// return;
-				// console.log("draft");
 			} else {
 				alert("mohon isi semua!");
 			}
-			// return false;
 		});
 		$('body').on('click', '.hapus', function() {
 
@@ -187,11 +196,27 @@
 
 				}
 			})
-
-
-
-
 		});
+
+		function cekFoto(id) {
+			$.ajax({
+				type: "post",
+				url: bu + '/admin/getFotoSlider',
+				data: {
+					id
+				},
+				dataType: "json",
+				success: function(r) {
+
+					var html = r.data.foto
+					var htmls = "<img src =" + bu + "assets/images/slider/" + html + " id='gambarList' alt='image'>";
+					// console.log(html)
+					$('#listFoto').html(htmls);
+				}
+			});
+
+		}
+
 
 		function notifikasi(sel, msg, err) {
 			var alert_type = 'alert-success ';
