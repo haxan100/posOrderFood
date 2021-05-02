@@ -307,6 +307,16 @@ class AdminModel extends CI_Model {
 			'data' => $data,
 		);
 	}
+	public function getRoleAll($id_admin)
+	{
+		// var_dump($id_admin);die;
+		$this->db->where('id_admin', $id_admin);
+		$this->db->join('admin a', 'a.id_role = role.id_role', 'left');
+		// $this->db->where('password', $password);
+		return $this->db->get('role');
+		//  var_dump($this->db->last_query());die;
+
+	}
 
 	                 
                             
