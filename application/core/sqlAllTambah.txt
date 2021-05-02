@@ -4,3 +4,4 @@ ALTER TABLE `role` ADD `master_menu` INT(1) NOT NULL DEFAULT '0' AFTER `data_kas
 CREATE TABLE `hasanposresto`.`histori_admin` ( `id_histori` INT(15) NOT NULL AUTO_INCREMENT , `id_admin` INT(15) NOT NULL , `id_kategori` INT(15) NOT NULL , `aksi` VARCHAR(255) NOT NULL , `created_at` DATETIME NOT NULL , PRIMARY KEY (`id_histori`)) ENGINE = InnoDB;
 CREATE TABLE `hasanposresto`.`kategori_histori` ( `id_kategori` INT NOT NULL AUTO_INCREMENT , `nama_kategori` VARCHAR(255) NOT NULL , PRIMARY KEY (`id_kategori`)) ENGINE = InnoDB;
 INSERT INTO `kategori_histori` (`id_kategori`, `nama_kategori`) VALUES (NULL, 'Tambah Admin'), (NULL, 'Edit Admin'), (NULL, 'Hapus Admin'), (NULL, 'Tambah Kasir');
+INSERT INTO `kategori_histori` (`id_kategori`, `nama_kategori`) VALUES (NULL, 'Edit Kasir'), (NULL, 'Hapus Kasir'), (NULL, 'Tambah Menu'), (NULL, 'Edit Menu'), (NULL, 'Hapus Menu'), (NULL, 'Tambah Role'), (NULL, 'Edit Role'), (NULL, 'Hapus ROle');

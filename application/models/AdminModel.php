@@ -330,6 +330,23 @@ class AdminModel extends CI_Model {
 		//  return
 
 	}
+	public function log($id_user, $id_kategori, $aksi)
+	{
+		$data = array(
+			'id_admin' => $id_user,
+			'id_kategori' => $id_kategori,
+			'aksi' => $aksi,
+		);
+		// var_dump($data);die;
+		$this->db->set('created_at', 'NOW()', false);
+		if ($this->db->insert('histori_admin', $data)) {
+			$data['sukses'] = true;
+		} else {
+			$data['sukses'] = false;
+		}
+
+		return $data;
+	}
 
 	                 
                             

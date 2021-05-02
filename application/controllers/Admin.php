@@ -134,7 +134,12 @@ class Admin extends CI_Controller {
 					);
 					$this->SemuaModel->Tambah('menu',$in);
 					
-					$message = "Berhasil Menambah  #1";
+					$message = "Berhasil Menambah  #1";					
+					$id_admin = $this->session->userdata('id_admin');
+					$aksi = 'Tambah menu ' . $nama;
+					$id_kategori = 7;
+					$this->AdminModel->log($id_admin, $id_kategori, $aksi);
+
 				}else{
 
 					$message = "Gagal!  #1";
@@ -166,6 +171,10 @@ class Admin extends CI_Controller {
 		} else {
 			$this->SemuaModel->HapusData('menu','id_menu',$id_menu);
 
+			$id_admin = $this->session->userdata('id_admin');
+			$aksi = 'Hapus menu ' . $data[0]->nama_menu;
+			$id_kategori = 9;
+			$this->AdminModel->log($id_admin, $id_kategori, $aksi);
 			$status = true;
 			$message = 'Berhasil menghapus Data: <b>' . $data[0]->nama_menu . '</b>';
 		}
@@ -244,6 +253,10 @@ class Admin extends CI_Controller {
 						);
 						$this->SemuaModel->EditData('menu','id_menu',$foto, $id_menu);
 
+						$id_admin = $this->session->userdata('id_admin');
+						$aksi = 'Edit menu ' . $nama;
+						$id_kategori = 8;
+						$this->AdminModel->log($id_admin, $id_kategori, $aksi);
 						$message = "Berhasil Mengubah Data #1";
 					}
 				}
@@ -309,6 +322,11 @@ class Admin extends CI_Controller {
 				$status = true;
 
 				$message = "Berhasil Mengubah Data #1";
+
+				$id_admin = $this->session->userdata('id_admin');
+				$aksi = 'Edit Kasir ' . $nama;
+				$id_kategori = 5;
+				$this->AdminModel->log($id_admin, $id_kategori, $aksi);
 			}
 		} else {
 			$status = false;
@@ -357,6 +375,12 @@ class Admin extends CI_Controller {
 			);
 			$this->SemuaModel->Tambah('kasir', $in);
 
+
+			$id_admin = $this->session->userdata('id_admin');
+			$aksi = 'Tambah Kasir ' . $nama;
+			$id_kategori = 4;
+			$this->AdminModel->log($id_admin, $id_kategori, $aksi);
+
 			$message = "Berhasil Menambah  #1";
 		}else{
 			$status = false;
@@ -389,6 +413,10 @@ class Admin extends CI_Controller {
 		} else {
 			$this->SemuaModel->HapusData('kasir', 'id_kasir', $id_kasir);
 
+			$id_admin = $this->session->userdata('id_admin');
+			$aksi = 'Hapus Kasir ' . $data[0]->nama_kasir;
+			$id_kategori = 6;
+			$this->AdminModel->log($id_admin, $id_kategori, $aksi);
 			$status = true;
 			$message = 'Berhasil menghapus Data: <b>' . $data[0]->nama_kasir . '</b>';
 		}
@@ -438,6 +466,12 @@ class Admin extends CI_Controller {
 			$this->SemuaModel->Tambah('admin', $in);
 
 			$message = "Berhasil Menambah  #1";
+
+			$id_admin = $this->session->userdata('id_admin');
+			$aksi = 'Tambah Admin ' . $nama;
+			$id_kategori = 1;
+			$this->AdminModel->log($id_admin, $id_kategori, $aksi);
+
 		} else {
 			$status = false;
 			$message = "Gagal Menambah Data";
@@ -489,6 +523,12 @@ class Admin extends CI_Controller {
 				$status = true;
 
 				$message = "Berhasil Mengubah Data #1";
+
+				$id_admin = $this->session->userdata('id_admin');
+				$aksi = 'Edit Admin ' . $nama;
+				$id_kategori = 2;
+				$this->AdminModel->log($id_admin, $id_kategori, $aksi);
+
 			}
 		} else {
 			$status = false;
@@ -515,6 +555,11 @@ class Admin extends CI_Controller {
 			$message .= '<br>Tidak terdapat Data yang dimaksud.';
 		} else {
 			$this->SemuaModel->HapusData('admin', 'id_admin', $id_admin);
+
+			$id_admin = $this->session->userdata('id_admin');
+			$aksi = 'Hapus Admin ' .  $data[0]->nama_admin ;
+			$id_kategori = 3;
+			$this->AdminModel->log($id_admin, $id_kategori, $aksi);
 
 			$status = true;
 			$message = 'Berhasil menghapus Data: <b>' . $data[0]->nama_admin . '</b>';
@@ -565,6 +610,7 @@ class Admin extends CI_Controller {
 				$status = true;
 
 				$message = "Berhasil Mengubah Data #1";
+				
 			}
 		} else {
 			$status = false;
@@ -685,10 +731,10 @@ class Admin extends CI_Controller {
 			if ($this->AdminModel->tambah_new_admin_role($admin_role)) {
 				$status = true ;
 				$message = 'Berhasil Menambah Role ';
-				// $id_admin = $this->session->userdata('id_admin');
-				// $aksi = 'Tambah Admin ' . $nama;
-				// $id_kategori = 52;
-				// $this->AdminModel->log($id_admin, $id_kategori, $aksi);
+				$id_admin = $this->session->userdata('id_admin');
+				$aksi = 'Tambah Role ' . $nama;
+				$id_kategori = 10;
+				$this->AdminModel->log($id_admin, $id_kategori, $aksi);
 			} else {
 				$message = 'Gagal ';
 			}
@@ -747,10 +793,10 @@ class Admin extends CI_Controller {
 				$message = 'Berhasil Mengubah Data Role ';
 				$status = true;
 
-				// $id_admin = $this->session->userdata('id_admin');
-				// $aksi = 'Edit Admin ' . $nama;
-				// $id_kategori = 53;
-				// $this->AdminModel->log($id_admin, $id_kategori, $aksi);
+				$id_admin = $this->session->userdata('id_admin');
+				$aksi = 'Edit Role ' . $nama;
+				$id_kategori = 11;
+				$this->AdminModel->log($id_admin, $id_kategori, $aksi);
 			} else {
 				$message = 'Gagal ';
 				$status = false;
@@ -782,10 +828,10 @@ class Admin extends CI_Controller {
 			if ($hasil) {
 				$status = true;
 				$message = 'Berhasil menghapus Role: <b>' . $data[0]->nama_role . '</b>';
-				// $id_admin = $this->session->userdata('id_admin');
-				// $aksi = 'hapus Role ' . $data[0]->nama_role;
-				// $id_kategori = 54;
-				// $this->AdminModel->log($id_admin, $id_kategori, $aksi);
+				$id_admin = $this->session->userdata('id_admin');
+				$aksi = 'hapus Role ' . $data[0]->nama_role;
+				$id_kategori = 12;
+				$this->AdminModel->log($id_admin, $id_kategori, $aksi);
 			} else {
 				$message .= 'Terjadi kesalahan. #ADM0028';
 			}
