@@ -217,6 +217,14 @@ public function getDataById($namaTable,$nama_id,$id_Dicari)
 		
 		# code...
 	}
+	public function getSlider()
+	{
+		$this->db->from('slider');
+		$sql = $this->db->get();
+		return $sql->result();
+
+		# code...
+	}
 	
                      
               

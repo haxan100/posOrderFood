@@ -11,14 +11,18 @@ $bu = base_url();
 					<main id="main" class="site-main">
 						<div class="home-v1-slider">
 							<div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
+							<?php 
+							foreach ($slider as $key ) {	
+								// var_dump($key);die;
+							?>
 								<div class="item slider-1">
-									<img src="<?= $bu; ?>assets/kasir/img\slider_folder\Slider_1552233220.jpg" class="img-responsive" alt="">
+									<img src="<?= $bu; ?>assets/images/slider/<?= $key->foto; ?> " class="img-responsive" alt="">
 								</div>
 
-								<div class="item slider-2">
-									<img src="<?= $bu; ?>assets/kasir/img\slider_folder\Slider_1552233651.jpg" class="img-responsive" alt="">
+								<?php 
+									}
+								?>
 
-								</div>
 							</div>
 						</div>
 						<div class="section-products">

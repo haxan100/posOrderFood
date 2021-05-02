@@ -24,6 +24,8 @@ public function index()
 		
 	}
 	$data['konten'] = $this->SemuaModel->getSeting();
+	$data['slider'] = $this->SemuaModel->getSlider();
+
 	$cart= $this->CartModel->getCart();
 	$data['totalcart'] = count($cart);
 	$d = 0 ;
@@ -32,16 +34,9 @@ public function index()
 	}
 	$totalHarga = $d;
 	$data['totalHarga'] = $d;
-
-
-	// for ($i=0; $i < $totalcart; $i++) { 
-	// 	$d += $cart['id_produk'] ;
-	// }
-	// var_dump($d);die;
-
-                $this->load->view('Kasir/headers',$data);
-                $this->load->view('Kasir/index', $data);
-                $this->load->view('Kasir/footer', $data);
+	$this->load->view('Kasir/headers',$data);
+	$this->load->view('Kasir/index', $data);
+	$this->load->view('Kasir/footer', $data);
 				
 }
 	public function getProduk()
