@@ -175,22 +175,24 @@ class Data extends CI_Controller {
 		foreach ($dt['data']->result() as $row) {
 			$fields = array($no++);
 			// $fields[] = $row->id_menu . '<br>';
+
+
+			$tombolDetail = '
+				<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target=".bs-example-modal-lg"
+			 data-id_transaksi="' . $row->id_transaksi . '" data-kode_transaksi="' . $row->kode_transaksi . '" 
+			></i> Detail</button>
+			';
+			$tombolHapus = '
+			<button class="btn btn-round btn-danger hapus" data-id_transaksi="' . $row->id_transaksi . '" 
+			>Hapus</button>           
+			';
 			$fields[] = $row->id_user . '<br>';
 			$fields[] = $row->kode_transaksi . '<br>';
 			$fields[] = $row->nama_user . '<br>';
 
 			$fields[] = $row->harga_total . '<br>';
 			$fields[] = 'Selesai <br>';
-			$fields[] = '
-
-			<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target=".bs-example-modal-lg"
-			 data-id_transaksi="' . $row->id_transaksi . '" data-kode_transaksi="' . $row->kode_transaksi . '" 
-			></i> Detail</button>
-
-			<button class="btn btn-round btn-danger hapus" data-id_transaksi="' . $row->id_transaksi . '" 
-			>Hapus</button>               
-
-        ';
+			$fields[] = $tombolDetail;
 			$datatable['data'][] = $fields;
 		}
 
