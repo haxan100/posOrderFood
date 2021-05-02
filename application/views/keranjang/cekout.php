@@ -139,8 +139,51 @@ $bu = base_url();
 								</div>
 							</form>
 						</div>
+						<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 						<script type="text/javascript">
 							$(document).ready(function() {
+								var url = '<?= $bu ?>/Kasir/login';
+								$('#keluar').click(function(e) {
+									Swal.fire({
+										title: 'Are you sure?',
+										text: "You won't be able to revert this!",
+										icon: 'warning',
+										showCancelButton: true,
+										confirmButtonColor: '#3085d6',
+										cancelButtonColor: '#d33',
+										confirmButtonText: 'Logout'
+									}).then((result) => {
+										if (result.isConfirmed) {
+											$.ajax({
+												type: "post",
+												url: "<?= $bu ?>/kasir/logout",
+												dataType: "json",
+												success: function(r) {
+													if (r.error) {
+														Swal.fire(
+															'gagal!',
+															r.pesan,
+															'errorr'
+														)
+													} else {
+														Swal.fire(
+															'Berhasil!',
+															r.pesan,
+															'success'
+														)
+														setTimeout(() => {
+															window.location = url;
+														}, 2000);
+
+													}
+
+												}
+											});
+
+
+										}
+									})
+								});
 								$('#meja').hide()
 
 								$('#pilihtempat').on('change', function() {
