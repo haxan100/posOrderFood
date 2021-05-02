@@ -38,22 +38,37 @@ class Admin extends CI_Controller {
 	} 
 	public function master_admin()
 	{
-		$this->cekLogin();
+		$id_admin = $this->session->userdata('id_admin');
+		$role = $this->AdminModel->getRole($id_admin, 'data_admin')->r;
+		if ($role == 1) {
+			$obj['listKategori'] = $this->SemuaModel->getAllRole();
+			$obj['content'] = 'admin/master_admin';
+			$this->load->view('admin/templates/index', $obj);
+		} elseif ($role == 0) {
+			$obj['ci'] = $this;
+			$obj['content'] =  "admin/blank";
 
-		$obj['ci'] = $this;
-		$obj['listKategori'] = $this->SemuaModel->getAllRole();
-
-		$obj['content'] = 'admin/master_admin';
-		$this->load->view('admin/templates/index', $obj);
+			$this->load->view('admin/templates/index', $obj);
+		}
 	}
 	public function master_item()
 	{
 		$this->cekLogin();
-
+		$id_admin = $this->session->userdata('id_admin');
+		$role = $this->AdminModel->getRole($id_admin, 'master_menu')->r;
+		if ($role == 1) {
+			
 		$obj['listKategori'] = $this->MenuModel->getKategori();
 		$obj['ci'] = $this;
 		$obj['content'] = 'admin/master_item';
 		$this->load->view('admin/templates/index', $obj);
+
+		} elseif ($role == 0) {
+			$obj['ci'] = $this;
+			$obj['content'] =  "admin/blank";
+			$this->load->view('admin/templates/index', $obj);
+		}
+
 	}
 	public function tambah_menu_proses()
 	{
@@ -248,10 +263,19 @@ class Admin extends CI_Controller {
 	public function master_kasir()
 	{
 		$this->cekLogin();
+		$id_admin = $this->session->userdata('id_admin');
+		$role = $this->AdminModel->getRole($id_admin, 'data_kasir')->r;
+		if ($role == 1) {
+			$obj['ci'] = $this;
+			$obj['content'] = 'admin/master_kasir';
+			$this->load->view('admin/templates/index', $obj);
+		} elseif ($role == 0) {
+			$obj['ci'] = $this;
+			$obj['content'] =  "admin/blank";
+			$this->load->view('admin/templates/index', $obj);
+		}
 
-		$obj['ci'] = $this;
-		$obj['content'] = 'admin/master_kasir';
-		$this->load->view('admin/templates/index', $obj);
+		
 	}
 	public function ubah_kasir_proses()
 	{
@@ -503,10 +527,19 @@ class Admin extends CI_Controller {
 	public function setting()
 	{
 		$this->cekLogin();
+		$id_admin = $this->session->userdata('id_admin');
+		$role = $this->AdminModel->getRole($id_admin, 'seeting')->r;
+		if ($role == 1) {
+			$obj['ci'] = $this;
+			$obj['content'] = 'admin/setting';
+			$this->load->view('admin/templates/index', $obj);
+		} elseif ($role == 0) {
+			$obj['ci'] = $this;
+			$obj['content'] =  "admin/blank";
+			$this->load->view('admin/templates/index', $obj);
+		}
 
-		$obj['ci'] = $this;
-		$obj['content'] = 'admin/setting';
-		$this->load->view('admin/templates/index', $obj);
+		
 	}
 	public function ubah_setting_proses()
 	{
@@ -577,20 +610,37 @@ class Admin extends CI_Controller {
 	{
 		$this->cekLogin();
 
-		$obj['ci'] = $this;
-		$obj['listKategori'] = $this->SemuaModel->getAllRole();
+		$id_admin = $this->session->userdata('id_admin');
+		$role = $this->AdminModel->getRole($id_admin, 'master_transaksi')->r;
+		if ($role == 1) {
+			$obj['ci'] = $this;
+			$obj['listKategori'] = $this->SemuaModel->getAllRole();
+			$obj['content'] = 'admin/master_transaksi';
+			$this->load->view('admin/templates/index', $obj);
+		} elseif ($role == 0) {
+			$obj['ci'] = $this;
+			$obj['content'] =  "admin/blank";
+			$this->load->view('admin/templates/index', $obj);
+		}
 
-		$obj['content'] = 'admin/master_transaksi';
-		$this->load->view('admin/templates/index', $obj);
+		
 	}
 	public function master_role()
 	{
 
 		$this->cekLogin();
-
-		$obj['ci'] = $this;
-		$obj['content'] = 'admin/master_role';
-		$this->load->view('admin/templates/index', $obj);
+		$id_admin = $this->session->userdata('id_admin');
+		$role = $this->AdminModel->getRole($id_admin, 'data_admin')->r;
+		if ($role == 1) {
+			$obj['ci'] = $this;
+			$obj['content'] = 'admin/master_role';
+			$this->load->view('admin/templates/index', $obj);
+		} elseif ($role == 0) {
+			$obj['ci'] = $this;
+			$obj['content'] =  "admin/blank";
+			$this->load->view('admin/templates/index', $obj);
+		}
+		
 		
 		# code...
 	}
@@ -750,11 +800,20 @@ class Admin extends CI_Controller {
 	{
 
 		$this->cekLogin();
-		$obj['ci'] = $this;
+		$id_admin = $this->session->userdata('id_admin');
+		$role = $this->AdminModel->getRole($id_admin, 'histori')->r;
+		if ($role == 1) {
+			$obj['ci'] = $this;
 
-		$obj['listkategorilog'] = $this->AdminModel->getAllKategorilogadmin();
-		$obj['content'] = 'admin/histori_admin';
-		$this->load->view('admin/templates/index', $obj);
+			$obj['listkategorilog'] = $this->AdminModel->getAllKategorilogadmin();
+			$obj['content'] = 'admin/histori_admin';
+			$this->load->view('admin/templates/index', $obj);
+		} elseif ($role == 0) {
+			$obj['ci'] = $this;
+			$obj['content'] =  "admin/blank";
+			$this->load->view('admin/templates/index', $obj);
+		}
+	
 		
 		# code...
 	}
