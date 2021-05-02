@@ -107,6 +107,10 @@ $bu = base_url();
 							<button class="btn btn-primary mr-5" id="hiddenKan" type="button" style="
 								margin-left: 290px;
 							">Hidden</button>
+
+							<button class="btn btn-primary mr-5" id="keluar" type="button" 
+							">Log Out</button>
+
 						</ul>
 					</nav>
 				</div>

@@ -16,11 +16,12 @@ class Kasir extends CI_Controller {
 
 public function index()
 {	
+	
+	// var_dump($_SESSION);die;
 	$data['konten'] = $this->SemuaModel->getSeting();
 	$cart= $this->CartModel->getCart();
 	$data['totalcart'] = count($cart);
 	$d = 0 ;
-	// var_dump($cart);die;
 	foreach ($cart as $da ) {
 			$d += $da->total;
 	}
@@ -92,6 +93,19 @@ public function index()
 		));
 
 		# code...
+	}
+	public function logout()
+	{
+
+		$this->session->sess_destroy();
+	
+			$error = false;
+			$pesan =" berhasil kerluar";
+
+		echo json_encode(array(
+			'error' => $error,
+			'pesan' => $pesan
+		));
 	}
         
 }
