@@ -34,7 +34,7 @@
 								<button class="btn btn-info waves-effect waves-light" id="resetDate"><span class="fa fa-sync"></span> Reset</button>
 							</span>
 							</p>
-							<button type="button" class="btn btn-primary btn_tambah" data-toggle="modal" data-target=".bs-example-modal-lg">Tambah</button>
+							<!-- <button type="button" class="btn btn-primary btn_tambah" data-toggle="modal" data-target=".bs-example-modal-lg">Tambah</button> -->
 
 							<table id="datatable_data" class="table table-striped table-bordered">
 

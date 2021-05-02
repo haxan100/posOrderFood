@@ -746,6 +746,18 @@ class Admin extends CI_Controller {
 			'message' => $message,
 		));
 	}
+	public function master_histori()
+	{
+
+		$this->cekLogin();
+		$obj['ci'] = $this;
+
+		$obj['listkategorilog'] = $this->AdminModel->getAllKategorilogadmin();
+		$obj['content'] = 'admin/histori_admin';
+		$this->load->view('admin/templates/index', $obj);
+		
+		# code...
+	}
 
 }
         

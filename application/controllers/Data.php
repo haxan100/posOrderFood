@@ -274,6 +274,34 @@ class Data extends CI_Controller {
 
 		exit();
 	}
+	public function getHistoryAdmin()
+	{
+		$kategori = $this->input->post('id_spek', TRUE);
+		// var_dump($kategori);die;
+		$date = $this->input->post('date', TRUE);
+		$selectDate = $this->input->post('selectDate', TRUE);
+		$id_user = $this->input->post('id_user');
+		$dt = $this->AdminModel->history_admin($_POST);
+		// var_dump($dt['data']->result());die();
+		$datatable['draw']            = isset($_POST['draw']) ? $_POST['draw'] : 1;
+		$datatable['recordsTotal']    = $dt['totalData'];
+		$datatable['recordsFiltered'] = $dt['totalData'];
+		$datatable['data']            = array();
+		$start  = isset($_POST['start']) ? $_POST['start'] : 0;
+		$no = $start + 1;
+		foreach ($dt['data']->result() as $row) {
+			// var_dump(($row));die();
+			$date = strtotime($row->created_at);
+			$date2 = date('d-m-Y H:i:s', $date);
+			$fields = array($no++);
+			$fields[] = $date2;
+			$fields[] = $row->nama_admin;
+			$fields[] = $row->aksi;
+			$datatable['data'][] = $fields;
+		}
+		echo json_encode($datatable);
+		exit();
+	}
 
         
 }

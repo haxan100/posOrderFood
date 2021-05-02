@@ -209,6 +209,104 @@ class AdminModel extends CI_Model {
 		$this->db->where('id_role', $id_admin);
 		return $this->db->delete('role');
 	}
+	public function getAllKategorilogadmin()
+	{
+		return $this->db->get('kategori_histori')->result();
+	}
+	public function history_admin($post)
+	{
+		$from = 'histori_admin la';
+		// untuk sort
+		$columns = array(
+			'la.created_at',
+			'a.nama_admin',
+			'la.aksi',
+		);
+		$columnsSearch = array(
+			'la.created_at',
+			'a.nama_admin',
+			'la.aksi',
+		);
+
+
+		// custom SQL
+		$sql = "SELECT la.*, a.nama_admin, lka.nama_kategori from histori_admin la 
+		left join admin a on a.id_admin=la.id_admin 
+		left join kategori_histori lka on lka.id_kategori=la.id_kategori";
+
+		$where = "";
+		if (isset($post['kategori']) && $post['kategori'] != 'default') $where .= "(la.id_kategori='" . $post['kategori'] . "')";
+
+		$whereTemp = "";
+		if (isset($_POST['date']) && $_POST['date'] != '') {
+			$date = explode(' / ', $_POST['date']);
+			if (count($date) == 1) {
+				$whereTemp .= "(la.created_at LIKE '%" . $_POST['date'] . "%')";
+			} else {
+				// $whereTemp .= "(created_at BETWEEN '".$date[0]."' AND '".$date[1]."')";
+				$whereTemp .= "(date_format(la.created_at, \"%Y-%m-%d\") >='$date[0]' AND date_format(la.created_at, \"%Y-%m-%d\") <= '$date[1]')";
+			}
+			if ($where == '') {
+				$where .= "($whereTemp)";
+			} else {
+
+				$where .= "and ($whereTemp)";
+			}
+		}
+		// var_dump($where);
+		// die;
+		if (isset($post['search']['value']) && $post['search']['value'] != '') {
+			$search = $post['search']['value'];
+			// create parameter pencarian kesemua kolom yang tertulis
+			// di $columns
+			$whereTemp = "";
+			for ($i = 0; $i < count($columnsSearch); $i++) {
+				$whereTemp .= $columnsSearch[$i] . ' LIKE "%' . $search . '%"';
+
+				// agar tidak menambahkan 'OR' diakhir Looping
+				if ($i < count($columnsSearch) - 1) {
+					$whereTemp .= ' OR ';
+				}
+			}
+			if ($where != '') $where .= " AND (" . $whereTemp . ")";
+			else $where .= $whereTemp;
+		}
+		if ($where != '') $sql .= ' WHERE (' . $where . ')';
+
+		else $sql .= $where;
+
+
+		//SORT Kolom
+		$sortColumn = isset($post['order'][0]['column']) ? $post['order'][0]['column'] : 1;
+		$sortDir    = isset($post['order'][0]['dir']) ? $post['order'][0]['dir'] : 'asc';
+
+		$sortColumn = $columns[$sortColumn - 1];
+
+		$sql .= " ORDER BY {$sortColumn} {$sortDir}";
+		$count = $this->db->query($sql);
+		// hitung semua data
+		$totaldata = $count->num_rows();
+
+		// memberi Limit
+		$start  = isset($post['start']) ? $post['start'] : 0;
+		$length = isset($post['length']) ? $post['length'] : 10;
+
+		if ($start == 0 && $length == -1) {
+		} else {
+			$sql .= " LIMIT {$start}, {$length}";
+		}
+
+
+		// var_dump($sql);
+		// die;
+		$data  = $this->db->query($sql);
+		// var_dump(json_encode($this->db->last_query()));die();
+
+		return array(
+			'totalData' => $totaldata,
+			'data' => $data,
+		);
+	}
 
 	                 
                             
