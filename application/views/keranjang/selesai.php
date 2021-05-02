@@ -108,10 +108,10 @@
 				<div class="footer-social-icons">
 					<span class="social-icon-text">Follow us</span>
 					<ul class="social-icons list-unstyled">
-						<li><a class="fa fa-facebook" href="https://facebook.com/dansdigitalmedia" target="_blank"></a></li>
-						<li><a class="fa fa-instagram" href="https://instagram.com/dansdigitalmedia" target="_blank"></a></li>
-						<li><a class="fa fa-twitter" href="https://twitter.com/dansdigitalmedia" target="_blank"></a></li>
-						<li><a class="fa fa-youtube" href="https://www.youtube.com" target="_blank"></a></li>
+						<li><a class="fa fa-facebook" href="https://facebook.com/<?= $konten[3]->isi ?>" target="_blank"></a></li>
+						<li><a class="fa fa-instagram" href="https://instagram.com/<?= $konten[4]->isi ?>" target="_blank"></a></li>
+						<li><a class="fa fa-twitter" href="https://twitter.com/<?= $konten[5]->isi ?>" target="_blank"></a></li>
+						<li><a class="fa fa-youtube" href="https://www.youtube.com/<?= $konten[6]->isi ?>" target="_blank"></a></li>
 					</ul>
 				</div>
 				<div class="footer-logo">

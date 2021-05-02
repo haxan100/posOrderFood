@@ -1,5 +1,5 @@
 <?php
-	$bu = base_url();
+$bu = base_url();
 ?>
 <!DOCTYPE html>
 <html lang="en-US" itemscope="itemscope" itemtype="http://schema.org/WebPage">
@@ -8,16 +8,16 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Dans-Resto | Digital Restaurant Menu</title>
-	<link rel="shortcut icon"  href="<?= $bu; ?>assets/kasir/img/logo-icon.png">
-	<link rel="stylesheet" type="text/css"  href="<?= $bu; ?>assets/kasir/frontend/css/bootstrap.min.css" media="all" />
-	<link rel="stylesheet" type="text/css"  href="<?= $bu; ?>assets/kasir/frontend/css/font-awesome.min.css" media="all" />
-	<link rel="stylesheet" type="text/css"  href="<?= $bu; ?>assets/kasir/frontend/css/animate.min.css" media="all" />
-	<link rel="stylesheet" type="text/css"  href="<?= $bu; ?>assets/kasir/frontend/css/font-pizzaro.css" media="all" />
-	<link rel="stylesheet" type="text/css"  href="<?= $bu; ?>assets/kasir/frontend/css/style.css" media="all" />
-	<link rel="stylesheet" type="text/css"  href="<?= $bu; ?>assets/kasir/frontend/css/colors/red.css" media="all" />
-	<link rel="stylesheet" type="text/css"  href="<?= $bu; ?>assets/kasir/frontend/css/jquery.mCustomScrollbar.min.css" media="all" />
+	<link rel="shortcut icon" href="<?= $bu; ?>assets/kasir/img/logo-icon.png">
+	<link rel="stylesheet" type="text/css" href="<?= $bu; ?>assets/kasir/frontend/css/bootstrap.min.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="<?= $bu; ?>assets/kasir/frontend/css/font-awesome.min.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="<?= $bu; ?>assets/kasir/frontend/css/animate.min.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="<?= $bu; ?>assets/kasir/frontend/css/font-pizzaro.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="<?= $bu; ?>assets/kasir/frontend/css/style.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="<?= $bu; ?>assets/kasir/frontend/css/colors/red.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="<?= $bu; ?>assets/kasir/frontend/css/jquery.mCustomScrollbar.min.css" media="all" />
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CYanone+Kaffeesatz:200,300,400,700" rel="stylesheet">
-	<link  href="<?= $bu; ?>assets/kasir/backend/js/sweetalert2.css" rel="stylesheet" type="text/css" />
+	<link href="<?= $bu; ?>assets/kasir/backend/js/sweetalert2.css" rel="stylesheet" type="text/css" />
 	<script src="http://dansdigitalmedia.com/resto/backend/js/sweetalert2.min.js"></script>
 	<script type="text/javascript" src="http://dansdigitalmedia.com/resto/frontend/js/jquery.min.js"></script>
 </head>
@@ -30,7 +30,7 @@
 				<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
 				<div class="header-wrap">
 					<div class="site-branding">
-						<a  href="<?= $bu; ?>assets/kasir/" class="custom-logo-link" rel="home">
+						<a href="<?= $bu; ?>assets/kasir/" class="custom-logo-link" rel="home">
 							<img src="http://dansdigitalmedia.com/resto/img/logo-front.png">
 						</a>
 					</div>
@@ -39,10 +39,10 @@
 						<div class="handheld-navigation">
 							<span class="phm-close">Tutup</span>
 							<ul class="menu">
-								<li class="menu-item "><a  href="<?= $bu; ?>assets/kasir/kategori/dessert"><i class="po po-salads"></i>Dessert</a></li>
-								<li class="menu-item "><a  href="<?= $bu; ?>assets/kasir/kategori/drink"><i class="po po-drinks"></i>Drink</a></li>
-								<li class="menu-item "><a  href="<?= $bu; ?>assets/kasir/kategori/main-course"><i class="po po-burger"></i>Main Course</a></li>
-								<li class="menu-item "><a  href="<?= $bu; ?>assets/kasir/kategori/snack"><i class="po po-fries"></i>Snack</a></li>
+								<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori/dessert"><i class="po po-salads"></i>Dessert</a></li>
+								<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori/drink"><i class="po po-drinks"></i>Drink</a></li>
+								<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori/main-course"><i class="po po-burger"></i>Main Course</a></li>
+								<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori/snack"><i class="po po-fries"></i>Snack</a></li>
 							</ul>
 						</div>
 					</nav>
@@ -53,7 +53,7 @@
 						</div>
 						<ul class="site-header-cart-v2 menu">
 							<li class="cart-content ">
-								<a  href="<?= $bu; ?>cart" title="Tampilkan Cart Order Anda">
+								<a href="<?= $bu; ?>cart" title="Tampilkan Cart Order Anda">
 									<i class="fa fa-cart-plus"></i>
 									<span>Cart Order Anda</span>
 								</a>
@@ -71,10 +71,10 @@
 				<div class="pizzaro-secondary-navigation">
 					<nav class="secondary-navigation" aria-label="Secondary Navigation">
 						<ul class="menu">
-							<li class="menu-item "><a  href="<?= $bu; ?>assets/kasir/kategori/dessert"><i class="po po-salads"></i>Dessert</a></li>
-							<li class="menu-item "><a  href="<?= $bu; ?>assets/kasir/kategori/drink"><i class="po po-drinks"></i>Drink</a></li>
-							<li class="menu-item "><a  href="<?= $bu; ?>assets/kasir/kategori/main-course"><i class="po po-burger"></i>Main Course</a></li>
-							<li class="menu-item "><a  href="<?= $bu; ?>assets/kasir/kategori/snack"><i class="po po-fries"></i>Snack</a></li>
+							<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori/dessert"><i class="po po-salads"></i>Dessert</a></li>
+							<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori/drink"><i class="po po-drinks"></i>Drink</a></li>
+							<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori/main-course"><i class="po po-burger"></i>Main Course</a></li>
+							<li class="menu-item "><a href="<?= $bu; ?>assets/kasir/kategori/snack"><i class="po po-fries"></i>Snack</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -84,7 +84,7 @@
 			<div class="col-full">
 				<div class="pizzaro-breadcrumb">
 					<nav class="woocommerce-breadcrumb">
-						<a  href="<?= $bu; ?>assets/kasir/">Beranda</a>
+						<a href="<?= $bu; ?>assets/kasir/">Beranda</a>
 						<span class="delimiter"><i class="po po-arrow-right-slider"></i></span>Konfirmasi
 					</nav>
 				</div>
@@ -301,14 +301,14 @@
 				<div class="footer-social-icons">
 					<span class="social-icon-text">Follow us</span>
 					<ul class="social-icons list-unstyled">
-						<li><a class="fa fa-facebook" href="https://facebook.com/dansdigitalmedia" target="_blank"></a></li>
-						<li><a class="fa fa-instagram" href="https://instagram.com/dansdigitalmedia" target="_blank"></a></li>
-						<li><a class="fa fa-twitter" href="https://twitter.com/dansdigitalmedia" target="_blank"></a></li>
-						<li><a class="fa fa-youtube" href="https://www.youtube.com" target="_blank"></a></li>
+						<li><a class="fa fa-facebook" href="https://facebook.com/<?= $konten[3]->isi ?>" target="_blank"></a></li>
+						<li><a class="fa fa-instagram" href="https://instagram.com/<?= $konten[4]->isi ?>" target="_blank"></a></li>
+						<li><a class="fa fa-twitter" href="https://twitter.com/<?= $konten[5]->isi ?>" target="_blank"></a></li>
+						<li><a class="fa fa-youtube" href="https://www.youtube.com/<?= $konten[6]->isi ?>" target="_blank"></a></li>
 					</ul>
 				</div>
 				<div class="footer-logo">
-					<a  href="<?= $bu; ?>assets/kasir/" class="custom-logo-link" rel="home">
+					<a href="<?= $bu; ?>assets/kasir/" class="custom-logo-link" rel="home">
 						<img src="http://dansdigitalmedia.com/resto/img/logo-front.png">
 					</a>
 				</div>
@@ -342,7 +342,7 @@
 							</div>
 						</li>
 						<li class="cart">
-							<a class="footer-cart-contents"  href="<?= $bu; ?>cart" title="Tampilkan Cart Order Anda">
+							<a class="footer-cart-contents" href="<?= $bu; ?>cart" title="Tampilkan Cart Order Anda">
 								<span class="count cart_count">5</span> </a>
 						</li>
 					</ul>
