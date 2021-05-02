@@ -58,6 +58,41 @@ public function index()
 			'data' => $data
 		));
 	}
+	public function login()
+	{
+		// var_dump($_SESSION);die;
+                $this->load->view('Kasir/Login');
+
+	}
+	public function LoginAct()
+	{
+		$username = $this->input->post('username', true);
+		$password = $this->input->post('password', true);
+		$data = $this->SemuaModel->getKasirByUNandPW($username,$password);
+		if($data==null){
+			$data = null;
+			$pesan = "Username Dan Password salah!";
+			$error =  true;
+		}else{
+			$data = $data;
+			$pesan = "Selamat Datang Kasir";
+			$error = false;
+
+			$session = array(
+				'user_session' => true, 
+				'id_kasir' => $data->id_kasir,
+				'nama_kasir' => $data->nama_kasir,
+			);
+			$this->session->set_userdata($session); 
+		}
+		echo json_encode(array(
+			'error' => $error,
+			'data' => $data,
+			'pesan' => $pesan
+		));
+
+		# code...
+	}
         
 }
         

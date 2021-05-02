@@ -142,6 +142,17 @@ public function getDataById($namaTable,$nama_id,$id_Dicari)
 		$sql = $this->db->get()->result();
 		return $sql;
 	}
+	public function getKasirByUNandPW($username,$password)
+	{
+		$this->db->from('kasir');
+		$this->db->where('username', $username);
+		$this->db->where('password', $password);
+		$sql = $this->db->get();
+		return $sql->row();
+		
+		
+		
+	}
 	
                      
               
