@@ -863,6 +863,21 @@ class Admin extends CI_Controller {
 		
 		# code...
 	}
+	public function master_slider()
+	{
+		$id_admin = $this->session->userdata('id_admin');
+		$role = $this->AdminModel->getRole($id_admin, 'data_admin')->r;
+		if ($role == 1) {
+			$obj['listKategori'] = $this->SemuaModel->getAllRole();
+			$obj['content'] = 'admin/master_slider';
+			$this->load->view('admin/templates/index', $obj);
+		} elseif ($role == 0) {
+			$obj['ci'] = $this;
+			$obj['content'] =  "admin/blank";
+
+			$this->load->view('admin/templates/index', $obj);
+		}
+	}
 
 }
         
