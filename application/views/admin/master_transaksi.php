@@ -24,6 +24,9 @@
 			<div class="x_content">
 				<div class="row">
 					<div class="col-sm-12">
+						<span class="col-lg-2 col-md-3 col-sm-6 col-xs-12 px-0 my-1">
+							<a class="btn m-t-20 btn-info waves-effect waves-light" href="" id="btnExport" style="margin-top:0%"> <i class="fas fa-download"></i> EXPORT </a>
+						</span>
 
 						<div class="card-box table-responsive">
 							<input value="<?= $awal ?> / <?= $now ?>" type="text" name="datepicker<?= $_dynamycInputName ?>" id="datepicker" placeholder="Rentang Tanggal" class="datepicker form-control col-lg-3 col-md-3 col-sm-6 col-xs-12 mr-2 my-1">
@@ -31,10 +34,10 @@
 								<button class="btn btn-info waves-effect waves-light" id="resetDate"><span class="fa fa-sync"></span> Reset</button>
 							</span>
 							</p>
-
 							<button type="button" class="btn btn-primary btn_tambah" data-toggle="modal" data-target=".bs-example-modal-lg">Tambah</button>
 
 							<table id="datatable_data" class="table table-striped table-bordered">
+
 								<thead>
 									<tr>
 										<th>No.</th>
@@ -432,6 +435,17 @@
 					[10, 25, 50, 1000],
 					[10, 25, 50, 1000]
 				]
+
+			});
+			$('#btnExport').on('click', function() {
+				var date = $('#datepicker').val();
+				// console.log(tipe_produk);return(false);dt_filter_status
+				var url = bu + 'Export/master_list_transaksi_export/?';
+				// url += '&tipe_bid='+tipe_bid;
+				url += '&date=' + date;
+				window.location = url;
+				console.log(url);
+				return (false);
 
 			});
 

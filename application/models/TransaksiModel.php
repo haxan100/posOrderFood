@@ -233,6 +233,28 @@ public function login(){
 			'data' => $data,
 		);
 	}
+
+
+	public function get_transaksi($status, $date)
+	{
+		$selectDate = 't.created_at';
+		$this->db->select('t.*,k.*');
+		$this->db->from('transaksi as t');
+		$this->db->join('kasir  as k', 'k.id_kasir = t.id_user');
+		$from = 't.';
+		if ($date != ''
+		) {
+			$date = explode('/ ', $date);
+			if (count($date) == 1) {
+				$this->db->like($date);
+			} else {
+				$whereTemp = array('date_format(' . $selectDate . ', "%Y-%m-%d") >=' => $date[0], 'date_format(' . $selectDate . ', "%Y-%m-%d") <=' => $date[1]);
+				$this->db->where($whereTemp);
+			}
+		}
+		$data = $this->db->get();
+		return $data->result();
+	}
                         
                             
                         
