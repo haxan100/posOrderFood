@@ -193,6 +193,12 @@ class AdminModel extends CI_Model {
 		}
 		return $status;
 	}
+	public function edit_new_admin_role($in, $id_admin)
+	{
+		$this->db->where('id_role', $id_admin);
+
+		return $this->db->update('role', $in);
+	}
 	                 
                             
                         

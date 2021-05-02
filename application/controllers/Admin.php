@@ -651,6 +651,101 @@ class Admin extends CI_Controller {
 			'errorInputs' => $errorInputs
 		));
 	}
+	public function edit_role()
+	{
+		$id_role = $this->input->post('id_role', TRUE);
+		$nama = $this->input->post('nama', TRUE);
+
+		$data_admin = ($this->input->post('data_admin', TRUE) == "true") ? 1 : 0;
+		$data_kasir = ($this->input->post('data_kasir', TRUE) == "true") ? 1 : 0;
+		$master_menu = ($this->input->post('master_menu', TRUE) == "true") ? 1 : 0;
+		$master_transaksi = ($this->input->post('master_transaksi', TRUE) == "true") ? 1 : 0;
+
+		$Histori = ($this->input->post('Histori', TRUE) == "true") ? 1 : 0;
+		$Setting = ($this->input->post('Setting', TRUE) == "true") ? 1 : 0;
+
+		$message = 'Gagal menambahkan Produk Baru!<br>Silahkan lengkapi data yang diperlukan.';
+		$errorInputs = array();
+		$status = true;
+		$noRoleSelected = true;
+		if (
+			$data_admin == 1 || $data_kasir == 1 || $master_menu == 1
+			|| $master_transaksi  == 1 || $Setting==1 || $Histori == 1 
+		) $noRoleSelected = false;
+		else if ($noRoleSelected) {
+			$status = false;
+			$errorInputs[] = ('Silahkan pilih id_role');
+		}
+
+		if (empty($nama)) {
+			$status = false;
+			$errorInputs[] = array('#nama', 'Silahkan Masukan Nama');
+		}
+
+		if ($status) {
+			$admin_role = array(
+				'nama_role' => $nama,
+				'data_admin' => $data_admin,
+				'data_kasir' => $data_kasir,
+				'master_menu' => $master_menu,
+				'master_transaksi' => $master_transaksi,
+				'histori' => $Histori,
+				'seeting' => $Setting,
+			);
+
+			if ($this->AdminModel->edit_new_admin_role($admin_role, $id_role)) {
+				$message = 'Berhasil Mengubah Data Role ';
+				$status = true;
+
+				// $id_admin = $this->session->userdata('id_admin');
+				// $aksi = 'Edit Admin ' . $nama;
+				// $id_kategori = 53;
+				// $this->AdminModel->log($id_admin, $id_kategori, $aksi);
+			} else {
+				$message = 'Gagal ';
+				$status = false;
+
+			}
+		} else {
+			$message = 'Username Sudah Ada! ';
+		}
+		echo json_encode(array(
+			'status' => $status,
+			'message' => $message,
+			'errorInputs' => $errorInputs
+		));
+	}
+	public function hapusRole()
+	{
+		if (!$this->isLoggedInAdmin()) {
+			echo '403 Forbidden!';
+			exit();
+		}
+		$id_admin = $this->input->post('id_role', true);
+		$data = $this->AdminModel->getRoleById($id_admin);
+		$status = false;
+		$message = 'Gagal menghapus Role!';
+		if (count($data) == 0) {
+			$message .= '<br>Tidak terdapat Role yang dimaksud.';
+		} else {
+			$hasil = $this->AdminModel->hapusRole($id_admin);
+			if ($hasil) {
+				$status = true;
+				$message = 'Berhasil menghapus Role: <b>' . $data[0]->role_name . '</b>';
+				$id_admin = $this->session->userdata('id_admin');
+				$aksi = 'hapus Role ' . $data[0]->role_name;
+				$id_kategori = 54;
+				$this->AdminModel->log($id_admin, $id_kategori, $aksi);
+			} else {
+				$message .= 'Terjadi kesalahan. #ADM0028';
+			}
+		}
+
+		echo json_encode(array(
+			'status' => $status,
+			'message' => $message,
+		));
+	}
 
 }
         

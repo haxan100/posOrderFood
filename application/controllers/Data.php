@@ -245,6 +245,7 @@ class Data extends CI_Controller {
 			$fields[] = '
         <button class="btn btn-warning my-1  btn-blocks btnEditAdmin  text-white" 
           data-id_role="' . $row->id_role . '"		
+          data-nama_role="' . $row->nama_role . '"		
           data-data_admin="' . $row->data_admin . '"		
           data-data_kasir="' . $row->data_kasir . '"		
           data-master_menu="' . $row->master_menu . '"		
