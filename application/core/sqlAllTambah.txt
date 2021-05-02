@@ -1,1 +1,2 @@
 INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES (NULL, 'All'), (NULL, 'Desert'), (NULL, 'Snack');
+ALTER TABLE `role` ADD `master_menu` INT(1) NOT NULL DEFAULT '0' AFTER `data_kasir`, ADD `master_transaksi` INT(1) NOT NULL DEFAULT '0' AFTER `master_menu`, ADD `histori` INT(1) NOT NULL DEFAULT '0' AFTER `master_transaksi`, ADD `seeting` INT(1) NOT NULL DEFAULT '0' AFTER `histori`;

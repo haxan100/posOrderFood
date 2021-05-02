@@ -228,6 +228,49 @@ class Data extends CI_Controller {
 
 		exit();
 	}
+	public function getAllAdminRole()
+	{
+		$dt = $this->AdminModel->dt_admin_role($_POST);
+		$datatable['draw']            = isset($_POST['draw']) ? $_POST['draw'] : 1;
+		$datatable['recordsTotal']    = $dt['totalData'];
+		$datatable['recordsFiltered'] = $dt['totalData'];
+		$datatable['data']            = array();
+		$start  = isset($_POST['start']) ? $_POST['start'] : 0;
+		$no = $start + 1;
+		foreach ($dt['data']->result() as $row) {
+
+			// var_dump($row->daftarBidderLihat);die;
+			$fields = array($no++);
+			$fields[] = $row->nama_role;
+			$fields[] = '
+        <button class="btn btn-warning my-1  btn-blocks btnEditAdmin  text-white" 
+          data-id_role="' . $row->id_role . '"		
+          data-data_admin="' . $row->data_admin . '"		
+          data-data_kasir="' . $row->data_kasir . '"		
+          data-master_menu="' . $row->master_menu . '"		
+
+          data-master_transaksi="' . $row->master_transaksi . '"		
+          data-histori="' . $row->histori . '"		
+          data-seeting="' . $row->seeting . '"		
+		 ><i class="far fa-edit"></i> Ubah</button>
+
+        <button class="btn btn-danger my-1 btn-blocks  btnHapus text-white" 
+
+          data-id_role="' . $row->id_role . '" data-nama_role="' . $row->nama_role . '"
+
+        ><i class="fas fa-trash"></i> Hapus</button>
+
+        ';
+
+
+
+			$datatable['data'][] = $fields;
+		}
+
+		echo json_encode($datatable);
+
+		exit();
+	}
 
         
 }

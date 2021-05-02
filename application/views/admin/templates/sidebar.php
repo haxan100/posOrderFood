@@ -37,14 +37,14 @@
 										<li><a href="<?=$bu ?>/Admin/master_admin">Admin</a></li>
 										<li><a href="<?=$bu ?>/Admin/master_kasir">Kasir</a></li>
 										<li><a href="<?=$bu ?>/Admin/master_item">Item</a></li>
-										<li><a href="<?=$bu ?>/Admin/transaksi">Master Transaksi</a></li>
+										<li><a href="<?=$bu ?>/Admin/master_transaksi">Master Transaksi</a></li>
 									</ul>
 								</li>
                                 
 								<li><a><i class="fa fa-home"></i> Prop <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a href="<?=$bu ?>/Admin/setting">Setting</a></li>
-										<li><a href="index2.html">xx</a></li>
+										<li><a href="<?= $bu?>/Admin/master_role">Role</a></li>
 										<li><a href="index3.html">xx</a></li>
 										<li><a href="index3.html">xx</a></li>
 									</ul>

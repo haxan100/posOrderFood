@@ -9,7 +9,7 @@ class Admin extends CI_Controller {
 		$this->load->model('MenuModel');
 		$this->load->model('SemuaModel');
 		$this->load->model('TransaksiModel');
-		// $this->load->model('GuruModel');
+		$this->load->model('AdminModel');
 		// $this->load->model('SekolahModel');
 		$this->load->helper('url');
 	}
@@ -582,6 +582,74 @@ class Admin extends CI_Controller {
 
 		$obj['content'] = 'admin/master_transaksi';
 		$this->load->view('admin/templates/index', $obj);
+	}
+	public function master_role()
+	{
+
+		$this->cekLogin();
+
+		$obj['ci'] = $this;
+		$obj['content'] = 'admin/master_role';
+		$this->load->view('admin/templates/index', $obj);
+		
+		# code...
+	}
+	public function tambah_role()
+	{
+		$nama = $this->input->post('nama', TRUE);
+		$master_admin = ($this->input->post('master_admin', TRUE) == "true") ? 1 : 0;
+		$master_kasir = ($this->input->post('master_kasir', TRUE) == "true") ? 1 : 0;
+		$master_menu = ($this->input->post('master_menu', TRUE) == "true") ? 1 : 0;
+		$master_transaksi = ($this->input->post('master_transaksi', TRUE) == "true") ? 1 : 0;
+		$histori = ($this->input->post('histori', TRUE) == "true") ? 1 : 0;
+		$setting = ($this->input->post('setting', TRUE) == "true") ? 1 : 0;
+
+		$message = 'Gagal menambahkan Role Baru!<br>Silahkan lengkapi data yang diperlukan.';
+		$errorInputs = array();
+		$status = true;
+		$in = array(
+			'role_name' => $nama,
+		);
+		// var_dump($in);die();
+		$noRoleSelected = true;
+		if (
+			$master_admin == 1 ||  $master_kasir ==1 || $master_menu==1 || $master_transaksi == 1 || $histori ==1 || $setting 
+		) $noRoleSelected = false;
+		else if ($noRoleSelected) {
+			$status = false;
+			$errorInputs[] = ('Silahkan pilih Role minimal 1 Role!');
+		}
+		// var_dump($noRoleSelected);die;
+		if ($status) {
+			// $id_admin = $this->AdminModel->get_last_id()->last_id;
+			$admin_role = array(
+				'nama_role' => $nama,
+				'data_admin' => $master_admin,
+				'data_kasir' => $master_kasir,
+				'master_menu' => $master_menu,
+				'master_transaksi' => $master_transaksi,
+				'histori' => $histori,
+				'seeting' => $setting,
+
+			);
+			if ($this->AdminModel->tambah_new_admin_role($admin_role)) {
+				$status = true ;
+				$message = 'Berhasil Menambah Role ';
+				// $id_admin = $this->session->userdata('id_admin');
+				// $aksi = 'Tambah Admin ' . $nama;
+				// $id_kategori = 52;
+				// $this->AdminModel->log($id_admin, $id_kategori, $aksi);
+			} else {
+				$message = 'Gagal ';
+			}
+		} else {
+			$message = 'Username Sudah Ada! ';
+		}
+		echo json_encode(array(
+			'status' => $status,
+			'message' => $message,
+			'errorInputs' => $errorInputs
+		));
 	}
 
 }
