@@ -199,6 +199,17 @@ class AdminModel extends CI_Model {
 
 		return $this->db->update('role', $in);
 	}
+	public function getRoleById($id_admin)
+	{
+		$this->db->where('id_role', $id_admin);
+		return $this->db->get('role')->result();
+	}
+	public function hapusRole($id_admin)
+	{
+		$this->db->where('id_role', $id_admin);
+		return $this->db->delete('role');
+	}
+
 	                 
                             
                         

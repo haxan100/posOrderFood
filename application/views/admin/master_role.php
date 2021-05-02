@@ -129,6 +129,7 @@ $obj['ci'] = $ci;
 	 *       Basic Table                   *
 	 ****************************************/
 	document.addEventListener("DOMContentLoaded", function(event) {
+		var bu = '<?= base_url(); ?>'
 
 		// $('#modalAdmin').modal('show');
 
@@ -244,26 +245,51 @@ $obj['ci'] = $ci;
 		$('body').on('click', '.btnHapus', function() {
 			var id_role = $(this).data('id_role');
 			var name_role = $(this).data('nama_role');
-			var c = confirm('Apakah anda yakin akan menghapus admin: "' + name_role + '" ?');
-			if (c == true) {
-				$.ajax({
-					url: bu + 'admin/hapusRole',
-					dataType: 'json',
-					method: 'POST',
-					data: {
-						id_role: id_role
-					}
-				}).done(function(e) {
-					console.log(e);
-					notifikasi('#alertNotif', e.message, !e.status);
-					datatable.ajax.reload();
-				}).fail(function(e) {
-					console.log('gagal');
-					console.log(e);
-					var message = 'Terjadi Kesalahan. #JSMP01';
-					notifikasi('#alertNotif', message, true);
-				});
-			}
+			// var c = confirm('Apakah anda yakin akan menghapus admin: "' + name_role + '" ?');
+
+
+			Swal.fire({
+				title: 'Are you sure?',
+				text: "Anda akan Menghapus data : " + name_role,
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Yes, delete it!'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					$.ajax({
+						url: bu + 'admin/hapusRole',
+						dataType: 'json',
+						method: 'POST',
+						data: {
+							id_role: id_role
+						}
+					}).done(function(e) {
+						console.log(e);
+						Swal.fire(
+							'Deleted!',
+							'Your file has been deleted.',
+							'success'
+						)
+						datatable.ajax.reload();
+					}).fail(function(e) {
+						console.log('gagal');
+						console.log(e);
+						Swal.fire(
+							'GAGAL!',
+							'Gagal Menghapus.',
+							'error'
+						)
+						var message = 'Terjadi Kesalahan. #JSMP01';
+					});
+
+
+
+				}
+			})
+
+
 			return false;
 		});
 		var datatable = $('#adminList').DataTable({

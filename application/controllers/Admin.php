@@ -731,11 +731,11 @@ class Admin extends CI_Controller {
 			$hasil = $this->AdminModel->hapusRole($id_admin);
 			if ($hasil) {
 				$status = true;
-				$message = 'Berhasil menghapus Role: <b>' . $data[0]->role_name . '</b>';
-				$id_admin = $this->session->userdata('id_admin');
-				$aksi = 'hapus Role ' . $data[0]->role_name;
-				$id_kategori = 54;
-				$this->AdminModel->log($id_admin, $id_kategori, $aksi);
+				$message = 'Berhasil menghapus Role: <b>' . $data[0]->nama_role . '</b>';
+				// $id_admin = $this->session->userdata('id_admin');
+				// $aksi = 'hapus Role ' . $data[0]->nama_role;
+				// $id_kategori = 54;
+				// $this->AdminModel->log($id_admin, $id_kategori, $aksi);
 			} else {
 				$message .= 'Terjadi kesalahan. #ADM0028';
 			}
