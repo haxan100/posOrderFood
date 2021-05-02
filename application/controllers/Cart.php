@@ -22,7 +22,9 @@ public function index()
 			redirect('Kasir/Login', 'refresh');
 		}
 			$data['konten'] = $this->SemuaModel->getSeting();
-			$id_user = 1 ;
+		$id_user = $this->session->userdata('id_kasir');
+
+			// $id_user = 1 ;
 			$cart = $this->CartModel->getCart($id_user);
 			$data['totalcart'] = count($cart);
 			$d = 0;
@@ -77,8 +79,7 @@ public function checkout()
 			redirect('Kasir/Login', 'refresh');
 		}
 		$data['konten'] = $this->SemuaModel->getSeting();
-	
-		$id_user = 1 ;
+		$id_user = $this->session->userdata('id_kasir');
 		$cart = $this->CartModel->getCart($id_user);
 		$data['cart_content']      = $cart;
 		$data['totalcart'] = count($cart);
@@ -100,7 +101,8 @@ public function checkout()
 }
 public function hapusSatuKeranjang()
 {
-	$id_user = 1;
+		$id_user = $this->session->userdata('id_kasir');
+	
 	// var_dump($_POST);die;
 	$id_produk = $this->input->post('id', TRUE);
 	$msg = "Gagal Hapus";
@@ -123,12 +125,12 @@ public function hapusSatuKeranjang()
 }
 public function updateCart()
 {
-	$id_user = 1;
+		$id_user = $this->session->userdata('id_kasir');
+	
 	// var_dump($_POST);die;
 	$id_produk = $this->input->post('id', TRUE);
 	$qty = $this->input->post('qty', TRUE);
 	$in = array('qty' => $qty );
-	$id_user = 1 ;
 
 	$msg = "Gagal Update";
 	$status = false;
@@ -171,7 +173,8 @@ public function konfirmasi()
 	$pilihtempat = $this->input->post('pilihtempat');
 	$meja_id = $this->input->post('meja_id');
 	$totalharga = $this->input->post('totalharga');
-	$id_user = 1; // nantinya id user bakalan jadi session
+	$id_user = $this->session->userdata('id_kasir');
+
 	$now = date('Y-m-d H:i:s');
 
 	$cart = $this->CartModel->getCart($id_user);

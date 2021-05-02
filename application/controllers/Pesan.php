@@ -24,8 +24,9 @@ public function setBid()
 	$harga = $this->input->post('harga', TRUE);
 	$qty = $this->input->post('qty', TRUE);
 	$now = date('Y-m-d H:i:s');
-	$id_user = 1;
-	// $id_user = $this->session->userdata('id_user');
+	$id_user = $this->session->userdata('id_kasir');
+	// var_dump($id_user);die;
+	// $id_user = 1;
 	$tgl = $now;
 	$keranjangOld = $this->CartModel->getCartByIdUserAndProduk($id_user, $id_produk);
 		$getHargaByIdProd = $this->CartModel->getProdByIdProd($id_produk)->harga;
