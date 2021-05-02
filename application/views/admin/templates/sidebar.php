@@ -4,12 +4,16 @@
 			// $page = array_key_exists('page', $header) ? $header['page'] : 'master_admin';
 			// $js = array_key_exists('js', $header) ? $header['js'] : array();
 			$bu = base_url();
+			$role = $this->AdminModel->getRoleAll($this->session->userdata('id_admin'))->row();
+			// var_dump($role);die;
+
+
 			?>
 
             <div class="col-md-3 left_col">
             	<div class="left_col scroll-view">
             		<div class="navbar nav_title" style="border: 0;">
-            			<a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+            			<a href="<?= base_url() ?>/admin" class="site_title"><i class="fa fa-paw"></i> <span>Pos Admin</span></a>
             		</div>
 
             		<div class="clearfix"></div>
@@ -18,7 +22,7 @@
             		<div class="profile clearfix">
             			<div class="profile_info">
             				<span>Welcome,</span>
-            				<h2>John Doe</h2>
+            				<h2>Admin!</h2>
             			</div>
             			<div class="clearfix"></div>
             		</div>
@@ -31,25 +35,61 @@
             			<div class="menu_section">
             				<h3>General</h3>
             				<ul class="nav side-menu">
+            					<?php
+								if ($role->data_admin == 1 || $role->data_kasir == 1 || $role->master_menu == 1 || $role->master_transaksi == 1) {
 
-            					<li><a><i class="fa fa-home"></i> Master <span class="fa fa-chevron-down"></span></a>
-            						<ul class="nav child_menu">
-            							<li><a href="<?= $bu ?>/Admin/master_admin">Master Admin</a></li>
-            							<li><a href="<?= $bu ?>/Admin/master_kasir">Master Kasir</a></li>
-            							<li><a href="<?= $bu ?>/Admin/master_item">Master Item</a></li>
-            							<li><a href="<?= $bu ?>/Admin/master_transaksi">Master Transaksi</a></li>
-            						</ul>
-            					</li>
+								?>
+            						<li><a><i class="fa fa-home"></i> Master <span class="fa fa-chevron-down"></span></a>
+            							<ul class="nav child_menu">
+            								<?php
+											if ($role->data_admin == 1) {
+											?>
+            									<li><a href="<?= $bu ?>/Admin/master_admin">Master Admin</a></li>
 
+            								<?php 	}
+											if ($role->data_kasir == 1) {
+											?>
+
+            								<li><a href="<?= $bu ?>/Admin/master_kasir">Master Kasir</a></li>
+											<?php 	}
+											if ($role->master_menu == 1) {
+											?>
+            								<li><a href="<?= $bu ?>/Admin/master_item">Master Item</a></li>
+												<?php 	}
+											if ($role->master_transaksi == 1) {
+											?>
+            								<li><a href="<?= $bu ?>/Admin/master_transaksi">Master Transaksi</a></li>
+												<?php 	}
+											?>
+            							</ul>
+            						</li>
+
+            					<?php 	}
+
+								
+								if ($role->seeting == 1 || $role->data_admin == 1 || $role->histori == 1 ) {
+								?>
             					<li><a><i class="fa fa-home"></i> Seting <span class="fa fa-chevron-down"></span></a>
             						<ul class="nav child_menu">
+										<?php
+										if ($role->seeting == 1) {
+										?>
             							<li><a href="<?= $bu ?>/Admin/setting">Setting App</a></li>
+											<?php 	}
+											if ($role->data_admin == 1) {
+											?>
             							<li><a href="<?= $bu ?>/Admin/master_role">Role</a></li>
+											<?php 	}
+											if ($role->histori == 1) {
+											?>
             							<li><a href="<?= $bu ?>/Admin/master_histori">Histori</a></li>
+											<?php 	}
+											?>
             						</ul>
             					</li>
-
-            					<li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
+								
+						<?php 	} ?>
+            					<!-- <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
             						<ul class="nav child_menu">
             							<li><a href="form.html">General Form</a></li>
             							<li><a href="form_advanced.html">Advanced Components</a></li>
@@ -58,7 +98,7 @@
             							<li><a href="form_upload.html">Form Upload</a></li>
             							<li><a id="keluar">Logout</a></li>
             						</ul>
-            					</li>
+            					</li> -->
             				</ul>
             			</div>
 
