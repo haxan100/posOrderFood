@@ -12,12 +12,17 @@ class Kasir extends CI_Controller {
 		$this->load->model('CartModel');
 		// $this->load->model('SekolahModel');
 		$this->load->helper('url');
+		$this->load->library('session');
 	}
 
 public function index()
 {	
-	
-	// var_dump($_SESSION);die;
+	$sess =  $this->session->userdata('user_session');
+	if($sess==null){
+		
+		redirect('Kasir/Login','refresh');
+		
+	}
 	$data['konten'] = $this->SemuaModel->getSeting();
 	$cart= $this->CartModel->getCart();
 	$data['totalcart'] = count($cart);

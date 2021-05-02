@@ -16,6 +16,11 @@ class Cart extends CI_Controller {
 
 public function index()
 {
+		$sess =  $this->session->userdata('user_session');
+		if ($sess == null) {
+
+			redirect('Kasir/Login', 'refresh');
+		}
 			$data['konten'] = $this->SemuaModel->getSeting();
 			$id_user = 1 ;
 			$cart = $this->CartModel->getCart($id_user);
@@ -66,6 +71,11 @@ public function index()
 }
 public function checkout()
 {
+		$sess =  $this->session->userdata('user_session');
+		if ($sess == null) {
+
+			redirect('Kasir/Login', 'refresh');
+		}
 		$data['konten'] = $this->SemuaModel->getSeting();
 	
 		$id_user = 1 ;
@@ -235,6 +245,12 @@ function generateRandomString($length = 10)
 	}
 public function selesai()
 {
+
+		$sess =  $this->session->userdata('user_session');
+		if ($sess == null) {
+
+			redirect('Kasir/Login', 'refresh');
+		}
 	$id = $_GET['id'];
 	$data['Data'] = $this->SemuaModel->getDataTransaksiById($id);
 	$data['getData']=$this->SemuaModel->getDataFromDetTranAndPro($id);
