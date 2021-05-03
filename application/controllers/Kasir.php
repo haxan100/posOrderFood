@@ -67,6 +67,8 @@ public function index()
 	}
 	public function LoginAct()
 	{
+		$now  =  date("Y-m-d h:m:s");
+		// var_dump($now);die;
 		$username = $this->input->post('username', true);
 		$password = $this->input->post('password', true);
 		$data = $this->SemuaModel->getKasirByUNandPW($username,$password);
@@ -84,7 +86,10 @@ public function index()
 				'id_kasir' => $data->id_kasir,
 				'nama_kasir' => $data->nama_kasir,
 			);
+			$upd = array('last_login' => $now );
+			$this->SemuaModel->EditData('kasir','id_kasir',$upd,$data->id_kasir);
 			$this->session->set_userdata($session); 
+
 		}
 		echo json_encode(array(
 			'error' => $error,
