@@ -110,7 +110,7 @@
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Harga <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input id="harga" name="harga" class="form-control " placeholder="Harga" type="text" class="form-control">
+												<input id="harga" name="harga" class="form-control " placeholder="Harga" type="number" class="form-control">
 
 											</div>
 										</div>

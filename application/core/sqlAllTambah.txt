@@ -5,3 +5,9 @@ CREATE TABLE `hasanposresto`.`histori_admin` ( `id_histori` INT(15) NOT NULL AUT
 CREATE TABLE `hasanposresto`.`kategori_histori` ( `id_kategori` INT NOT NULL AUTO_INCREMENT , `nama_kategori` VARCHAR(255) NOT NULL , PRIMARY KEY (`id_kategori`)) ENGINE = InnoDB;
 INSERT INTO `kategori_histori` (`id_kategori`, `nama_kategori`) VALUES (NULL, 'Tambah Admin'), (NULL, 'Edit Admin'), (NULL, 'Hapus Admin'), (NULL, 'Tambah Kasir');
 INSERT INTO `kategori_histori` (`id_kategori`, `nama_kategori`) VALUES (NULL, 'Edit Kasir'), (NULL, 'Hapus Kasir'), (NULL, 'Tambah Menu'), (NULL, 'Edit Menu'), (NULL, 'Hapus Menu'), (NULL, 'Tambah Role'), (NULL, 'Edit Role'), (NULL, 'Hapus ROle');
+
+===================
+CREATE TABLE `hasanposresto`.`slider` ( `id_slider` INT(90) NOT NULL AUTO_INCREMENT , `nama_foto` VARCHAR(255) NOT NULL , `foto` VARCHAR(255) NOT NULL , PRIMARY KEY (`id_slider`)) ENGINE = InnoDB;
+INSERT INTO `slider` (`id_slider`, `nama_foto`, `foto`) VALUES (NULL, 'foto_1', 'foto1.jpg'), (NULL, 'foto_2', 'foto2.jpg');
+
+INSERT INTO `setting` (`id_setting`, `konten`, `isi`) VALUES (NULL, 'facebook', 'abdul.gostand'), (NULL, 'instagram', 'heyiamhasan'), (NULL, 'twitter', 'heyiamhasan'), (NULL, 'youtube', 'abdul.hasan388');

@@ -75,7 +75,7 @@ class Admin extends CI_Controller {
 		$nama = $this->input->post('nama', TRUE);
 		$id_kategori = $this->input->post('id_kategori', TRUE);
 		$harga = $this->input->post('harga', TRUE);
-
+		// var_dump($_FILES);die;
 		$status = true;
 
 		if ($nama == null) {
@@ -103,7 +103,7 @@ class Admin extends CI_Controller {
 			$_FILES['f']['error']     = $_FILES['foto']['error'];
 			$_FILES['f']['size']     = $_FILES['foto']['size'];
 			$config['upload_path']          = './assets/images/foods';
-			$config['allowed_types']        = 'jpg|jpeg|png|gif';
+			$config['allowed_types']        = 'jpg|jpeg|png|gif|JPG|jpg|JPEG|PNG';
 			$config['max_size']             = 3 * 1024;
 			$config['max_width']            = 10 * 1024;
 			$config['max_height']           = 10 * 1024;
@@ -116,6 +116,7 @@ class Admin extends CI_Controller {
 			if (!$this->upload->do_upload('f')) {
 				$errorUpload = $this->upload->display_errors() . '<br>';
 				$status = false;
+				$message = $errorUpload;
 				$errorInputs[] = array('#foto', $errorUpload);
 			} else {
 				// var_dump($status);die;
