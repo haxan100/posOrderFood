@@ -255,13 +255,13 @@ class Data extends CI_Controller {
           data-master_transaksi="' . $row->master_transaksi . '"		
           data-histori="' . $row->histori . '"		
           data-seeting="' . $row->seeting . '"		
-		 ><i class="far fa-edit"></i> Ubah</button>
+		 ><i class="fa fa-edit"></i> Ubah</button>
 
         <button class="btn btn-danger my-1 btn-blocks  btnHapus text-white" 
 
           data-id_role="' . $row->id_role . '" data-nama_role="' . $row->nama_role . '"
 
-        ><i class="fas fa-trash"></i> Hapus</button>
+        ><i class="fa fa-trash"></i> Hapus</button>
 
         ';
 

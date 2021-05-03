@@ -25,7 +25,8 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<span class="col-lg-2 col-md-3 col-sm-6 col-xs-12 px-0 my-1">
-							<a class="btn m-t-20 btn-info waves-effect waves-light" href="" id="btnExport" style="margin-top:0%"> <i class="fas fa-download"></i> EXPORT </a>
+							<a class="btn m-t-20 btn-info waves-effect waves-light" href="" id="btnExport" style="margin-top:0%"> <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+							 EXPORT </a>
 						</span>
 
 						<div class="card-box table-responsive">
