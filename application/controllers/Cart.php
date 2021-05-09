@@ -137,7 +137,7 @@ public function updateCart()
 	$status = false;
 	$getData = $this->CartModel->getAllCartByUser($id_user);
 	$TotalgetData = count($this->CartModel->getAllCartByUser($id_user));
-	$cart= $this->CartModel->getCart();
+	$cart= $this->CartModel->getCart($id_user);
 	$totalHarga =	" ";
 
 	if($this->CartModel->updateCartByIDprodAndUser($in,$id_produk,$id_user)){
