@@ -24,8 +24,6 @@ class Export extends CI_Controller
 
 	public function master_list_transaksi_export()
 	{
-
-
 		$status = $this->input->get('status', TRUE);
 		$selectDate = $this->input->get('selectDate', TRUE);
 		$date = $this->input->get('date', TRUE);

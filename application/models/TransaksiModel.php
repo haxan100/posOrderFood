@@ -246,13 +246,18 @@ public function login(){
 		) {
 			$date = explode('/ ', $date);
 			if (count($date) == 1) {
-				$this->db->like($date);
+				$whereTemp = array('date_format(' . $selectDate . ', "%Y-%m-%d") =' => $date[0]);
+				$this->db->where($whereTemp);
+
 			} else {
 				$whereTemp = array('date_format(' . $selectDate . ', "%Y-%m-%d") >=' => $date[0], 'date_format(' . $selectDate . ', "%Y-%m-%d") <=' => $date[1]);
 				$this->db->where($whereTemp);
 			}
 		}
 		$data = $this->db->get();
+		// echo $this->db->last_query();
+		// die;
+		
 		return $data->result();
 	}
                         
