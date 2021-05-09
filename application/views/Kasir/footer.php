@@ -213,9 +213,9 @@
 			var max_page = 5;
 
 			if (e.halaman <= 1) {
-				pag += '<button disabled data-page="1" class="page-link button btn-outline-secondary px-2 rounded mr-2 pg border-0"><i class="fas fa-arrow-left"></i></button> ';
+				pag += '<button disabled data-page="1" class="page-link button btn-outline-secondary px-2 rounded mr-2 pg border-0"><i class="fa fa-step-backward"></i></button> ';
 			} else {
-				pag += '<button data-page="' + (e.halaman - 1) + '" class="page-link button btn-primary px-2 rounded mr-2 pg border-0"><i class="fas fa-arrow-left"></i></button> ';
+				pag += '<button data-page="' + (e.halaman - 1) + '" class="page-link button btn-primary px-2 rounded mr-2 pg border-0"><i class="fa fa-arrow-left"></i></button> ';
 			}
 			// console.log(p.total_halaman <= max_page);
 			if (e.total_halaman <= max_page) {
