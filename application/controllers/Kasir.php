@@ -23,10 +23,12 @@ public function index()
 		redirect('Kasir/Login','refresh');
 		
 	}
+	$id_user =  $this->session->userdata('id_kasir') ;
+	// var_dump($id_user);die;
 	$data['konten'] = $this->SemuaModel->getSeting();
 	$data['slider'] = $this->SemuaModel->getSlider();
 
-	$cart= $this->CartModel->getCart();
+	$cart= $this->CartModel->getCart($id_user);
 	$data['totalcart'] = count($cart);
 	$d = 0 ;
 	foreach ($cart as $da ) {

@@ -34,7 +34,7 @@ public function setBid()
 		// die;
 	$getData = $this->CartModel->getAllCartByUser($id_user);
 	$TotalgetData = count($this->CartModel->getAllCartByUser($id_user));
-	$cart= $this->CartModel->getCart();
+	$cart= $this->CartModel->getCart($id_user);
 	
 	$d = 0 ;
 	// var_dump($cart);die;

@@ -30,7 +30,7 @@ $bu = base_url();
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><?= $konten[0]->isi ?>| Digital Restaurant Msenu</title>
+	<title><?= $konten[0]->isi ?>| Digital Restaurant Menu</title>
 	<link rel="shortcut icon" href="<?= $bu; ?>assets/kasir/img\logo-icon.png">
 	<link rel="stylesheet" type="text/css" href="<?= $bu; ?>assets/kasir/frontend\css\bootstrap.min.css" media="all">
 	<link rel="stylesheet" type="text/css" href="<?= $bu; ?>assets/kasir/frontend\css\font-awesome.min.css" media="all">

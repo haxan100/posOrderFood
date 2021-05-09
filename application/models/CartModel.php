@@ -373,12 +373,17 @@ class CartModel extends CI_Model {
 		$query = $this->db->get()->result();
 		return count($query);
 	}
-	public function getCart($id_user =1 )
+	public function getCart($id_user)
 	{
-		$this->db->where('id_user', $id_user);
-		$sql = "SELECT `k`.*, `m`.*, k.qty * m.harga as total FROM `keranjang` `k` LEFT JOIN `menu` `m` ON `m`.`id_menu` = `k`.`id_produk`";
-		
-		$data  = $this->db->query($sql);
+	// var_dump($id_user);die;
+
+	$sql = "SELECT `k`.*, `m`.*, k.qty * m.harga as total FROM `keranjang` `k` LEFT JOIN `menu` `m` ON `m`.`id_menu` = `k`.`id_produk` where id_user= $id_user ";
+
+	$this->db->where('id_user', $id_user);
+	
+	$data  = $this->db->query($sql);
+		// echo $this->db->last_query();
+		// die;
 		return $data->result();
 		# code...
 	}
