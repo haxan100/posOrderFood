@@ -50,45 +50,50 @@
 											if ($role->data_kasir == 1) {
 											?>
 
-            								<li><a href="<?= $bu ?>/Admin/master_kasir">Master Kasir</a></li>
-											<?php 	}
+            									<li><a href="<?= $bu ?>/Admin/master_kasir">Master Kasir</a></li>
+            								<?php 	}
 											if ($role->master_menu == 1) {
 											?>
-            								<li><a href="<?= $bu ?>/Admin/master_item">Master Item</a></li>
-												<?php 	}
+            									<li><a href="<?= $bu ?>/Admin/master_item">Master Item</a></li>
+            								<?php 	}
 											if ($role->master_transaksi == 1) {
 											?>
-            								<li><a href="<?= $bu ?>/Admin/master_transaksi">Master Transaksi</a></li>
-												<?php 	}
+            									<li><a href="<?= $bu ?>/Admin/master_transaksi">Master Transaksi</a></li>
+            								<?php 	}
 											?>
             							</ul>
             						</li>
 
             					<?php 	}
 
-								
-								if ($role->seeting == 1 || $role->data_admin == 1 || $role->histori == 1 ) {
+
+								if ($role->seeting == 1 || $role->data_admin == 1 || $role->histori == 1) {
 								?>
-            					<li><a><i class="fa fa-home"></i> Seting <span class="fa fa-chevron-down"></span></a>
-            						<ul class="nav child_menu">
-										<?php
-										if ($role->seeting == 1) {
-										?>
-            							<li><a href="<?= $bu ?>/Admin/setting">Setting App</a></li>
-											<?php 	}
+            						<li><a><i class="fa fa-home"></i> Seting <span class="fa fa-chevron-down"></span></a>
+            							<ul class="nav child_menu">
+            								<?php
+											if ($role->seeting == 1) {
+											?>
+            									<li><a href="<?= $bu ?>/Admin/setting">Setting App</a></li>
+            								<?php 	}
 											if ($role->data_admin == 1) {
 											?>
-            							<li><a href="<?= $bu ?>/Admin/master_role">Role</a></li>
-											<?php 	}
+            									<li><a href="<?= $bu ?>/Admin/master_role">Role</a></li>
+            								<?php 	}
 											if ($role->histori == 1) {
 											?>
-            							<li><a href="<?= $bu ?>/Admin/master_histori">Histori</a></li>
-											<?php 	}
+            									<li><a href="<?= $bu ?>/Admin/master_histori">Histori</a></li>
+            								<?php 	}
+
+											if ($role->data_admin == 1) {
 											?>
-            						</ul>
-            					</li>
-								
-						<?php 	} ?>
+            									<li><a href="<?= $bu ?>/Admin/master_slider">Slider Menu</a></li>
+            								<?php 	}
+											?>
+            							</ul>
+            						</li>
+
+            					<?php 	} ?>
             					<!-- <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
             						<ul class="nav child_menu">
             							<li><a href="form.html">General Form</a></li>

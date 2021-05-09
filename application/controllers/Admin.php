@@ -103,7 +103,8 @@ class Admin extends CI_Controller {
 			$_FILES['f']['error']     = $_FILES['foto']['error'];
 			$_FILES['f']['size']     = $_FILES['foto']['size'];
 			$config['upload_path']          = './assets/images/foods';
-			$config['allowed_types']        = 'jpg|jpeg|png|gif|JPG|jpg|JPEG|PNG';
+			// $config['allowed_types']        = 'jpg|jpeg|png|gif|JPG|jpg|JPEG|PNG';
+			$config["allowed_types"] = "*";
 			$config['max_size']             = 3 * 1024;
 			$config['max_width']            = 10 * 1024;
 			$config['max_height']           = 10 * 1024;

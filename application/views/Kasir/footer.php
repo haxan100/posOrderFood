@@ -262,14 +262,12 @@
 										<div class="product-outer">
 											<div class="product-inner">
 												<div class="product-image-wrapper">
-													<a href="<?= $bu; ?>assets/kasir/menuorder\es-kopi-cappucino.html" class="woocommerce-LoopProduct-link">
-														<img src="<?= $bu; ?>assets/images/foods/${produk.foto}" class="img-responsive img-prod " alt="">
+													<img src="<?= $bu; ?>assets/images/foods/${produk.foto}" class="img-responsive img-prod " alt="">
 													</a>
 												</div>
 
 												<div class="product-content-wrapper">
-													<a href="<?= $bu; ?>assets/kasir/menuorder\es-kopi-cappucino.html" class="woocommerce-LoopProduct-link">
-														<h3>${produk.nama_menu}</h3>
+													<h3>${produk.nama_menu}</h3>
 														<div class="yith_wapo_groups_container">
 															<div class="ywapo_group_container ywapo_group_container_radio form-row form-row-wide " data-requested="1" data-type="radio" data-id="1" data-condition="">
 

@@ -19,10 +19,11 @@ $bu = base_url();
 	}
 
 	.img-prod {
-		display: block;
-		max-width: 180px;
-		/* height: auto; */
-		max-height: 170px;
+		display: block !important;
+		max-width: 180px !important;
+		height: auto !important;
+		max-height: 97px !important;
+		border-radius: 14px;
 	}
 </style>
 
@@ -108,8 +109,7 @@ $bu = base_url();
 								margin-left: 290px;
 							">Hidden</button>
 
-							<button class="btn btn-primary mr-5" id="keluar" type="button" 
-							">Log Out</button>
+							<button class="btn btn-primary mr-5" id="keluar" type="button" ">Log Out</button>
 
 						</ul>
 					</nav>
