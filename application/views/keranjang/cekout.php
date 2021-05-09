@@ -226,60 +226,14 @@ $bu = base_url();
 										})
 										.done(function(res) {
 
-											location.href = "<?= $bu; ?>Cart/Selesai/?id=" + res.id;
-											window.location = url;
+										var w  = "<?= $bu; ?>Cart/Selesai/?id=" + res.id;
+											window.location = w;
 										})
 										.fail(function(error) {
 											alert("eror!")
 											console.log(error.responseText);
 										});
 								});
-
-								// $('#form-bayar').on('submit', function(event) {
-								// 	event.preventDefault();
-								// 	// var resto_order = [];
-								// 	// var row_total = $('.row_total');
-								// 	// var data_total = {};
-								// 	// data_total['meja_id']       = row_total.data('meja_id');
-								// 	// data_total['order_nama']    = row_total.data('order_nama');
-								// 	// data_total['order_tanggal'] = new Date().toISOString().split('T')[0];
-								// 	// data_total['order_qty']     = row_total.data('order_qty');
-								// 	// data_total['order_waktu']   = row_total.data('order_waktu');
-								// 	// data_total['order_total']   = row_total.data('order_total');
-								// 	// data_total['order_bayar']   = row_total.data('order_bayar');
-								// 	// data_total['order_kembali'] = row_total.data('order_kembali');
-								// 	// data_total['order_status']  = 2; 
-								// 	// data_total['order_update']  = new Date().toISOString().split('T')[0] + ' ' + new Date().toLocaleTimeString( 'en-US', { hour12: false }); 
-
-								// 	// resto_order.push(data_total);
-								// 	// var resto_order = JSON.stringify(data_total);
-
-								// 	// var resto_order_detail = [];
-								// 	// $('.row_line').each(function(index, el) { 
-								// 	//     var data = {}; 
-								// 	//     data['menu_id']               = $(this).attr('data-menu_id'); 
-								// 	//     data['order_detail_harga']    = $(this).attr('data-order_detail_harga'); 
-								// 	//     data['order_detail_qty']      = $(this).attr('data-order_detail_qty'); 
-								// 	//     data['order_detail_subtotal'] = $(this).attr('data-order_detail_subtotal'); 
-								// 	//     resto_order_detail.push(data);
-								// 	// });
-								// 	// var resto_order_detail = JSON.stringify(resto_order_detail);
-								// 	dataString = $("#form-bayar").serialize();
-								// 	$.ajax({
-								// 			url: 'http://dansdigitalmedia.com/resto/checkout/konfirmasi',
-								// 			type: 'POST',
-								// 			data: dataString,
-								// 			// data: {
-								// 			//     resto_order : resto_order
-								// 			// },
-								// 		})
-								// 		.done(function(res) {
-								// 			location.href = 'http://dansdigitalmedia.com/resto/checkout/selesai/' + res.order_id;
-								// 		})
-								// 		.fail(function(error) {
-								// 			console.log(error.responseText);
-								// 		});
-								// });
 							});
 						</script>
 					</div>

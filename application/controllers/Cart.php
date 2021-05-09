@@ -73,6 +73,7 @@ public function index()
 }
 public function checkout()
 {
+	// var_dump($_SESSION);die;
 		$sess =  $this->session->userdata('user_session');
 		if ($sess == null) {
 
@@ -169,6 +170,9 @@ public function updateCart()
 }
 public function konfirmasi()
 {
+		// $sess =  $this->session->userdata('user_session');
+		// var_dump($sess== null);
+		// die;
 	$nama = $this->input->post('nama');
 	$pilihtempat = $this->input->post('pilihtempat');
 	$meja_id = $this->input->post('meja_id');
@@ -250,8 +254,8 @@ public function selesai()
 {
 
 		$sess =  $this->session->userdata('user_session');
+		// var_dump($sess);die;
 		if ($sess == null) {
-
 			redirect('Kasir/Login', 'refresh');
 		}
 	$id = $_GET['id'];
